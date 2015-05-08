@@ -1,11 +1,17 @@
+
+var spec = [ 'spec/*.spec.js'];
+
+if (!!process.env.LERGO_SPEC){
+    spec = process.env.LERGO_SPEC.split(',');
+}
+
+
 exports.config = {
   // The address of a running selenium server.
   seleniumAddress: 'http://localhost:4444/wd/hub',
 
   // Spec patterns are relative to the location of this config.
-  specs: [
-    'spec/*_spec.js'
-  ],
+  specs: spec,
 
 
   capabilities: {
@@ -16,7 +22,7 @@ exports.config = {
 
   // A base URL for your application under test. Calls to protractor.get()
   // with relative paths will be prepended with this.
-  baseUrl: 'http://lergo.localhost.com',
+  baseUrl: process.env.LERGO_ENDPOINT || 'http://lergo.localhost.com',
   //baseUrl: 'http://realstaging.lergodev.info',
 
   jasmineNodeOpts: {

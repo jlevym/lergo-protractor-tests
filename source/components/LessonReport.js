@@ -12,7 +12,7 @@ exports.continueLesson = function(){
 exports.getIdFromUrl = function(){
     var deferred = protractor.promise.defer();
     browser.getCurrentUrl().then(function(url){
-        deferred.fulfill(url.match(new RegExp("lessons/reports/(.+)/display"))[1]);
+        deferred.fulfill(url.match(new RegExp('lessons/reports/(.+)/display'))[1]);
     });
     return deferred.promise;
 };

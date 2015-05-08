@@ -27,15 +27,15 @@ describe('lergo continue lesson', function() {
    *    8. Make sure Q1 does not repeat itself
    *
    */
-  it('should show a continue lesson link', function( done ) {
+  it('should continue lesson', function( done ) {
 
-    browser.ignoresynchronisation = true;
+    //browser.ignoresynchronisation = true;
     logger.info('starting test');
     browser.get('/');
 
 
     // 1. login as user X
-    components.loginPage.load().login( components.conf.login.username, components.conf.login.password);
+    components.loginPage.load().login( components.conf.continueLesson.username, components.conf.continueLesson.password);
     // 2. search lesson on homepage
     components.homepage.startLesson({'name' : 'first'});
 
@@ -63,8 +63,10 @@ describe('lergo continue lesson', function() {
     components.lessonReport.get( components.conf ).then(function( report ){
       expect(_.filter( report.answers, {'checkAnswer' : { 'correct' : true } }).length).toBe(4);
       expect(_.filter( report.answers, {'checkAnswer' : { 'correct' : false} }).length).toBe(1);
-      done();
+
     });
+
+    components.layout.logout().then(function(){ done(); });
 
   });
 

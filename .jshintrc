@@ -26,6 +26,10 @@
     "by" : true,
     "element": true,
     "protractor": true,
-    "expect" : true
+    "expect" : true,
+    "$" : false,
+    "$m":false,
+    "selectOptionByText" : false,
+    "enter" : false
   }
 }
