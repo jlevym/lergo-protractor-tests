@@ -44,7 +44,11 @@ describe('lergo continue lesson', function() {
     components.lessonView.questions.trueFalse.answer({ answer : true });
 
 
-    components.mySection.goToMyReports().goToFirstReport();
+    components.layout.goToMySection();
+    components.mySection.goToMyReports();
+    components.mySection.reports.seeLessonsDoneByMe();
+    components.mySection.reports.goToFirstReport();
+
     components.lessonReport.getIdFromUrl().then(function(_reportId){
       components.conf.reportId = _reportId;
 

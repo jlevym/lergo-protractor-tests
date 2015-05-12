@@ -8,6 +8,7 @@ exports.lessonEdit = require('./lessonEdit');
 exports.mySection = require('./MySection');
 exports.lessonReport = require('./LessonReport');
 exports.conf = require('./Conf');
+exports.questions=require('./questions');
 
 /*******************************************************************
  *
@@ -17,13 +18,14 @@ exports.conf = require('./Conf');
 
 
 global.selectOptionByText = function(selectElement, optionText) {
-    selectElement.click();
+    return selectElement.element(by.cssContainingText('option',optionText)).click();
+};
+
+global.selectOptionByIndex = function(selectElement, optionIndex){
     return selectElement.all(by.css('option'))
-        .filter(function (option) {
-            return option.getText().then(function (text) {
-                return text === optionText;
-            });
-        }).click();
+        .then(function (options) {
+            return options[optionIndex].click();
+        });
 };
 
 global.$m = function( model ){
@@ -34,10 +36,22 @@ global.$r = function( repeater ){
     return element.all(by.repeater(repeater));
 };
 
+global.$click = function( click ){
+    return $('[ng-click="' + click + '"]');
+};
+
 global.enter = function( element ){
     if ( !element ) {
-        browser.actions().sendKeys(protractor.Key.ENTER).perform();
+        return browser.actions().sendKeys(protractor.Key.ENTER).perform();
     }else{
-        element.sendKeys(protractor.Key.ENTER);
+        return element.sendKeys(protractor.Key.ENTER);
     }
+};
+
+global.LERGO_LANGUAGES = {
+    'english' : { 'label' : 'English','id' : 'en'}
+};
+
+global.LERGO_SUBJECT = {
+    'math' : { 'label' : 'Math','id' : 'math'}
 };

@@ -20,7 +20,8 @@ describe('edit lesson', function(){
         components.loginPage.load().login( components.conf.editLesson.username, components.conf.editLesson.password );
 
         components.layout.goToUserSection();
-        components.mySection.goToMyLessons().createNewLesson();
+        components.mySection.goToMyLessons();
+        components.mySection.lessons.createNewLesson();
         var editor = components.lessonEdit.editor;
         editor.setDetails({'name' : 'test name', 'description' : 'test description', 'subject' : 'English','language':'Hebrew', 'age' : 10,'tags' : 'testTag'});
         editor.clickDone();

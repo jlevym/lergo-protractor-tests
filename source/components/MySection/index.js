@@ -2,13 +2,21 @@
 
 exports.reports = require('./MyReports');
 exports.lessons = require('./MyLessons');
+exports.questions = require('./MyQuestions');
+
+
+exports.getSectionByName = function(sectionName){
+    return element(by.cssContainingText('ul.nav a',sectionName));
+};
 
 exports.goToMyReports = function(){
-    browser.get('/#!/user/create/reports?lergoLanguage=en&reportType=mine');
-    return exports.reports;
+    return exports.getSectionByName('Reports').click();
+};
+
+exports.goToMyQuestions = function(){
+    return exports.getSectionByName('Questions').click();
 };
 
 exports.goToMyLessons = function(){
-    browser.get('/#!/user/create/lessons');
-    return exports.lessons;
+    return exports.getSectionByName('Lessons').click();
 };

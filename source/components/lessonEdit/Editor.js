@@ -42,6 +42,13 @@ exports.setTags = function( tag ){
 };
 
 exports.clickDone = function(){
-    return $('[ng-click="done()"]').click();
+    return $click('done()').click();
 };
 
+exports.getQuizItemId = function(){
+    var deferred = protractor.promise.defer();
+    browser.getCurrentUrl().then(function(url){
+        deferred.fulfill(url.match(new RegExp('user/questions/(.+)/update'))[1]);
+    });
+    return deferred.promise;
+};

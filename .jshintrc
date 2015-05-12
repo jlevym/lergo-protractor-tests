@@ -29,7 +29,11 @@
     "expect" : true,
     "$" : false,
     "$m":false,
+    "$r" : false,
+    "$click" : false,
     "selectOptionByText" : false,
-    "enter" : false
+    "enter" : false,
+    "selectOptionByIndex" : false,
+    "LERGO_QUESTION_TYPE" : false
   }
 }

@@ -8,3 +8,17 @@ exports.goToFirstReport = function(){
     });
     return deferred.promise;
 };
+
+var LESSON_TYPE={
+    byMe:'Lessons done by me',
+    byStudents:'Lesson done by students'
+};
+
+
+exports.seeLessonsDoneByMe = function(){
+    selectOptionByText($m('reportsPage.reportType'),LESSON_TYPE.byMe);
+};
+
+exports.seeLessonsDoneByStudents = function(){
+    selectOptionByText($m('reportsPage.reportType'),LESSON_TYPE.byStudents);
+};
