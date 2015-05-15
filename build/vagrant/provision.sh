@@ -75,5 +75,6 @@ sudo npm cache clean
 npm install
 
 export LERGO_ENDPOINT=http://localhost
+export BROWSER_NAME="phantomjs"
 
 grunt protract

@@ -15,7 +15,7 @@ exports.config = {
 
 
   capabilities: {
-    'browserName': 'chrome',
+    'browserName': process.env.BROWSER_NAME || 'chrome',
     'chromeOptions': {'args': ['--disable-extensions']}
   },
 
