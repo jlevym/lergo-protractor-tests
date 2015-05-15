@@ -84,7 +84,7 @@ SYSTEM_TESTS_FOLDER=system-tests
 
 # rm -rf $SYSTEM_TESTS_FOLDER || echo "folder does not exist"
 
-if [ ! -f "$SYSTEM_TESTS_FOLDER" ];then
+if [ ! -e "$SYSTEM_TESTS_FOLDER" ];then
     git clone  "https://github.com/lergo/lergo-protractor-tests.git" $SYSTEM_TESTS_FOLDER
 else
     echo "$SYSTEM_TESTS_FOLDER already exists. updating it"
