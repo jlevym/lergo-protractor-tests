@@ -6,9 +6,14 @@ module.exports = function(grunt){
 
     grunt.initConfig({
         protractor:{
-            all:{
+            sanity:{
                 options: {
-                    configFile:'protractor.conf.js'
+                    configFile:'protractor.sanity.conf.js'
+                }
+            },
+            applitools: {
+                options: {
+                    configFile: 'protractor.applitools.conf.js'
                 }
             }
         },
@@ -39,5 +44,7 @@ module.exports = function(grunt){
     });
 
 
-    grunt.registerTask('default',[ 'jshint', 'protractor_webdriver','protractor']);
+    grunt.registerTask('applitools', [ 'protractor_webdriver','protractor:applitools']);
+    grunt.registerTask('protract',[ 'protractor_webdriver','protractor:sanity']); // run protractor test
+    grunt.registerTask('default',[ 'jshint' ]); // just check code
 };
