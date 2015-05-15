@@ -21,6 +21,21 @@ INSTALL_SCRIPT_URL="$BASE_URL/install.sh";
 LERGO_RI_URL="$BASE_URL/lergo-ri-0.0.0.tgz";
 LERGO_UI_URL="$BASE_URL/lergo-ui-0.0.0.tgz";
 
+LERGO_RI_FILE=`pwd`/lergo-ri.tgz
+LERGO_UI_FILE=`pwd`/lergo-ui.tgz
+if [ ! -f "$LERGO_RI_FILE" ];then
+    wget "$LERGO_RI_URL" -O $LERGO_RI_FILE
+    tar -xzvf $LERGO_RI_FILE
+else
+    echo "lergo ri file already exists"
+fi
+
+if [ ! -f "$LERGO_UI_FILE" ];then
+    wget "$LERGO_UI_URL" -O $LERGO_UI_FILE
+    tar -xzvf $LERGO_UI_FILE
+else
+    echo "lergo ui file already exists"
+fi
 
 if [ ! -f /usr/bin/node ];then
     echo "installing node"
@@ -66,11 +81,20 @@ else
 fi
 
 SYSTEM_TESTS_FOLDER=system-tests
-rm -rf $SYSTEM_TESTS_FOLDER || echo "folder does not exist"
-git clone  "https://github.com/lergo/lergo-protractor-tests.git" $SYSTEM_TESTS_FOLDER
+
+# rm -rf $SYSTEM_TESTS_FOLDER || echo "folder does not exist"
+
+if [ ! -f "$SYSTEM_TESTS_FOLDER" ];then
+    git clone  "https://github.com/lergo/lergo-protractor-tests.git" $SYSTEM_TESTS_FOLDER
+else
+    echo "$SYSTEM_TESTS_FOLDER already exists. updating it"
+    cd $SYSTEM_TESTS_FOLDER
+    git pull
+    npm install
+    cd ..
+fi
+
 cd $SYSTEM_TESTS_FOLDER
-
-
 sudo npm cache clean
 npm install
 
