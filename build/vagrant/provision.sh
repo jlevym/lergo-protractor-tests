@@ -25,14 +25,14 @@ LERGO_RI_FILE=`pwd`/lergo-ri.tgz
 LERGO_UI_FILE=`pwd`/lergo-ui.tgz
 if [ ! -f "$LERGO_RI_FILE" ];then
     wget "$LERGO_RI_URL" -O $LERGO_RI_FILE
-    tar -xzvf $LERGO_RI_FILE
+    tar -xzf $LERGO_RI_FILE
 else
     echo "lergo ri file already exists"
 fi
 
 if [ ! -f "$LERGO_UI_FILE" ];then
     wget "$LERGO_UI_URL" -O $LERGO_UI_FILE
-    tar -xzvf $LERGO_UI_FILE
+    tar -xzf $LERGO_UI_FILE
 else
     echo "lergo ui file already exists"
 fi
