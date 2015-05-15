@@ -25,14 +25,14 @@ LERGO_RI_FILE=`pwd`/lergo-ri.tgz
 LERGO_UI_FILE=`pwd`/lergo-ui.tgz
 if [ ! -f "$LERGO_RI_FILE" ];then
     wget "$LERGO_RI_URL" -O $LERGO_RI_FILE
-    tar -xzf $LERGO_RI_FILE
+    tar -xzf $LERGO_RI_FILE -C lergo-ri
 else
     echo "lergo ri file already exists"
 fi
 
 if [ ! -f "$LERGO_UI_FILE" ];then
     wget "$LERGO_UI_URL" -O $LERGO_UI_FILE
-    tar -xzf $LERGO_UI_FILE
+    tar -xzf $LERGO_UI_FILE -C lergo-ui
 else
     echo "lergo ui file already exists"
 fi
@@ -63,6 +63,13 @@ if [ ! -f /usr/bin/java ]; then
     sudo apt-get install -y openjdk-7-jre-headless
 else
     echo "java already installed"
+fi
+
+if [ ! -f /usr/bin/mongo ]; then
+    echo "installing mongodb"
+    sudo apt-get install -u mongodb
+else
+    echo "mongo is already installed"
 fi
 
 if [ ! -f /usr/bin/grunt ]; then
