@@ -1,0 +1,10 @@
+{
+
+  "description" : "this file is an example. you need to create this file under synced_folder/dev/me.json",
+
+
+  "hmacKey" : "testKey",
+  "translations" : {
+    "method" : "files"
+  }
+}
