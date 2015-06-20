@@ -6,6 +6,7 @@ if ( !process.env.APPLITOOLS_KEY){
 }
 
 var Eyes = require('eyes.protractor').Eyes;
+//var MatchSettings = require('eyes.protractor').ImageMatchSettings;
 var eyes = new Eyes();
 eyes.setApiKey(process.env.APPLITOOLS_KEY);
 
