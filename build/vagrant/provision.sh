@@ -92,6 +92,11 @@ else
     echo "mongo is already installed"
 fi
 
+sleep 10 # wait for mongo to start. random value.
+echo "inserting mongo data"
+mongo lergo-test < /vagrant/test_data.js
+echo "data inserted to mongo successfully"
+
 if [ ! -f /usr/bin/grunt ]; then
     echo "installing grunt and phantom"
     sudo npm install -g grunt-cli phantomjs
@@ -107,10 +112,10 @@ else
     echo "nginx already installed"
 fi
 
-SYSTEM_TESTS_FOLDER=system-tests
+SYSTEM_TESTS_FOLDER=`pwd`/system-tests
 
 killall lergo || echo "lergo is not running"
-nohup node /home/vagrant/lergo-ri/package/server.js & > /dev/null 2>&1
+nohup node /home/vagrant/lergo-ri/package/server.js &> /dev/null &
 
 # rm -rf $SYSTEM_TESTS_FOLDER || echo "folder does not exist"
 
@@ -127,6 +132,23 @@ else
 
 fi
 
+if [ !  -f /usr/bin/google-chrome ];then
+    echo "installing chrome"
+    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+    sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+    sudo apt-get update -y
+    sudo apt-get install google-chrome-stable -y
+else
+    echo "chrome already installed"
+fi
+
+sudo apt-get install xvfb x11-xkb-utils xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic -y
+
+echo "starting headless display"
+Xvfb :99 &
+export DISPLAY=:99
+
+
 echo "setting nginx configuration and translations"
 # sudo ln -Tfs /vagrant/translations /home/vagrant/lergo-ui/package/translations
 sudo ln -Tfs /vagrant/lergo.nginx /etc/nginx/sites-enabled/lergo.conf
@@ -134,7 +156,14 @@ sudo service nginx restart
 
 npm install
 
-export LERGO_ENDPOINT=http://localhost
-export BROWSER_NAME="phantomjs"
+echo "export LERGO_ENDPOINT=http://localhost:1616" >>  /home/vagrant/vars
+echo "export BROWSER_NAME=\"chrome\"" >>  /home/vagrant/vars
+echo "export SYSTEM_TEST_FOLDER=\"$SYSTEM_TESTS_FOLDER\"" >>  /home/vagrant/vars
+echo "export LERGO_PROT_TEST_CONF=\"/vagrant/testconf.json\"">>  /home/vagrant/vars
+echo "export DISPLAY=:99" >>  /home/vagrant/vars
+echo "source vars" >>  /home/vagrant/.bashrc
+
+source  /home/vagrant/vars
+echo "TEST_CONF file is [$LERGO_PROT_TEST_CONF]"
 
 grunt protract

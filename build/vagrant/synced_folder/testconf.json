@@ -1,0 +1,15 @@
+{
+  "continueLesson" : {
+    "username" : "lergotest",
+    "password" : "lergotest"
+  },
+  "editLesson" : {
+    "username" : "lergotest",
+
+    "password" : "lergotest"
+  },
+  "multichoice" : {
+    "username" : "lergotest",
+    "password" : "lergotest"
+  }
+}

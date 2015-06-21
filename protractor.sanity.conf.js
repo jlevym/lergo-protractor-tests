@@ -22,7 +22,7 @@ exports.config = {
 
   // A base URL for your application under test. Calls to protractor.get()
   // with relative paths will be prepended with this.
-  baseUrl: process.env.LERGO_ENDPOINT || 'http://lergo.localhost.com',
+  baseUrl: process.env.LERGO_ENDPOINT || 'http://localhost:1616',
   //baseUrl: 'http://realstaging.lergodev.info',
 
   jasmineNodeOpts: {
