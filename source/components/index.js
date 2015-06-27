@@ -9,6 +9,7 @@ exports.mySection = require('./MySection');
 exports.lessonReport = require('./LessonReport');
 exports.conf = require('./Conf');
 exports.questions=require('./questions');
+exports.aboutLergo = require('./AboutLergo');
 
 /*******************************************************************
  *
