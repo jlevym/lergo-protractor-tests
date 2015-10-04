@@ -12,12 +12,13 @@ exports.searchLesson = function( name ){
 };
 
 exports.logout = function(){
+    browser.actions().mouseMove(element(by.css('.header-login>a'))).perform();
     return $('[ng-click="logout()"]').click();
 };
 
 
 exports.goToUserSection = function(){
-    return $('.header-login a').click();
+    return $('.header-login>a').click();
 };
 
 exports.footer = {
