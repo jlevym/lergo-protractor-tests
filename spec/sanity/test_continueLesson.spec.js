@@ -40,6 +40,7 @@ describe('lergo continue lesson', function() {
     components.homepage.startLesson({'name' : 'test_continue_lesson'});
 
     components.lessonIntro.startLesson();
+    browser.sleep(1000);
 
     components.lessonView.questions.trueFalse.answer({ answer : true });
 
@@ -70,8 +71,8 @@ describe('lergo continue lesson', function() {
 
     });
 
-    components.layout.logout().then(function(){ done(); });
     browser.sleep(1000);
+    components.layout.logout().then(function(){ done(); });
 
   });
 

@@ -2,22 +2,23 @@
   "name": "protractor-tests",
   "version": "0.0.1",
   "devDependencies": {
-    "protractor": "2.0.0",
+    "protractor": "2.4.0",
     "load-grunt-tasks": "~3.1.0",
     "grunt": "~0.4.5",
     "grunt-contrib-jshint": "~0.11.1",
     "jshint-stylish": "~1.0.1",
     "grunt-protractor-runner": "~2.0.0",
-    "grunt-protractor-webdriver": "~0.2.0",
+    "grunt-protractor-webdriver": "seckardt/grunt-protractor-webdriver#master",
     "eyes.protractor": "0.0.38"
   },
   "scripts": {
     "install": "node ./node_modules/protractor/bin/webdriver-manager update"
   },
   "dependencies": {
+    "jasmine-reporters": "^2.0.7",
+    "jenkins-api": "~0.2.7",
     "lodash": "~3.6.0",
     "log4js": "~0.6.22",
-    "request": "~2.55.0",
-    "jenkins-api": "~0.2.7"
+    "request": "~2.55.0"
   }
 }

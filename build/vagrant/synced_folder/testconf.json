@@ -5,7 +5,10 @@
   },
   "editLesson" : {
     "username" : "lergotest",
-
+    "password" : "lergotest"
+  },
+  "previewLesson" : {
+    "username" : "lergotest",
     "password" : "lergotest"
   },
   "multichoice" : {

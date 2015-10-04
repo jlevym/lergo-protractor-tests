@@ -29,7 +29,7 @@ describe('multichoice', function(){
 
 
         editor.clickPreview();
-        //browser.sleep(100);
+        browser.sleep(100);
         var shuffled = false;
         var checkIfShuffled = function(options){
             console.log('options= ', options);

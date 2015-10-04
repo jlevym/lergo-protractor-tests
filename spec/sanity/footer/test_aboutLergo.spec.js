@@ -23,6 +23,6 @@ describe('about lergo', function(){
                     clickOnSectionByIndex(i);
                 }
             });
-        browser.sleep(1000).then(function(){ done(); });
+        browser.sleep(1000).then(done);
     });
 });

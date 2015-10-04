@@ -1,6 +1,7 @@
 
 var spec = [ 'spec/sanity/**/*.spec.js'];
 
+
 if (!!process.env.LERGO_SPEC){
     spec = process.env.LERGO_SPEC.split(',');
 }
@@ -25,9 +26,10 @@ exports.config = {
   baseUrl: process.env.LERGO_ENDPOINT || 'http://localhost:1616',
   //baseUrl: 'http://realstaging.lergodev.info',
 
+
   jasmineNodeOpts: {
     onComplete: null,
-    isVerbose: false,
+    isVerbose: true,
     showColors: true,
     includeStackTrace: true,
     defaultTimeoutInterval: 40000

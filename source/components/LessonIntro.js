@@ -14,3 +14,7 @@ exports.getCreatedOn = function(){
 exports.startLesson = function(){
     return element(by.css('.start-lesson')).click();
 };
+
+exports.previewLesson = function(){
+    return element(by.css('[ng-click="preview()"]')).click();
+};
