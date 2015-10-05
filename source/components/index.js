@@ -10,6 +10,7 @@ exports.lessonReport = require('./LessonReport');
 exports.conf = require('./Conf');
 exports.questions=require('./questions');
 exports.aboutLergo = require('./AboutLergo');
+exports.manage=require('./manage');
 
 /*******************************************************************
  *
@@ -20,6 +21,28 @@ exports.aboutLergo = require('./AboutLergo');
 
 global.selectOptionByText = function(selectElement, optionText) {
     return selectElement.element(by.cssContainingText('option',optionText)).click();
+};
+
+/**
+ *
+ * @param inputs the return value of element.all to get all checkbox inputs
+ * @param values a map between the element.getText value and the desired outcome (true == checked, false == unchecked)
+ *        non existence is ignored.
+ */
+global.checkboxesByLabel = function( inputs, values ){
+    inputs.each(function(item){
+        return item.getText().then(function(text){
+            var label = text.toLowerCase().trim();
+            if ( values.hasOwnProperty(label) ){
+                var checked = values[label];
+                item.element(by.css('input')).isSelected().then(function( selected ){
+                    if ( selected !== checked ){
+                        item.element(by.css('input')).click();
+                    }
+                });
+            }
+        });
+    });
 };
 
 global.selectOptionByIndex = function(selectElement, optionIndex){

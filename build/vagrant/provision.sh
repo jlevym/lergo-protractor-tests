@@ -98,8 +98,11 @@ else
 
 fi
 
+print "installing chrome" && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - && sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+
+
 print "running apt-get install on $APT_GET_INSTALL"
-( sudo apt-get -qq update && print "apt-get update finished" &&  sudo apt-get -qq install --fix-missing  -y g++ libgconf2-4 libnss3-1d libxss1 mongodb openjdk-7-jre-headless nginx  && print "apt get install finished" ) &
+( sudo apt-get -qq update && print "apt-get update finished" &&  sudo apt-get -qq install --fix-missing  -y g++ libgconf2-4 libnss3-1d libxss1 mongodb openjdk-7-jre-headless nginx google-chrome-stable xvfb x11-xkb-utils xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic && print "apt get install finished" ) &
 print "running npm installs"
 ( sudo npm -s install -g grunt-cli phantomjs  && print "grunt-cli installed" && sudo npm -s cache clean && print "npm cache is clean" && npm -s install && print "npm install finished" ) &
 
@@ -115,6 +118,7 @@ killall lergo || print "lergo is not running"
 nohup node /home/vagrant/lergo-ri/package/server.js &> $PROVISION_LOG_FILE &
 
 
+print "starting headless display" && ( ( Xvfb :99 ) & ) && export DISPLAY=:99
 
 print "setting nginx configuration and translations"
 # sudo ln -Tfs /vagrant/translations /home/vagrant/lergo-ui/package/translations
@@ -127,7 +131,7 @@ echo "export LERGO_ENDPOINT=http://localhost:1616" >>  /home/vagrant/vars
 echo "export BROWSER_NAME=\"chrome\"" >>  /home/vagrant/vars
 echo "export SYSTEM_TEST_FOLDER=\"$SYSTEM_TESTS_FOLDER\"" >>  /home/vagrant/vars
 echo "export LERGO_PROT_TEST_CONF=\"/vagrant/testconf.json\"">>  /home/vagrant/vars
-#echo "export DISPLAY=:99" >>  /home/vagrant/vars
+echo "export DISPLAY=:99" >>  /home/vagrant/vars
 echo "source vars" >>  /home/vagrant/.bashrc
 
 source  /home/vagrant/vars

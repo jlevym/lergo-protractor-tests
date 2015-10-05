@@ -26,7 +26,7 @@ describe('edit lesson', function(){
         expect(element.all(by.css('.lesson-step-title')).count()).toBe(1);
 
         components.layout.logout().then(done);
-        browser.sleep(1000)
+        browser.sleep(1000);
     });
 
 });

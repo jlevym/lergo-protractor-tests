@@ -8,7 +8,7 @@ function goToLessonByName(name) {
     var deferred = protractor.promise.defer();
     layout.searchLesson(name);
     exports.getLessons().then(function (lessons) {
-        expect(lessons.length).toBe(1);
+        expect(lessons.length).toBe(1, 'lesson [' + name + '] should exist');
         deferred.fulfill(lessons[0]);
     });
     //browser.controlFlow().execute(deferred.promise);

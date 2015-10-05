@@ -14,6 +14,23 @@ db.users.insert([{
     "fullName": "lergotestadmin",
     "validated": true,
     "isAdmin": true
+}, {
+    "_id": ObjectId("54ba1391f59d198d09bfe58d"),
+    "username": "simple_user",
+    "email": "simple_user@yopmail.com",
+    "password": "ab89f0030d8e2e1989110714b3921ab415023298",
+    "fullName": "simple_user",
+    "validated": true,
+    "isAdmin": false
+}, {
+    "_id": ObjectId("54ba1391f59d198d09bfe58e"),
+    "username": "lergotesteditor",
+    "email": "lergotesteditor@yopmail.com",
+    "password": "d9a73d1fa3b7478b11a28feaca5b7c95b1125024",
+    "fullName": "lergotesteditor",
+    "validated": true,
+    "roles" : ["56129324428b4bc12c76197g"],
+    "isAdmin": false
 }]);
 
 
@@ -117,5 +134,37 @@ db.questions.insert([{
         "userId": ObjectId("54ba1391f59d198d09bfe58b"),
         "views": 1
     }
+]);
+
+db.roles.insert([
+    {
+        "name" : "role_to_assign",
+        "createdAt" : "2015-10-05T15:11:32.051Z",
+        "_id" : ObjectId("56129324428b4bc12c76197f"),
+        "permissions" : [
+            "lessons.userCanEdit",
+            "lessons.userCanCopy",
+            "lessons.userCanDelete",
+            "lessons.userCanPublish",
+            "lessons.userCanSeePrivateLessons",
+            "lessons.userCanPreview"
+        ],
+        "lastUpdate" : 1444057912947
+    },
+    {
+        "name" : "lesson_editor_role",
+        "createdAt" : "2015-10-05T15:11:32.051Z",
+        "_id" : ObjectId("56129324428b4bc12c76197g"),
+        "permissions" : [
+            "lessons.userCanEdit",
+            "lessons.userCanCopy",
+            "lessons.userCanDelete",
+            "lessons.userCanPublish",
+            "lessons.userCanSeePrivateLessons",
+            "lessons.userCanPreview"
+        ],
+        "lastUpdate" : 1444057912947
+    }
+
 ]);
 
