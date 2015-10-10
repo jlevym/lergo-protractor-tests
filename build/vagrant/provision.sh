@@ -16,7 +16,7 @@ if [ ! -f /vagrant/dev/me.json ]; then
 else
     print "found me.json. thank!"
     export LERGO_ME_CONF="/vagrant/dev/me.json"
-    print "export LERGO_ME_CONF=/vagrant/dev/me.json" >> ~/.profile
+    echo "export LERGO_ME_CONF=/vagrant/dev/me.json" >> ~/.profile
 fi
 
 if [ -f /vagrant/build_id ]; then
