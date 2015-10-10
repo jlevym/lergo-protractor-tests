@@ -1,5 +1,5 @@
 
-var spec = [ 'spec/sanity/**/*.spec.js'];
+var spec = [  'spec/sanity/**/*.spec.js'];
 
 
 if (!!process.env.LERGO_SPEC){

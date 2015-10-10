@@ -29,7 +29,7 @@ db.users.insert([{
     "password": "d9a73d1fa3b7478b11a28feaca5b7c95b1125024",
     "fullName": "lergotesteditor",
     "validated": true,
-    "roles" : ["56129324428b4bc12c76197g"],
+    "roles" : ["56129324428b4bc12c76198a"],
     "isAdmin": false
 }]);
 
