@@ -34,7 +34,8 @@ db.users.insert([{
 }]);
 
 
-db.lessons.insert({
+db.lessons.insert(
+    [{
         "_id" : ObjectId("5585adbfddc5c9862231bc4d"),
         "age" : 8,
         "createdAt" : "2015-06-20T18:15:27.842Z",
@@ -108,7 +109,7 @@ db.lessons.insert({
         "lastUpdate" : 1444487176252,
         "userId" : ObjectId("54ba1391f59d198d09bfe58b"),
         "_id" : ObjectId("56192008755baaa735bff6d0")
-    }
+    }]
 );
 
 db.questions.insert([{
