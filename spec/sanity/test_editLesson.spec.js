@@ -22,7 +22,7 @@ describe('edit lesson', function(){
         components.layout.goToUserSection();
         components.mySection.goToMyLessons();
         components.mySection.lessons.createNewLesson();
-        var editor = components.lessonEdit.editor;
+        var editor = components.lesson.editor;
         editor.setDetails({'name' : 'test name', 'description' : 'test description', 'subject' : 'English','language':'Hebrew', 'age' : 10,'tags' : 'testTag'});
         editor.clickDone();
         components.layout.logout();

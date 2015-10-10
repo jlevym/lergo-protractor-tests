@@ -39,10 +39,10 @@ describe('lergo continue lesson', function() {
     // 2. search lesson on homepage
     components.homepage.startLesson({'name' : 'test_continue_lesson'});
 
-    components.lessonIntro.startLesson();
+    components.lesson.intro.startLesson();
     browser.sleep(1000);
 
-    components.lessonView.questions.trueFalse.answer({ answer : true });
+    components.lesson.view.questions.trueFalse.answer({ answer : true });
 
 
     components.layout.goToMySection();
@@ -56,14 +56,14 @@ describe('lergo continue lesson', function() {
     });
     components.lessonReport.continueLesson();
 
-    components.lessonView.questions.trueFalse.answer({ answer : false });
-    components.lessonView.questions.nextQuestion();
-    components.lessonView.questions.trueFalse.answer({ answer : true });
-    components.lessonView.questions.trueFalse.answer({ answer : true });
-    components.lessonView.questions.trueFalse.answer({ answer : true });
+    components.lesson.view.questions.trueFalse.answer({ answer : false });
+    components.lesson.view.nextQuestion();
+    components.lesson.view.questions.trueFalse.answer({ answer : true });
+    components.lesson.view.questions.trueFalse.answer({ answer : true });
+    components.lesson.view.questions.trueFalse.answer({ answer : true });
 
-    components.lessonView.nextStep();
-    components.lessonView.showReport();
+    components.lesson.view.nextStep();
+    components.lesson.view.showReport();
 
     components.lessonReport.get( components.conf ).then(function( report ){
       expect(_.filter( report.answers, {'checkAnswer' : { 'correct' : true } }).length).toBe(4);

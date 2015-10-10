@@ -22,7 +22,7 @@ describe('edit lesson', function(){
         browser.sleep(1000);
         components.loginPage.load().login( components.conf.previewLesson.username, components.conf.previewLesson.password );
         components.homepage.startLesson({'name' : 'test_continue_lesson'});
-        components.lessonIntro.previewLesson();
+        components.lesson.intro.previewLesson();
         expect(element.all(by.css('.lesson-step-title')).count()).toBe(1);
 
         components.layout.logout().then(done);
