@@ -14,5 +14,12 @@
   "multichoice" : {
     "username" : "lergotest",
     "password" : "lergotest"
+  },
+  "roles" : {
+    "adminUser" : "lergotestadmin",
+    "adminPassword" : "lergotestadmin",
+    "username" : "simple_user",
+    "editorUser" : "lergotesteditor",
+    "editorPassword" : "lergotesteditor"
   }
 }
