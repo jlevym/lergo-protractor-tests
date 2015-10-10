@@ -61,6 +61,53 @@ db.lessons.insert({
         "tags" : [ ],
         "userId" : ObjectId("54ba1391f59d198d09bfe58b"),
         "views" : 2
+    },
+    {
+        "userId" : ObjectId("54ba1391f59d198d09bfe58b"),
+        "createdAt" : "2015-10-10T13:51:05.268Z",
+        "age" : 8,
+        "_id" : ObjectId("561917c9a4121eca2c8153d7"),
+        "language" : "english",
+        "name" : "lesson_with_edit_summary",
+        "public" : 1434824313687,
+        "lastUpdate" : 1444485120066,
+        "steps" : [
+            {
+                "testMode" : "False",
+                "type" : "quiz",
+                "quizItems" : [
+                    "5619159ca4121eca2c8153d3",
+                    "561917e6a4121eca2c8153d9"
+                ]
+            }
+        ],
+        "subject" : "english"
+    },
+    {
+        "age" : 8,
+        "description" : "This is a lesson with questions that you can copy. \nIn order for users to be able to copy and borrow questions, the questions need to be on a public lesson",
+        "name" : "Copy of : lesson_to_copy_1",
+        "public" : 1434824313687,
+        "steps" : [
+            {
+                "testMode" : "False",
+                "type" : "quiz",
+                "title" : "my quiz",
+                "quizItems" : [
+                    "561915b7a4121eca2c8153d4",
+                    "5619159ca4121eca2c8153d3"
+                ]
+            }
+        ],
+        "language" : "english",
+        "subject" : "english",
+        "copyOf" : [
+            ObjectId("56191614a4121eca2c8153d5")
+        ],
+        "createdAt" : "2015-10-10T14:26:16.252Z",
+        "lastUpdate" : 1444487176252,
+        "userId" : ObjectId("54ba1391f59d198d09bfe58b"),
+        "_id" : ObjectId("56192008755baaa735bff6d0")
     }
 );
 
@@ -133,7 +180,43 @@ db.questions.insert([{
         "type": "trueFalse",
         "userId": ObjectId("54ba1391f59d198d09bfe58b"),
         "views": 1
+    },
+    {
+        "language" : "english",
+        "userId" : ObjectId("54ba1391f59d198d09bfe58c"),
+        "_id" : ObjectId("5619159ca4121eca2c8153d3"),
+        "lastUpdate" : 1444484529382,
+        "type" : "trueFalse",
+        "question" : "q_from_other_1",
+        "helpText" : "",
+        "subject" : "english",
+        "age" : 4,
+        "answer" : "True"
+    },
+    {
+        "language" : "english",
+        "userId" : ObjectId("54ba1391f59d198d09bfe58c"),
+        "_id" : ObjectId("561915b7a4121eca2c8153d4"),
+        "lastUpdate" : 1444484544701,
+        "question" : "q_to_copy_1",
+        "type" : "trueFalse",
+        "subject" : "english",
+        "answer" : "True"
+    },
+    {
+        "language" : "english",
+        "userId" : ObjectId("54ba1391f59d198d09bfe58b"),
+        "question" : "Copy of : q_to_copy_1",
+        "type" : "trueFalse",
+        "subject" : "english",
+        "answer" : "True",
+        "lastUpdate" : 1444485094708,
+        "copyOf" : [
+            "561915b7a4121eca2c8153d4"
+        ],
+        "_id" : ObjectId("561917e6a4121eca2c8153d9")
     }
+
 ]);
 
 db.roles.insert([

@@ -18,3 +18,23 @@ exports.startLesson = function(){
 exports.previewLesson = function(){
     return element(by.css('[ng-click="preview()"]')).click();
 };
+
+
+exports.isShowingMore = function(){
+    return element.all(by.css('[ng-show="!!more"].ng-hide')).count().then(function(count){
+        return count === 0;
+    });
+};
+
+exports.getEditSummaryText = function(){
+    return $('.edit-summary').getText();
+};
+
+exports.descriptionReadMore = function(desired){
+    exports.isShowingMore().then(function(current){
+        if ( current !== desired ){
+            $('.read-more').click();
+        }
+    });
+
+};

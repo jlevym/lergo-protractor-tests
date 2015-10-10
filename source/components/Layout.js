@@ -19,7 +19,9 @@ exports.goToMySection = function(){
 };
 
 exports.searchLesson = function( name ){
-    element(by.model('baseLayout.filterTextSearch')).sendKeys(name);
+    var searchBar = element(by.model('baseLayout.filterTextSearch'));
+    searchBar.clear();
+    searchBar.sendKeys(name);
     return element(by.css('.header-search .icon-search')).click();
 };
 
