@@ -2,7 +2,8 @@
 
 var logger = require('log4js').getLogger('QuestionEditor.index');
 
-exports.multichoice = require('./MultichoiceView');
+exports.multichoice = require('./QuestionMultichoiceView');
+exports.trueFalse = require('./QuestionTrueFalseView');
 
 /**
  *

@@ -154,7 +154,7 @@ db.roles.insert([
     {
         "name" : "lesson_editor_role",
         "createdAt" : "2015-10-05T15:11:32.051Z",
-        "_id" : ObjectId("56129324428b4bc12c76197g"),
+        "_id" : ObjectId("56129324428b4bc12c76198a"),
         "permissions" : [
             "lessons.userCanEdit",
             "lessons.userCanCopy",
