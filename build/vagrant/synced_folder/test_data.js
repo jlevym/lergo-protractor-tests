@@ -36,80 +36,103 @@ db.users.insert([{
 
 db.lessons.insert(
     [{
-        "_id" : ObjectId("5585adbfddc5c9862231bc4d"),
-        "age" : 8,
-        "createdAt" : "2015-06-20T18:15:27.842Z",
-        "description" : "test_continue_lesson",
-        "language" : "english",
-        "lastUpdate" : 1434824173575,
-        "name" : "test_continue_lesson",
-        "public" : 1434824313687,
-        "steps" : [
+        "_id": ObjectId("5585adbfddc5c9862231bc4d"),
+        "age": 8,
+        "createdAt": "2015-06-20T18:15:27.842Z",
+        "description": "test_continue_lesson",
+        "language": "english",
+        "lastUpdate": 1434824173575,
+        "name": "test_continue_lesson",
+        "public": 1434824313687,
+        "steps": [
             {
-                "testMode" : "False",
-                "type" : "quiz",
-                "quizItems" : [
+                "testMode": "False",
+                "type": "quiz",
+                "quizItems": [
                     "5585a617dd163ea327bbfe69",
                     "5585a63add163ea327bbfe6a",
                     "5585a648dd163ea327bbfe6b",
                     "5585a653dd163ea327bbfe6c",
                     "5585a65edd163ea327bbfe6d"
                 ],
-                "title" : "my quiz"
+                "title": "my quiz"
             }
         ],
-        "subject" : "english",
-        "tags" : [ ],
-        "userId" : ObjectId("54ba1391f59d198d09bfe58b"),
-        "views" : 2
+        "subject": "english",
+        "tags": [],
+        "userId": ObjectId("54ba1391f59d198d09bfe58b"),
+        "views": 2
     },
-    {
-        "userId" : ObjectId("54ba1391f59d198d09bfe58b"),
-        "createdAt" : "2015-10-10T13:51:05.268Z",
-        "age" : 8,
-        "_id" : ObjectId("561917c9a4121eca2c8153d7"),
-        "language" : "english",
-        "name" : "lesson_with_edit_summary",
-        "public" : 1434824313687,
-        "lastUpdate" : 1444485120066,
-        "steps" : [
-            {
-                "testMode" : "False",
-                "type" : "quiz",
-                "quizItems" : [
-                    "5619159ca4121eca2c8153d3",
-                    "561917e6a4121eca2c8153d9"
-                ]
-            }
-        ],
-        "subject" : "english"
-    },
-    {
-        "age" : 8,
-        "description" : "This is a lesson with questions that you can copy. \nIn order for users to be able to copy and borrow questions, the questions need to be on a public lesson",
-        "name" : "Copy of : lesson_to_copy_1",
-        "public" : 1434824313687,
-        "steps" : [
-            {
-                "testMode" : "False",
-                "type" : "quiz",
-                "title" : "my quiz",
-                "quizItems" : [
-                    "561915b7a4121eca2c8153d4",
-                    "5619159ca4121eca2c8153d3"
-                ]
-            }
-        ],
-        "language" : "english",
-        "subject" : "english",
-        "copyOf" : [
-            ObjectId("56191614a4121eca2c8153d5")
-        ],
-        "createdAt" : "2015-10-10T14:26:16.252Z",
-        "lastUpdate" : 1444487176252,
-        "userId" : ObjectId("54ba1391f59d198d09bfe58b"),
-        "_id" : ObjectId("56192008755baaa735bff6d0")
-    }]
+        {
+            "userId": ObjectId("54ba1391f59d198d09bfe58b"),
+            "createdAt": "2015-10-10T13:51:05.268Z",
+            "age": 8,
+            "_id": ObjectId("561917c9a4121eca2c8153d7"),
+            "language": "english",
+            "name": "lesson_with_edit_summary",
+            "public": 1434824313687,
+            "lastUpdate": 1444485120066,
+            "steps": [
+                {
+                    "testMode": "False",
+                    "type": "quiz",
+                    "quizItems": [
+                        "5619159ca4121eca2c8153d3",
+                        "561917e6a4121eca2c8153d9"
+                    ]
+                }
+            ],
+            "subject": "english"
+        },
+        {
+            "age": 8,
+            "description": "This is a lesson with questions that you can copy. \nIn order for users to be able to copy and borrow questions, the questions need to be on a public lesson",
+            "name": "lesson_to_copy_1",
+            "public": 1434824313687,
+            "steps": [
+                {
+                    "testMode": "False",
+                    "type": "quiz",
+                    "title": "my quiz",
+                    "quizItems": [
+                        "561915b7a4121eca2c8153d4",
+                        "5619159ca4121eca2c8153d3"
+                    ]
+                }
+            ],
+            "language": "english",
+            "subject": "english",
+            "createdAt": "2015-10-10T14:26:16.252Z",
+            "lastUpdate": 1444487176252,
+            "userId": ObjectId("54ba1391f59d198d09bfe58c"),
+            "_id": ObjectId("56191614a4121eca2c8153d5")
+        },
+        {
+            "age": 8,
+            "description": "This is a lesson with questions that you can copy. \nIn order for users to be able to copy and borrow questions, the questions need to be on a public lesson",
+            "name": "Copy of : lesson_to_copy_1",
+            "public": 1434824313687,
+            "steps": [
+                {
+                    "testMode": "False",
+                    "type": "quiz",
+                    "title": "my quiz",
+                    "quizItems": [
+                        "561915b7a4121eca2c8153d4",
+                        "5619159ca4121eca2c8153d3"
+                    ]
+                }
+            ],
+            "language": "english",
+            "subject": "english",
+            "copyOf": [
+                ObjectId("56191614a4121eca2c8153d5")
+            ],
+            "createdAt": "2015-10-10T14:26:16.252Z",
+            "lastUpdate": 1444487176252,
+            "userId": ObjectId("54ba1391f59d198d09bfe58b"),
+            "_id": ObjectId("56192008755baaa735bff6d0")
+        }]
 );
 
 db.questions.insert([{
@@ -242,10 +265,14 @@ db.roles.insert([
         "permissions" : [
             "lessons.userCanEdit",
             "lessons.userCanCopy",
-            "lessons.userCanDelete",
             "lessons.userCanPublish",
             "lessons.userCanSeePrivateLessons",
-            "lessons.userCanPreview"
+            "lessons.userCanPreview",
+            "questions.userCanEdit",
+            "questions.userCanCopy",
+            "abuseReports.userCanRead",
+            "faqs.userCanCreate",
+            "faqs.userCanEdit"
         ],
         "lastUpdate" : 1444057912947
     }
