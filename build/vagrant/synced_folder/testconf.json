@@ -1,25 +1,35 @@
 {
-  "continueLesson" : {
-    "username" : "lergotest",
-    "password" : "lergotest"
-  },
-  "editLesson" : {
-    "username" : "lergotest",
-    "password" : "lergotest"
-  },
-  "previewLesson" : {
-    "username" : "lergotest",
-    "password" : "lergotest"
-  },
-  "multichoice" : {
-    "username" : "lergotest",
-    "password" : "lergotest"
-  },
-  "roles" : {
-    "adminUser" : "lergotestadmin",
-    "adminPassword" : "lergotestadmin",
-    "username" : "simple_user",
-    "editorUser" : "lergotesteditor",
-    "editorPassword" : "lergotesteditor"
-  }
+    "continueLesson": {
+        "username": "lergotest",
+        "password": "lergotest"
+    },
+    "editLesson": {
+        "username": "lergotest",
+        "password": "lergotest"
+    },
+    "previewLesson": {
+        "username": "lergotest",
+        "password": "lergotest"
+    },
+    "lessonIntro": {
+    },
+    "trueFalse" : {
+        "username" : "lergotest",
+        "password" : "lergotest"
+    },
+    "multichoice": {
+        "username": "lergotest",
+        "password": "lergotest"
+    },
+    "deleteReport": {
+        "username" : "lergotest",
+        "password" : "lergotest"
+    },
+    "roles": {
+        "adminUser": "lergotestadmin",
+        "adminPassword": "lergotestadmin",
+        "username": "simple_user",
+        "editorUser": "lergotesteditor",
+        "editorPassword": "lergotesteditor"
+    }
 }
