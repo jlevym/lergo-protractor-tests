@@ -32,18 +32,20 @@ exports.logout = function(){
 };
 
 exports.getNavigationItem = function(section, required ){
+    logger.info('getting navigation item', section, required);
     hoverOnProfile();
-    return $$('.header-login .dropdown-menu li a').filter(function(elem){
-        return elem.getText().then(function( text){
-            //console.log('comparing ', text.toLowerCase()  , 'with', section );
-            return text.toLowerCase().trim() === section.toLowerCase().trim();
-        });
-    }).then(function(elems) {
+    var sections = $('.header-login .dropdown-menu').all(by.text(section,'li a'));
+    logger.info('this is count', typeof(sections.count));
+    if ( required ) {
+        expect(sections.count()).toBe(1, 'section should exit [' + section + ']');
+    }
+    return sections.first();
+    /*.then(function(elems) {
         if ( !!required ) {
             expect(elems.length).toBe(1, 'user section [' + section + '] should exist');
         }
         return elems.length === 0 ? undefined : elems[0] ;
-    });
+    });*/
 };
 
 
@@ -51,10 +53,7 @@ exports.goToUserSection = function( section ){
     if ( !section ) {
         return $('.header-login>a').click();
     }else{
-
-        return exports.getNavigationItem(section, true ).then(function(elem){
-            return elem.click();
-        });
+        return exports.getNavigationItem(section, true ).click();
     }
 };
 

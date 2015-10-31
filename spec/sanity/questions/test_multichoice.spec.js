@@ -1,6 +1,7 @@
 'use strict';
 
 var components = require('../../../source/components');
+var flows = require('../../../source/flows');
 var logger = require('log4js').getLogger('test_multichoice.spec');
 
 describe('multichoice', function(){
@@ -54,9 +55,37 @@ describe('multichoice', function(){
         });
         browser.sleep(1000);
 
-        components.layout.logout().then(done);
-        browser.sleep(1000);
+        components.layout.logout();
+        browser.sleep(1000).then(done);
 
+    });
+
+    /**
+     * expects:
+     *  - user
+     *  - lesson named "disable_multichoice" in my private section with single quiz step without retry
+     *  - one question of type multichoice with option1 as answer and option2 available
+     *  - one question of type multichoice with option1 and option2 as answers, and option3 available
+     */
+    it('should disable controls once there is an answer', function( done ){
+        //browser.get('/#!/public/lessons/invitations/56344cf8ae82354414addbe5/display?lessonId=56334026ae82354414addbb7&lergoLanguage=en&reportId=56344cf8ae82354414addbe6&currentStepIndex=0');
+
+        flows.loginAndStartLesson({
+            username: components.conf.multichoice.username,
+            password: components.conf.multichoice.password,
+            lesson:{'name' : 'disable_multichoice'}
+        });
+
+        components.questions.view.multichoice.answer({'option2':true});
+        //components.questions.view.multichoice.answer({'option1':true});
+        expect(components.questions.view.multichoice.getOption({label:'option1'}).$('input').isEnabled()).toBe(false,'option 1 should be disabled in singlechoice');
+        components.lesson.view.nextQuestion();
+        // now second question with option1 and option2, but not option3
+        components.questions.view.multichoice.answer({'option3':true});
+        components.questions.view.submit();
+        expect(components.questions.view.multichoice.getOption({label:'option1'}).$('input').isEnabled()).toBe(false,'option 1 should be disabled in multichoice');
+        components.layout.logout();
+        browser.sleep(1000).then(done);
 
     });
 });

@@ -27,6 +27,7 @@
         "element": true,
         "protractor": true,
         "expect": true,
+        "jasmine" : true,
         "$": false,
         "$m": false,
         "$r": false,

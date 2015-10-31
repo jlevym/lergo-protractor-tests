@@ -132,7 +132,54 @@ db.lessons.insert(
             "lastUpdate": 1444487176252,
             "userId": ObjectId("54ba1391f59d198d09bfe58b"),
             "_id": ObjectId("56192008755baaa735bff6d0")
-        }]
+        },
+        {
+            "_id" : ObjectId("5634b2a4ae82354414addc04"),
+            "age" : 8,
+            "createdAt" : "2015-10-31T12:23:00.338Z",
+            "language" : "english",
+            "lastUpdate" : 1446294204441,
+            "name" : "disable_trueFalse",
+            "steps" : [
+                {
+                    "testMode" : "False",
+                    "type" : "quiz",
+                    "title" : "my quiz",
+                    "quizItems" : [
+                        "5634b2b4ae82354414addc05"
+                    ]
+                }
+            ],
+            "tags" : [ ],
+            "userId" : ObjectId("54ba1391f59d198d09bfe58b"),
+            "views" : 3
+        },
+        {
+            "_id" : ObjectId("56334026ae82354414addbb7"),
+            "age" : 8,
+            "createdAt" : "2015-10-30T10:02:14.518Z",
+            "language" : "english",
+            "lastUpdate" : 1446279264493,
+            "name" : "disable_multichoice",
+            "steps" : [
+                {
+                    "testMode" : "False",
+                    "type" : "quiz",
+                    "title" : "my quiz",
+                    "quizItems" : [
+                        "56334035ae82354414addbb8",
+                        "56346378ae82354414addbed"
+                    ],
+                    "retryQuestion" : false
+                }
+            ],
+            "tags" : [ ],
+            "userId" : ObjectId("54ba1391f59d198d09bfe58b"),
+            "views" : 115
+        }
+
+
+    ]
 );
 
 db.questions.insert([{
@@ -239,7 +286,67 @@ db.questions.insert([{
             "561915b7a4121eca2c8153d4"
         ],
         "_id" : ObjectId("561917e6a4121eca2c8153d9")
+    },
+    {
+        "_id" : ObjectId("56334035ae82354414addbb8"),
+        "age" : 8,
+        "language" : "english",
+        "lastUpdate" : 1446199365827,
+        "options" : [
+            {
+                "label" : "option1",
+                "checked" : true
+            },
+            {
+                "label" : "option2"
+            },
+            {
+                "label" : "option3"
+            }
+        ],
+        "question" : "option1",
+        "tags" : [ ],
+        "type" : "multipleChoices",
+        "userId" : ObjectId("54ba1391f59d198d09bfe58b"),
+        "views" : 35
+    },
+    {
+        "_id" : ObjectId("56346378ae82354414addbed"),
+        "age" : 8,
+        "language" : "english",
+        "lastUpdate" : 1446273940670,
+        "options" : [
+            {
+                "label" : "option1",
+                "checked" : true
+            },
+            {
+                "label" : "option2",
+                "checked" : true
+            },
+            {
+                "label" : "option3"
+            }
+        ],
+        "question" : "option1_and_option2",
+        "tags" : [ ],
+        "type" : "multipleChoices",
+        "userId" : ObjectId("54ba1391f59d198d09bfe58b"),
+        "views" : 12
+    },
+    {
+        "_id" : ObjectId("5634b2b4ae82354414addc05"),
+        "age" : 8,
+        "answer" : "True",
+        "language" : "english",
+        "lastUpdate" : 1446294202891,
+        "question" : "true",
+        "tags" : [ ],
+        "type" : "trueFalse",
+        "userId" : ObjectId("54ba1391f59d198d09bfe58b"),
+        "views" : 3
     }
+
 
 ]);
 

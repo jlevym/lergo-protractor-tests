@@ -6,6 +6,8 @@
  *
  *******************************************************************/
 
+var logger = require('log4js').getLogger('index');
+
 
 global.selectOptionByText = function(selectElement, optionText) {
     return selectElement.element(by.cssContainingText('option',optionText)).click();
@@ -33,11 +35,34 @@ global.checkboxesByLabel = function( inputs, values ){
     });
 };
 
-global.selectOptionByIndex = function(selectElement, optionIndex){
-    return selectElement.all(by.css('option'))
-        .then(function (options) {
-            return options[optionIndex].click();
+logger.info('adding locator text');
+
+by.addLocator('text',
+
+    /**
+     *
+     * @param text - will be lowercased
+     * @param selector - to get list of children
+     * @param parent - protractor will provide this..
+     */
+    function(text, selector, _parent) {
+        return Array.prototype.filter.call( (_parent || document).querySelectorAll(selector), function(e){
+
+            return e &&  !!(e.offsetWidth || e.offsetHeight || e.getClientRects().length) && e.textContent && e.textContent.toLowerCase().trim() === text.toLowerCase().trim();
         });
+    });
+
+global.filterByText = function filterByText(text){
+    return function filterByTextFilter(item){
+        return item.getText().then(function( _text ){
+            return _text.toLowerCase() === text.toLowerCase();
+        });
+    };
+
+};
+
+global.selectOptionByIndex = function(selectElement, optionIndex){
+    return selectElement.$$('option').get(optionIndex).click();
 };
 
 global.$m = function( model ){
@@ -63,22 +88,25 @@ global.$label = function(css, label, required ){
  */
 global.$label_gen = function (elements) {
     return function (label, required) {
+
+        logger.info('finding element by label', label, required );
         if ( typeof(elements)==='string' ){ // support css selector as well
             elements = $$(elements);
         }
-        return elements.filter(function (elem) {
+        var results = elements.filter(function (elem) {
             return elem.getText().then(function (text) {
+                logger.info('testing ', text);
                 var result = text.toLowerCase().trim() === label.toLowerCase().trim();
                 //console.log('comparing',text,'to',label, 'result is',result);
                 return result;
             });
-        }).then(function (results) {
-            //console.log('results length is', results.length);
-            if (!!required) {
-                expect(results.length).toBe(1, 'expecting item [' + label + '] to exist and be single');
-            }
-            return results.length === 0 ? undefined : results[0];
         });
+
+        if (!!required) {
+            expect(results.count()).toBe(1,'expecting item [' + label + '] to exist and be single');
+        }
+
+        return results.first();
     };
 };
 

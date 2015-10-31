@@ -16,7 +16,7 @@ describe('lesson intro', function () {
      * it displayed that edit summary in intro contains the correct info
      */
 
-    it('should be able to edit a lesson without errors', function (done) {
+    it('should give creadit to original lesson and question', function (done) {
         logger.info('starting testing preview lesson');
         browser.get('/');
         browser.sleep(1000);

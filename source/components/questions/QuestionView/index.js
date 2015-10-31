@@ -18,3 +18,8 @@ exports.getByType = function( type ){
     }
     return exports[type];
 };
+
+
+exports.submit = function(){
+    $click('checkAnswer()').click();
+};

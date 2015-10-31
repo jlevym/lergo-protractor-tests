@@ -6,6 +6,10 @@ if (!!process.env.LERGO_SPEC){
     spec = process.env.LERGO_SPEC.split(',');
 }
 
+spec = ['spec/normalize.js'].concat(spec);
+
+console.log('spec is', spec);
+
 
 exports.config = {
   // The address of a running selenium server.

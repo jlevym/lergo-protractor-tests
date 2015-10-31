@@ -18,21 +18,29 @@ exports.getLessons = function () {
     return element.all(by.repeater('lesson in lessons'));
 };
 
+/**
+ * @typedef {object} LessonSearchDetails
+ * @property {string} [name] - the name of the lesson
+ */
+/**
+ *
+ * @param opts
+ * @returns {*}
+ */
 exports.goToLesson = function (opts) {
     if ( !!opts.name ){
         return goToLessonByName( opts.name );
     }
 };
 
+/**
+ *
+ * @param {LessonSearchDetails} opts
+ * @returns {promise|*|Tc.g.promise|fd.g.promise}
+ */
 exports.startLesson = function(opts){
-    var deferred = protractor.promise.defer();
-    exports.goToLesson(opts).then(function(lesson){
-        lesson.element(by.css('.title a')).click().then(function(){
-            deferred.fulfill();
-        });
+    return exports.goToLesson(opts).then(function(lesson){
+        return lesson.$('.title a').click();
     });
 
-    var promise = deferred.promise;
-    //browser.controlFlow().execute(promise);
-    return promise;
 };

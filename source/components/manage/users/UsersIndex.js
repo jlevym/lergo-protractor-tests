@@ -2,11 +2,11 @@
 
 exports.find = function( opts ){
     if ( opts.username ){
-        return element.all(by.css('td.name')).filter(function(item){
+        return element.all(by.text( opts.username, 'td.name'));/*.filter(function(item){
            return item.getText().then(function(username){
                return username === opts.username;
            });
-        });
+        });*/
     }
 };
 

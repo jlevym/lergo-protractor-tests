@@ -10,7 +10,7 @@ exports.getSections = function(){
 exports.getSection = $label_gen($r('section in sections'));
 
 exports.goToSection = function( label ){
-    return exports.getSection(label,true).then(function(elem) { elem.click(); });
+    return exports.getSection(label,true).click();
 };
 
 exports.SECTIONS = {
