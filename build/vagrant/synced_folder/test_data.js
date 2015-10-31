@@ -34,8 +34,8 @@ db.users.insert([{
 }]);
 
 
-db.lessons.insert(
-    [{
+db.lessons.insert([
+    {
         "_id": ObjectId("5585adbfddc5c9862231bc4d"),
         "age": 8,
         "createdAt": "2015-06-20T18:15:27.842Z",
@@ -176,26 +176,22 @@ db.lessons.insert(
             "tags" : [ ],
             "userId" : ObjectId("54ba1391f59d198d09bfe58b"),
             "views" : 115
-        }
-
-
-    ]
-);
+        }]);
 
 db.questions.insert([{
-    "_id": ObjectId("5585a617dd163ea327bbfe69"),
-    "age": 8,
-    "answer": "True",
-    "helpText": "question_1",
-    "language": "english",
-    "lastUpdate": 1434822196998,
-    "question": "question_1",
-    "subject": "english",
-    "tags": [],
-    "type": "trueFalse",
-    "userId": ObjectId("54ba1391f59d198d09bfe58b"),
-    "views": 1
-},
+        "_id": ObjectId("5585a617dd163ea327bbfe69"),
+        "age": 8,
+        "answer": "True",
+        "helpText": "question_1",
+        "language": "english",
+        "lastUpdate": 1434822196998,
+        "question": "question_1",
+        "subject": "english",
+        "tags": [],
+        "type": "trueFalse",
+        "userId": ObjectId("54ba1391f59d198d09bfe58b"),
+        "views": 1
+    },
     {
         "_id": ObjectId("5585a63add163ea327bbfe6a"),
         "age": 8,
@@ -345,10 +341,7 @@ db.questions.insert([{
         "type" : "trueFalse",
         "userId" : ObjectId("54ba1391f59d198d09bfe58b"),
         "views" : 3
-    }
-
-
-]);
+    } ]);
 
 db.roles.insert([
     {
@@ -382,7 +375,5 @@ db.roles.insert([
             "faqs.userCanEdit"
         ],
         "lastUpdate" : 1444057912947
-    }
-
-]);
+    }]);
 
