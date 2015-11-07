@@ -1,5 +1,9 @@
 'use strict';
 
+process.env.NODE_PATH = 'source';
+
+require('module').Module._initPaths();
+
 
 //var logger = require('log4js').getLogger('normalize');
 var chalk = require('chalk');

@@ -130,6 +130,7 @@ global.LERGO_SUBJECT = {
 
 
 exports.loginPage = require('./LoginPage');
+exports.signupPage = require('./SignupPage');
 exports.layout = require('./Layout');
 exports.homepage = require('./Homepage');
 exports.lesson = require('./lesson');
