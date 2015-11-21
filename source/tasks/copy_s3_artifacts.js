@@ -1,7 +1,8 @@
+'use strict';
 var AWS = require('aws-sdk');
 var _ = require('lodash');
 var path = require('path');
-var awsDetails = require(path.resolve(__dirname, '/vagrant/aws.json'));
+var awsDetails = require(path.resolve(__dirname, '/vagrant/dev/aws.json'));
 
 var logger = require('log4js').getLogger('copy_s3_artifacts');
 var s3 = new AWS.S3({ accessKeyId: awsDetails.accessKey, secretAccessKey : awsDetails.secretAccessKey });
@@ -26,8 +27,8 @@ _.each(files, function(f){
         ACL: 'public-read'
 
     }, function(err, data) {
-        err && logger.error(err);
-        data && logger.info(data);
+        if ( err ){ logger.error(err); }
+        if ( data ) { logger.info(data); }
 
     });
 
