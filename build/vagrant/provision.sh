@@ -19,6 +19,14 @@ else
     echo "export LERGO_ME_CONF=/vagrant/dev/me.json" >> ~/.profile
 fi
 
+DEV_ENVIRONMENT="/vagrant/dev/environment.sh"
+if [ -f ];then
+    print "loading environment variables from dev/environment.sh"
+    . ${DEV_ENVIRONMENT}
+else
+    print "$DEV_ENVIRONMENT is not there. skipping... "
+fi
+
 if [ -f /vagrant/build_id ]; then
     print "got build_id file"
     BUILD_NUMBER=`cat /vagrant/build_id`
@@ -26,17 +34,18 @@ if [ -f /vagrant/build_id ]; then
     print "build_id value is $BUILD_NUMBER"
 fi
 
+echo "user is $USER"
 
 if [ ! -f /usr/bin/node ];then
     print "installing node"
-    NODEJS_VERSION=0.10.35
-    NODEJS_HOME=/opt/nodejs
-    sudo mkdir -p $NODEJS_HOME
-    sudo chown vagrant:vagrant $NODEJS_HOME
-    curl --fail --silent http://nodejs.org/dist/v${NODEJS_VERSION}/node-v${NODEJS_VERSION}-linux-x64.tar.gz -o /tmp/nodejs.tar.gz
-    tar -xzf /tmp/nodejs.tar.gz -C ${NODEJS_HOME} --strip-components=1
-    sudo ln -s /opt/nodejs/bin/node /usr/bin/node
-    sudo ln -s /opt/nodejs/bin/npm /usr/bin/npm
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash
+
+    . .nvm/nvm.sh || source .nvm/nvm.sh
+
+    echo "installing node 0.10.35" &&  nvm install 0.10.35 && npm --version
+
+    ## make node available from sudo
+    n=$(which node);n=${n%/bin/node}; chmod -R 755 $n/bin/*; sudo cp -r $n/{bin,lib,share} /usr/local
 else
     print "node already installed"
 fi
@@ -116,29 +125,43 @@ mongo lergo-test < /vagrant/test_data.js
 print "data inserted to mongo successfully"
 
 killall lergo || print "lergo is not running"
-nohup node /home/vagrant/lergo-ri/package/server.js &> $PROVISION_LOG_FILE &
+nohup node /home/$USER/lergo-ri/package/server.js &> $PROVISION_LOG_FILE &
 
 
 print "starting headless display" && ( ( Xvfb :99 ) & ) && export DISPLAY=:99
 
 print "setting nginx configuration and translations"
 # sudo ln -Tfs /vagrant/translations /home/vagrant/lergo-ui/package/translations
-sudo ln -Tfs /vagrant/lergo.nginx /etc/nginx/sites-enabled/lergo.conf
+# sudo ln -Tfs /vagrant/lergo.nginx /etc/nginx/sites-enabled/lergo.conf
+sudo \cp -f  /vagrant/lergo.nginx /etc/nginx/sites-enabled/lergo.conf
+sudo sed -i s/__USER__/${USER}/g /etc/nginx/sites-enabled/lergo.conf
 sudo service nginx restart
 
+sudo apt-get install unzip -y
+wget -O localdriver.zip https://www.browserstack.com/browserstack-local/BrowserStackLocal-linux-x64.zip
+unzip localdriver.zip
+export BROWSERSTACK_LOCAL="`pwd`/BrowserStackLocal"
 
 
-echo "export LERGO_ENDPOINT=http://localhost:1616" >>  /home/vagrant/vars
-echo "export BROWSER_NAME=\"chrome\"" >>  /home/vagrant/vars
-echo "export SYSTEM_TEST_FOLDER=\"$SYSTEM_TESTS_FOLDER\"" >>  /home/vagrant/vars
-echo "export LERGO_PROT_TEST_CONF=\"/vagrant/testconf.json\"">>  /home/vagrant/vars
-echo "export DISPLAY=:99" >>  /home/vagrant/vars
-echo "source vars" >>  /home/vagrant/.bashrc
+pushd ~
+    echo "export LERGO_ENDPOINT=http://localhost:1616" >>  vars
+    echo "export BROWSER_NAME=\"chrome\"" >>  vars
+    echo "export SYSTEM_TEST_FOLDER=\"$SYSTEM_TESTS_FOLDER\"" >>  vars
+    echo "export LERGO_PROT_TEST_CONF=\"/vagrant/testconf.json\"">>  vars
+    echo "export DISPLAY=:99" >>  vars
+    echo "export BROWSERSTACK_LOCAL=\"${BROWSERSTACK_LOCAL}\"" >>  vars
+    echo "source vars" >>  .bashrc
+    source vars || . vars
+popd
 
-source  /home/vagrant/vars
 print "TEST_CONF file is [$LERGO_PROT_TEST_CONF]"
 
-grunt protract
+terminate(){
+    nohup node remove_all_instances &> /dev/null &
+}
 
-echo "promoting build"
-node source/tasks/copy_s3_artifacts
+promote(){
+    echo "promoting build"
+    node source/tasks/copy_s3_artifacts
+}
+( grunt protract && promote && terminate )  || terminate
