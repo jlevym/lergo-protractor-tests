@@ -143,14 +143,18 @@ wget -O localdriver.zip https://www.browserstack.com/browserstack-local/BrowserS
 unzip localdriver.zip
 export BROWSERSTACK_LOCAL="`pwd`/BrowserStackLocal"
 
+# get public ip for instance
+export PUBLIC_IP=`curl http://169.254.169.254/latest/meta-data/public-ipv4`
 
 pushd ~
     echo "export LERGO_ENDPOINT=http://localhost:1616" >>  vars
     echo "export BROWSER_NAME=\"chrome\"" >>  vars
     echo "export SYSTEM_TEST_FOLDER=\"$SYSTEM_TESTS_FOLDER\"" >>  vars
+    echo "export PROMOTE_BUILD_NUMBER=\"$PROMOTE_BUILD_NUMBER\"" >>  vars
     echo "export LERGO_PROT_TEST_CONF=\"/vagrant/testconf.json\"">>  vars
     echo "export DISPLAY=:99" >>  vars
     echo "export BROWSERSTACK_LOCAL=\"${BROWSERSTACK_LOCAL}\"" >>  vars
+    echo "export PUBLIC_IP=\"${PUBLIC_IP}\"" >> vars
     echo "source vars" >>  .bashrc
     source vars || . vars
 popd

@@ -12,7 +12,7 @@ var emails = _.map(process.env.MANDRILL_TO_EMAILS.split(';'), function(e){
 logger.info('sending to ' + JSON.stringify(emails) );
 
 var message = {
-    "html": "<p>Lergo build XXX was promoted</p>",
+    "html": "<p>Lergo build " +  process.env.PROMOTE_BUILD_NUMBER + " was promoted<br/><a href='" + process.env.PUBLIC_IP + ":1616'>See the instance here</a></p>",
     "subject": "Lergo Promoted a Build",
     "from_email": "lergo.builds@yopmail.com",
     "from_name": "Lergo Build System",
