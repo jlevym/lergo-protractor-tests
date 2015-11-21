@@ -30,7 +30,6 @@ fi
 if [ -f /vagrant/build_id ]; then
     print "got build_id file"
     BUILD_NUMBER=`cat /vagrant/build_id`
-    export PROMOTE_BUILD_NUMBER=$BUILD_NUMBER
     print "build_id value is $BUILD_NUMBER"
 fi
 
@@ -56,6 +55,8 @@ if [ "$BUILD_NUMBER" = "" ]; then
     BUILD_NUMBER=`node /vagrant/buildNumber/get_build_number.js`
     print "latest successful build is $BUILD_NUMBER"
 fi
+
+export PROMOTE_BUILD_NUMBER=$BUILD_NUMBER
 
 
 BASE_URL="https://s3.amazonaws.com/lergo-backups/artifacts/build-lergo-$BUILD_NUMBER/jobs/build-lergo/$BUILD_NUMBER";
@@ -163,5 +164,6 @@ terminate(){
 promote(){
     echo "promoting build"
     node source/tasks/copy_s3_artifacts
+    node send_success_email
 }
 ( grunt protract && promote && terminate )  || terminate
