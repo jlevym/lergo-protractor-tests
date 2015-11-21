@@ -1,14 +1,14 @@
 'use strict';
 
 
-module.exports = function(grunt){
+module.exports = function (grunt) {
     require('load-grunt-tasks')(grunt);
 
     grunt.initConfig({
-        protractor:{
-            sanity:{
+        protractor: {
+            sanity: {
                 options: {
-                    configFile:'protractor.sanity.conf.js'
+                    configFile: 'protractor.sanity.conf.js'
                 }
             },
             applitools: {
@@ -17,10 +17,8 @@ module.exports = function(grunt){
                 }
             }
         },
-        protractor_webdriver:{
-            start:{
-
-            }
+        protractor_webdriver: {
+            start: {}
         },
         jshint: {
             options: {
@@ -43,48 +41,85 @@ module.exports = function(grunt){
         }
     });
 
+    grunt.registerTask('runBrowserstackLocal', function () {
+        var done = this.async();
+        var doneCalled = false;
 
-    grunt.registerTask('testMongoScript', function(){
+        if ( process.env.BROWSERSTACK_USERNAME && process.env.BROWSERSTACK_KEY ) {
+            grunt.log.ok('running browserstack local');
+            var browserstackLocal = process.env.BROWSERSTACK_LOCAL || './dev/BrowserStackLocal';
+            grunt.log.ok('expecting to find browserstackLocal at ' + browserstackLocal );
+            var spawn = require('child_process').spawn;
+            var server = spawn(( browserstackLocal ), [process.env.BROWSERSTACK_KEY]);
+            server.stdout.on('data', function (data) {
+                if (!doneCalled) {
+                    doneCalled = true;
+                    done();
+                }
+                console.log(data.toString());
+            });
+            server.stderr.on('data', function (data) {
+                console.log(data.toString());
+            });
+            process.on('exit', function () {
+                grunt.log.ok('killing browserstack local');
+                server.kill();
+            });
+        }else{
+            grunt.log.ok('no need for browserstack for this run. credentials are not set');
+            done();
+        }
+
+    });
+
+    grunt.registerTask('testMongoScript', function () {
 
         var done = this.async();
         var dbName = 'tmp-db-script-test';
         var dropDb = 'mongo ' + dbName + ' --eval \'db.dropDatabase()\'';
-        var runScript = 'mongo ' + dbName + ' < ' + require('path').join(__dirname,'build/vagrant/synced_folder/test_data.js');
+        var runScript = 'mongo ' + dbName + ' < ' + require('path').join(__dirname, 'build/vagrant/synced_folder/test_data.js');
         var taskFailed = false;
 
         var exec = require('child_process').exec;
 
         function puts(error, stdout, stderr) {
             var stdoutErr = stdout.toLowerCase().indexOf('error');
-            if ( !!error || !!stderr || stdoutErr >=0 ){
-                if ( !!error ){
+            if (!!error || !!stderr || stdoutErr >= 0) {
+                if (!!error) {
                     grunt.log.error(error);
                 }
-                if ( !!stderr ){
+                if (!!stderr) {
                     grunt.log.error(stderr);
                 }
-                if ( stdoutErr >= 0 ){
+                if (stdoutErr >= 0) {
                     grunt.log.error(stdout);
                 }
                 taskFailed = true;
-            }else {
-                if ( !!error ) { grunt.log.error(error); }
-                if ( !!stderr) { grunt.log.error(stderr); }
-                if ( !!stdout) { grunt.log.ok(stdout); }
+            } else {
+                if (!!error) {
+                    grunt.log.error(error);
+                }
+                if (!!stderr) {
+                    grunt.log.error(stderr);
+                }
+                if (!!stdout) {
+                    grunt.log.ok(stdout);
+                }
             }
         }
-        exec(runScript, function( error, stdout, stderr ){
-            puts(error,stdout, stderr);
-            exec(dropDb, function(error,stdout,stderr){
-                puts(error,stdout, stderr);
-                if ( taskFailed ){
-                    grunt.fail.fatal('mongo script failed' );
+
+        exec(runScript, function (error, stdout, stderr) {
+            puts(error, stdout, stderr);
+            exec(dropDb, function (error, stdout, stderr) {
+                puts(error, stdout, stderr);
+                if (taskFailed) {
+                    grunt.fail.fatal('mongo script failed');
                 }
                 done();
             });
         });
     });
-    grunt.registerTask('applitools', [ 'protractor_webdriver','protractor:applitools']);
-    grunt.registerTask('protract',[ 'protractor_webdriver','protractor:sanity']); // run protractor test
-    grunt.registerTask('default',[ 'jshint', 'testMongoScript' ]); // just check code
+    grunt.registerTask('applitools', ['protractor_webdriver', 'protractor:applitools']);
+    grunt.registerTask('protract', ['runBrowserstackLocal','protractor_webdriver', 'protractor:sanity']); // run protractor test
+    grunt.registerTask('default', ['jshint', 'testMongoScript']); // just check code
 };
