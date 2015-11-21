@@ -9,7 +9,7 @@ server {
   server_name   localhost;
 
 
-  root /home/vagrant/lergo-ui/package;
+  root /home/__USER__/lergo-ui/package;
   index index.html
   autoindex off;
 
