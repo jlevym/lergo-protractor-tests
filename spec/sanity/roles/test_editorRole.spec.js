@@ -85,18 +85,29 @@ describe('editor role', function(){
         it('should be able to edit faqs', function(){
             var origLength = null;
             components.layout.footer.links.goTo( components.layout.footer.FOOTER_LINKS.ABOUT_LERGO );
+            logger.info('going to FAQ section');
             components.about.goToSection( components.about.SECTIONS.FAQ );
+            logger.info('editor should see add item');
             expect(components.about.faq.getAddFaqItem().isDisplayed()).toBe(true,'editor should see add item');
+            logger.info('count original length');
             components.about.faq.getContents().count().then(function(count){
                 origLength = count;
             });
+            logger.info('add FAQ');
             components.about.faq.addFaq();
+            logger.info('sleep for 2 sec');
             browser.sleep(2000);
+            logger.info('set faq details');
             components.about.faq.setDetails({'question' : 'foo?' , 'answer' : 'bar', index:0});
+            logger.info('sleep for another 2 sec');
+            browser.sleep(2000);
+            logger.info('refreshing');
             browser.refresh();
+
+            logger.info('count again and assert new item added');
             components.about.faq.getContents().count().then(function(count){
                 expect(count).toBe(origLength+1);
-                console.log('deleting',count,'items');
+                logger.info('deleting items');
                 for ( var i = 0; i < count ; i++ ){ // remove all faq
                     components.about.faq.removeFaq(0);
                 }
