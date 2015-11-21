@@ -22,6 +22,7 @@ fi
 if [ -f /vagrant/build_id ]; then
     print "got build_id file"
     BUILD_NUMBER=`cat /vagrant/build_id`
+    export PROMOTE_BUILD_NUMBER=$BUILD_NUMBER
     print "build_id value is $BUILD_NUMBER"
 fi
 
@@ -138,3 +139,6 @@ source  /home/vagrant/vars
 print "TEST_CONF file is [$LERGO_PROT_TEST_CONF]"
 
 grunt protract
+
+echo "promoting build"
+node source/tasks/copy_s3_artifacts
