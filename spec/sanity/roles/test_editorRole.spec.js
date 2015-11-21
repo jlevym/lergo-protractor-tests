@@ -24,6 +24,7 @@
 */
 
 var components = require('../../../source/components');
+var logger = browser.getLogger('test_roles.spec');
 //var logger = require('log4js').getLogger('test_roles.spec');
 
 describe('editor role', function(){
@@ -35,6 +36,7 @@ describe('editor role', function(){
     });
 
     afterEach(function(){
+        logger.info('logging out');
         components.layout.logout();
     });
 
