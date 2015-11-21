@@ -47,5 +47,6 @@ function removeInstances() {
 
 }
 
-
-setTimeout( removeInstances, parseInt(process.env.VAGRANT_TERMINATE_TIMEOUT || '1',10));
+var sleepTime = parseInt(process.env.VAGRANT_TERMINATE_TIMEOUT || '1',10);
+logger.info('sleepTime is', sleepTime );
+setTimeout( removeInstances, sleepTime );
