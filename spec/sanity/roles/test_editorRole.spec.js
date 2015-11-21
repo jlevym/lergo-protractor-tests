@@ -89,6 +89,12 @@ describe('editor role', function(){
             components.about.goToSection( components.about.SECTIONS.FAQ );
             logger.info('editor should see add item');
             expect(components.about.faq.getAddFaqItem().isDisplayed()).toBe(true,'editor should see add item');
+            browser.sleep(2000);
+            logger.info('refreshing');
+            browser.refresh();
+            browser.sleep(2000);
+            logger.info('refreshing');
+            browser.refresh();
             logger.info('count original length');
             components.about.faq.getContents().count().then(function(count){
                 origLength = count;
@@ -107,7 +113,7 @@ describe('editor role', function(){
             logger.info('count again and assert new item added');
             components.about.faq.getContents().count().then(function(count){
                 expect(count).toBe(origLength+1);
-                logger.info('deleting items');
+                logger.info('deleting items. count is ' + count);
                 for ( var i = 0; i < count ; i++ ){ // remove all faq
                     components.about.faq.removeFaq(0);
                 }
