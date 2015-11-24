@@ -25,6 +25,10 @@
         "username" : "lergotest",
         "password" : "lergotest"
     },
+    "profilePage" : {
+        "username" : "lergotestadmin",
+        "password" : "lergotestadmin"
+    },
     "roles": {
         "adminUser": "lergotestadmin",
         "adminPassword": "lergotestadmin",

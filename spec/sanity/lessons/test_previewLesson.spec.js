@@ -5,7 +5,7 @@ var logger = require('log4js').getLogger('preview');
 var components = require('../../../source/components/index');
 //var _ = require('lodash');
 
-describe('edit lesson', function(){
+describe('preview lesson', function(){
 
     /**
      * This test expects
