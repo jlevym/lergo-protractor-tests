@@ -8,7 +8,8 @@ module.exports = function (grunt) {
         protractor: {
             sanity: {
                 options: {
-                    configFile: 'protractor.sanity.conf.js'
+                    configFile: 'protractor.sanity.conf.js',
+                    args: { suite : '<%= suite %>'}
                 }
             },
             applitools: {
@@ -120,6 +121,25 @@ module.exports = function (grunt) {
         });
     });
     grunt.registerTask('applitools', ['protractor_webdriver', 'protractor:applitools']);
-    grunt.registerTask('protract', ['runBrowserstackLocal','protractor_webdriver', 'protractor:sanity']); // run protractor test
+    grunt.registerTask('protract', function( suite ){
+        suite = suite || 'sanity';
+        console.log('suite is', suite);
+        grunt.config.data.suite = suite;
+
+        console.log(grunt.template.process('<%= suite %>'));
+
+        grunt.task.run(['runBrowserstackLocal','protractor_webdriver', 'protractor:sanity']);
+    });
+
+    grunt.registerTask('test', [
+        'protract:footer',
+        'protract:lessons',
+        'protract:profile',
+        'protract:questions',
+        'protract:reports',
+        'protract:roles',
+        'protract:users'
+    ]);
+
     grunt.registerTask('default', ['jshint', 'testMongoScript']); // just check code
 };

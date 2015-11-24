@@ -10,7 +10,7 @@ if (!!process.env.LERGO_SPEC){
 
 spec = ['spec/normalize.js'].concat(spec);
 
-console.log('spec is', spec);
+//console.log('spec is', spec);
 
 
 var browserName = process.env.BROWSER_NAME || process.env.BROWSER_TYPE || 'chrome';
@@ -56,8 +56,20 @@ exports.config = {
     seleniumAddress: seleniumAddress,
 
     // Spec patterns are relative to the location of this config.
-    specs: spec,
     capabilities: capabilities,
+
+
+    suites: {
+        footer: ['spec/normalize.js', 'spec/sanity/footer/**/*.spec.js'],
+        lessons: ['spec/normalize.js', 'spec/sanity/lessons/**/*.spec.js'],
+        profile: ['spec/normalize.js', 'spec/sanity/profile/**/*.spec.js'],
+        questions: ['spec/normalize.js', 'spec/sanity/questions/**/*.spec.js'],
+        reports: ['spec/normalize.js', 'spec/sanity/reports/**/*.spec.js'],
+        roles: ['spec/normalize.js', 'spec/sanity/roles/**/*.spec.js'],
+        users: ['spec/normalize.js', 'spec/sanity/users/**/*.spec.js'],
+        sanity: [ 'spec/normalize.js', 'spec/sanity/lessons/**/*.spec.js' ],
+        custom: [ 'spec/normalize.js', process.env.LERGO_SPEC ]
+    },
 
 
     // A base URL for your application under test. Calls to protractor.get()
