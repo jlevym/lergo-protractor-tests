@@ -29,6 +29,10 @@
         "username" : "lergotest",
         "password" : "lergotest"
     },
+    "doneRedirect" : {
+        "username" : "lergotestadmin",
+        "password" : "lergotestadmin"
+    },
     "roles": {
         "adminUser": "lergotestadmin",
         "adminPassword": "lergotestadmin",

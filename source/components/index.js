@@ -140,3 +140,4 @@ exports.conf = require('./Conf');
 exports.questions=require('./questions');
 exports.manage=require('./manage');
 exports.about = require('./about');
+exports.createLesson = require('./CreateLesson');

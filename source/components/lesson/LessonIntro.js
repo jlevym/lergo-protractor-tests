@@ -10,6 +10,10 @@ exports.getCreatedOn = function(){
     return deferred.promise;
 };
 
+exports.editLesson = function(){
+    return $('[tooltip="Edit Lesson"]').click();
+};
+
 
 exports.startLesson = function(){
     return element(by.css('.start-lesson')).click();

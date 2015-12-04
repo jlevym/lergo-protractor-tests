@@ -4,6 +4,14 @@ var logger = require('log4js').getLogger('QuestionEditor.index');
 
 exports.multichoice = require('./QuestionMultichoiceView');
 exports.trueFalse = require('./QuestionTrueFalseView');
+exports.open = require('./QuestionOpenView');
+
+
+exports.QUESTION_TYPE = {
+    'OPEN' : 'open',
+    'TRUE_FALSE': 'trueFalse',
+    'MULTICHOICE' : 'multichoice'
+};
 
 /**
  *

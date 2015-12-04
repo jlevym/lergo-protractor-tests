@@ -36,6 +36,31 @@ db.users.insert([{
 
 db.lessons.insert([
     {
+        "_id": ObjectId("56619172084ff53a28efb649"),
+        "age": 8,
+        "createdAt": "2015-12-04T13:13:22.662Z",
+        "language": "english",
+        "lastUpdate": 1449234888771,
+        "name": "lesson_with_openQuestion",
+        "public": 1449234990257,
+        "steps": [
+            {
+                "testMode": "False",
+                "type": "quiz",
+                "title": "My Quiz",
+                "quizItems": [
+                    "5661918d084ff53a28efb64a",
+                    "566191b2084ff53a28efb64b"
+                ]
+            }
+        ],
+        "subject": "english",
+        "tags": [],
+        "userId": ObjectId("54ba1391f59d198d09bfe58c"),
+        "views": 15
+    },
+
+    {
         "_id": ObjectId("5585adbfddc5c9862231bc4d"),
         "age": 8,
         "createdAt": "2015-06-20T18:15:27.842Z",
@@ -178,7 +203,39 @@ db.lessons.insert([
             "views" : 115
         }]);
 
-db.questions.insert([{
+db.questions.insert([
+    {
+        "subject": "english",
+        "age": 8,
+        "language": "english",
+        "tags": [],
+        "userId": ObjectId("54ba1391f59d198d09bfe58c"),
+        "_id": ObjectId("566191b2084ff53a28efb64b"),
+        "question": "question_2",
+        "lastUpdate": 1449234884035,
+        "type": "openQuestion",
+        "subType": "long",
+        "explanation": "",
+        "hint": ""
+    },
+
+    {
+	"_id" : ObjectId("5661918d084ff53a28efb64a"),
+	"age" : 8,
+	"explanation" : "this is explanation",
+	"hint" : "this is hint",
+	"language" : "english",
+	"lastUpdate" : 1449234856896,
+	"question" : "question_1",
+	"subType" : "long",
+	"subject" : "english",
+	"tags" : [ ],
+	"type" : "openQuestion",
+	"userId" : ObjectId("54ba1391f59d198d09bfe58c"),
+	"views" : 6
+},
+
+    {
         "_id": ObjectId("5585a617dd163ea327bbfe69"),
         "age": 8,
         "answer": "True",

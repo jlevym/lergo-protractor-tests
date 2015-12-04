@@ -1,9 +1,13 @@
 'use strict';
 
+var util = require('util');
+var AbstractView = require('./AbstractView');
 
-exports.getQuestion = function(){
-    return element(by.css('.question')).getText();
-};
+function Viewer(){
+    AbstractView.call(this);
+}
+
+util.inherits(Viewer, AbstractView);
 
 /**
  *
@@ -11,7 +15,7 @@ exports.getQuestion = function(){
  * @param {boolean} opts.answer true/false - DEPRECATED. USE LABEL INSTEAD
  * @param {string} opts.label true/false
  */
-exports.answer = function( opts ){
+Viewer.prototype.answer = function( opts ){
     if ( typeof(opts.answer) !== 'undefined' ){ //backwards
         opts.label = '' + opts.answer;
         opts.answer = undefined;
@@ -23,6 +27,8 @@ exports.answer = function( opts ){
  *
  * @param opts
  */
-exports.getOption = function( opts ){
+Viewer.prototype.getOption = function( opts ){
     return $('.lergo-question-option-' +   opts.label  );
 };
+
+module.exports = new Viewer();

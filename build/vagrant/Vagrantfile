@@ -1,3 +1,6 @@
+# amazon assumes you have aws plugin `vagrant plugin install vagrant-aws`
+# run this on amazon with `vagrant up aws --provider aws`
+
 Vagrant.configure(2) do |all|
 
 
