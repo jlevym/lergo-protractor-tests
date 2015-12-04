@@ -13,11 +13,22 @@ exports.getUsername = function(){
 };
 
 exports.clickLessonsCreated = function(){
-    return $('[lergo-user-profile]').element(by.text('a','Lessons Created'));
+    return $('[lergo-user-profile]').element(by.text('a','Lessons Created')).click();
 };
 
 exports.clickQuestionsCreated = function(){
-    return $('[lergo-user-profile]').element(by.text('a','Questions Created'));
+    browser.sleep(1000);
+    // guy - don't know why byText did not work here.. need to investigate
+    return $('[lergo-user-profile]').$$('a,button').filter(function(e){
+        return e.getText().then(function(text){
+            return text.toLowerCase() === 'questions created';
+        });
+    }).first().click();
+    //return $('[lergo-user-profile]').element(by.text('button','questions created')).click();
+};
+
+exports.getPopoverText = function(){
+    return $('.popover').getText();
 };
 
 exports.getExternalLink = function(){

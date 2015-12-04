@@ -84,4 +84,11 @@ describe('profile page', function(){
         browser.sleep(1000);
     });
 
+    it('should show bubble to unregistered users', function(){
+        profile.route(usernameWithCase);
+        profile.clickQuestionsCreated();
+        expect(profile.getPopoverText()).toContain('see profile questions');
+        browser.sleep(1000);
+    });
+
 });
