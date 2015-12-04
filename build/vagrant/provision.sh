@@ -170,4 +170,4 @@ promote(){
     node source/tasks/copy_s3_artifacts
     node send_success_email
 }
-( grunt protract && promote && terminate )  || terminate
+( grunt test && promote && terminate )  || terminate

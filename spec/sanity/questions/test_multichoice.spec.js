@@ -2,9 +2,12 @@
 
 var components = require('../../../source/components');
 var flows = require('../../../source/flows');
-var logger = require('log4js').getLogger('test_multichoice.spec');
+var logger = browser.getLogger('test_multichoice.spec');
 
 describe('multichoice', function(){
+
+    beforeEach(function(){ logger.info('running from ' + __filename); });
+
     it('should disable shuffling', function( done ){
         browser.get('/');
         components.loginPage.load().login( components.conf.multichoice.username, components.conf.multichoice.password );

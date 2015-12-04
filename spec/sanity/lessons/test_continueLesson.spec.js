@@ -1,11 +1,12 @@
 'use strict';
 
-var logger = require('log4js').getLogger('example_spec');
+var logger = browser.getLogger('example_spec');
 var components = require('../../../source/components/index');
 var _ = require('lodash');
 //
 describe('lergo continue lesson', function () {
 
+    beforeEach(function(){ logger.info('running from ' + __filename); });
 
     /**
      *
@@ -64,8 +65,8 @@ describe('lergo continue lesson', function () {
         components.lesson.view.showReport();
 
         components.lessonReport.get(components.conf).then(function (report) {
-            expect(_.filter(report.answers, {'checkAnswer': {'correct': true}}).length).toBe(4);
-            expect(_.filter(report.answers, {'checkAnswer': {'correct': false}}).length).toBe(1);
+            expect(_.filter(report.answers, {'checkAnswer': {'correct': true}}).length).toBe(4,'there should be 4 correct answers');
+            expect(_.filter(report.answers, {'checkAnswer': {'correct': false}}).length).toBe(1, 'there should be 1 wrong answer');
 
         });
 

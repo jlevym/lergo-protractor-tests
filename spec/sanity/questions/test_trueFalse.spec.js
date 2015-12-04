@@ -2,10 +2,12 @@
 
 var components = require('../../../source/components');
 var flows = require('../../../source/flows');
-//var logger = require('log4js').getLogger('test_trueFalse.spec');
+var logger = browser.getLogger('test_trueFalse.spec.js');
+
 
 describe('trueFalse', function(){
 
+    beforeEach(function(){ logger.info('running from ' + __filename); });
 
     /**
      * expects:

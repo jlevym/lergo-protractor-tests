@@ -1,9 +1,10 @@
 'use strict';
 
 var components = require('components');
+var logger = browser.getLogger('test_signup_case_insensitive.spec');
 
 describe('user signup', function(){
-
+    beforeEach(function(){ logger.info('running from ' + __filename); });
     // assume user exists
     it('should declare user exist in case insensitive manner', function( done ){
 

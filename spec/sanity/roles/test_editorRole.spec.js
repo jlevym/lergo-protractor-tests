@@ -29,6 +29,8 @@ var logger = browser.getLogger('test_roles.spec');
 
 describe('editor role', function(){
 
+    beforeEach(function(){ logger.info('running from ' + __filename); });
+
     beforeEach(function(){
         browser.get('/');
         components.loginPage.load().login( components.conf.roles.editorUser, components.conf.roles.editorPassword );

@@ -3,7 +3,7 @@
 exports.reports = require('./MyReports');
 exports.lessons = require('./MyLessons');
 exports.questions = require('./MyQuestions');
-
+exports.profile = require('./MyProfile');
 
 exports.getSectionByName = function(sectionName){
     return element(by.cssContainingText('ul.nav a',sectionName));
@@ -20,3 +20,4 @@ exports.goToMyQuestions = function(){
 exports.goToMyLessons = function(){
     return exports.getSectionByName('Lessons').click();
 };
+

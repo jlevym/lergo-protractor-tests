@@ -1,9 +1,10 @@
 'use strict';
 
 var components = require('../../../source/components');
-//var logger = require('log4js').getLogger('test_roles.spec');
+var logger = browser.getLogger('test_roles.spec');
 
 describe('roles', function(){
+    beforeEach(function(){ logger.info('running from ' + __filename); });
     describe('management', function(){
         var newRoleName = 'new-role-' + new Date().getTime();
         it('can create new role', function(){

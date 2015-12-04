@@ -1,10 +1,11 @@
 'use strict';
 
-var logger = require('log4js').getLogger('preview');
+var logger = browser.getLogger('preview');
 var components = require('../../../source/components');
 
 describe('lesson intro', function () {
 
+    beforeEach(function(){ logger.info('running from ' + __filename); });
     /**
      * This test expects
      *   1. lesson `lesson_with_edit_summary` to exist

@@ -1,12 +1,13 @@
 'use strict';
 
 
-var logger = require('log4js').getLogger('delete_report');
+var logger = browser.getLogger('delete_report');
 var components = require('../../../source/components');
 var _ = require('lodash');
 
 describe('delete reports', function(){
 
+    beforeEach(function(){ logger.info('running from ' + __filename); });
     /**
      * This test expects
      *   1. a user X

@@ -1,9 +1,12 @@
 'use strict';
 
 var components = require('../../../source/components');
-var logger = require('log4js').getLogger('footer#test_about.js');
+var logger = browser.getLogger('footer#test_about.js');
 
 describe('about lergo', function(){
+
+    beforeEach(function(){ logger.info('running from ' + __filename); });
+
     it('it should not prompt for unsaved changes LERGO-608', function( done ){
         components.loginPage.load();
         components.layout.footer.links.goTo( components.layout.footer.FOOTER_LINKS.ABOUT_LERGO );

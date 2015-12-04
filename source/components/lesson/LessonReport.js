@@ -23,8 +23,7 @@ exports.getIdFromUrl = function(){
 exports.get = function( opts ){
     function _impl() {
         var deferred = protractor.promise.defer();
-
-        var reportUrl = browser.baseUrl + '/backend/reports/' + opts.reportId + '/read';
+        var reportUrl = require('url').resolve(browser.baseUrl ,'/backend/reports/' + opts.reportId + '/read');
         request({ 'url' : reportUrl, json:true}, function (err, result, body) {
             deferred.fulfill(body);
         });

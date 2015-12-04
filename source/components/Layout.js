@@ -1,10 +1,12 @@
 'use strict';
 
-var logger = require('log4js').getLogger('Layout');
+var logger = browser.getLogger('Layout');
+
 
 
 function hoverOnProfile(){
-    var img = $('img[gravatar-src]');
+    logger.info('hovering on profile');
+    var img = $('[ng-mouseover="openMenu(true)"]');
     element.all(by.css('.toast')).click();
     browser.wait(function(){
         return img.isDisplayed();
@@ -15,7 +17,7 @@ function hoverOnProfile(){
 
 
 exports.goToMySection = function(){
-    return element(by.css('[gravatar-size]')).click();
+    return element(by.css('[ng-mouseover="openMenu(true)"]')).click();
 };
 
 exports.searchLesson = function( name ){

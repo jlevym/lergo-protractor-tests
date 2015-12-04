@@ -1,12 +1,13 @@
 'use strict';
 
 
-var logger = require('log4js').getLogger('preview');
+var logger = browser.getLogger('preview');
 var components = require('../../../source/components/index');
 //var _ = require('lodash');
 
 describe('preview lesson', function(){
 
+    beforeEach(function(){ logger.info('running from ' + __filename); });
     /**
      * This test expects
      *   1. a user named 'test' and password 'test' to exist which is not admin
