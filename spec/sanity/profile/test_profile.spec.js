@@ -46,6 +46,7 @@ describe('profile page', function(){
 
     it('should show different number whether for questions/lessons whether I am logged in or not', function(){
         var publicStats = null;
+        login();
         profile.route(usernameWithCase);
         profile.getProfileStats().then(function(stats){
             logger.info('got profile stats ' +  JSON.stringify(stats) );
@@ -53,14 +54,20 @@ describe('profile page', function(){
             expect(stats.lessonsCount>0).toBe(true, 'lessons count should be bigger than 0');
             expect(stats.questionsCount>0).toBe(true,'questions count should be bigger than 0');
         });
+        logout();
 
-        login();
+
+        //now lets login as someone else and see different numbers
+
+        components.loginPage.load().login( components.conf.profilePage.otherUsername, components.conf.profilePage.otherPassword );
         profile.route(usernameWithCase);
         profile.getProfileStats().then(function(stats){
             expect(stats.lessonsCount).not.toBe(publicStats.lessonsCount,'lessons should be different');
             expect(stats.questionsCount).not.toBe(publicStats.questionsCount,'questions should be different');
         });
-        logout();
+        components.layout.logout();
+
+
     });
 
     it('should be able to edit data', function(){
@@ -84,10 +91,13 @@ describe('profile page', function(){
         browser.sleep(1000);
     });
 
-    it('should show bubble to unregistered users', function(){
+
+    it('should show bubble to unregistered users and not show stats', function(){
         profile.route(usernameWithCase);
         profile.clickQuestionsCreated();
         expect(profile.getPopoverText()).toContain('see profile questions');
+
+        expect(profile.isStatsDisplayed()).toBeFalsy('stats should be displayed for anonymous mode');
         browser.sleep(1000);
     });
 

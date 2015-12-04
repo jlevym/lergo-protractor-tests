@@ -27,7 +27,9 @@
     },
     "profilePage" : {
         "username" : "lergotest",
-        "password" : "lergotest"
+        "password" : "lergotest",
+        "otherUsername" : "lergotestadmin",
+        "otherPassword" : "lergotestadmin"
     },
     "doneRedirect" : {
         "username" : "lergotestadmin",

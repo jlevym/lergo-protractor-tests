@@ -20,6 +20,12 @@ exports.clickQuestionsCreated = function(){
     return $('[lergo-user-profile]').element(by.text('questions created','a,button')).click();
 };
 
+exports.isStatsDisplayed = function(){
+    return $('.profile-stats').getText().then(function( text ){
+        return text.trim() === '';
+    });
+};
+
 exports.getPopoverText = function(){
     return $('.popover').getText();
 };

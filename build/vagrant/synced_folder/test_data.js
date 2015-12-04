@@ -215,7 +215,7 @@ db.questions.insert([
         "lastUpdate": 1449234884035,
         "type": "openQuestion",
         "subType": "long",
-        "explanation": "",
+        "explanation": "another explanation",
         "hint": ""
     },
 

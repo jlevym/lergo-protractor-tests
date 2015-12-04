@@ -23,6 +23,10 @@ Viewer.prototype.continue = function(){
     return $('.submit').element(by.text('continue','button')).click();
 };
 
+Viewer.prototype.countButtons = function(){
+    return $$('.submit button').filter(function(e){ return e.isDisplayed(); }).count();
+};
+
 Viewer.prototype.getHintText = function(){
     return $('.hint .popover').getText();
 };
