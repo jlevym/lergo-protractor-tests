@@ -17,14 +17,7 @@ exports.clickLessonsCreated = function(){
 };
 
 exports.clickQuestionsCreated = function(){
-    browser.sleep(1000);
-    // guy - don't know why byText did not work here.. need to investigate
-    return $('[lergo-user-profile]').$$('a,button').filter(function(e){
-        return e.getText().then(function(text){
-            return text.toLowerCase() === 'questions created';
-        });
-    }).first().click();
-    //return $('[lergo-user-profile]').element(by.text('button','questions created')).click();
+    return $('[lergo-user-profile]').element(by.text('questions created','a,button')).click();
 };
 
 exports.getPopoverText = function(){
