@@ -23,7 +23,7 @@ _.each(files, function(f){
     s3.copyObject({
         Bucket: awsDetails.bucket,
         CopySource: 'lergo-backups/artifacts/build-lergo-' + promoteBuild+ '/jobs/build-lergo/' + promoteBuild + '/' + f,
-        Key : 'artifacts/latest-test/' + f,
+        Key : 'artifacts/latest/' + f,
         ACL: 'public-read'
 
     }, function(err, data) {
