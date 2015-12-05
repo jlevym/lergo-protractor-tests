@@ -46,10 +46,10 @@ echo "user is $USER"
 
 if [ ! -f /usr/bin/node ];then
     print "installing nvm"
-    ( curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash ) &> /dev/null
+    ( curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash )
 
     print "activating nvm"
-    ( . .nvm/nvm.sh || source .nvm/nvm.sh ) &> /dev/null
+    . .nvm/nvm.sh &> /dev/null || source .nvm/nvm.sh &> /dev/null
 
     print "installing node"
     ( echo "installing node 0.10.35" &&  nvm install 0.10.35 && npm --version ) &> /dev/null
