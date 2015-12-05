@@ -52,6 +52,14 @@ Vagrant.configure(2) do |all|
 
 
     all.vm.synced_folder "./synced_folder", "/vagrant", type: "rsync"
+
+    all.vm.provision "shell", inline: <<-SHELL
+      OUTPUT_FILE="/vagrant/dev/environment.sh"
+      echo -n                                                       >  $OUTPUT_FILE
+      echo 'export MANDRILL_API_KEY="#{MANDRILL_API_KEY}"'          >> $OUTPUT_FILE
+      echo 'export MANDRILL_TO_EMAILS="#{MANDRILL_TO_EMAILS}"'      >> $OUTPUT_FILE
+    SHELL
+
     all.vm.provision "shell" do |s|
         s.path = "./provision.sh"
         s.privileged = false
