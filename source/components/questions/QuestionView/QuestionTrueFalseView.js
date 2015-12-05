@@ -20,7 +20,7 @@ Viewer.prototype.answer = function( opts ){
         opts.label = '' + opts.answer;
         opts.answer = undefined;
     }
-    exports.getOption(opts).click();
+    this.getOption(opts).click();
 };
 
 /**
