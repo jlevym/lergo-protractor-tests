@@ -236,6 +236,20 @@ db.questions.insert([
 },
 
     {
+        "_id": ObjectId("5585a617dd164ea327bbfe69"),
+        "age": 8,
+        "answer": "True",
+        "helpText": "private_question_1",
+        "language": "english",
+        "lastUpdate": 1434822196998,
+        "question": "private_question_1",
+        "subject": "english",
+        "tags": [],
+        "type": "trueFalse",
+        "userId": ObjectId("54ba1391f59d198d09bfe58b"),
+        "views": 1
+    },
+    {
         "_id": ObjectId("5585a617dd163ea327bbfe69"),
         "age": 8,
         "answer": "True",
