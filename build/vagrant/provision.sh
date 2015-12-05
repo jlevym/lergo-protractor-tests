@@ -46,11 +46,11 @@ echo "user is $USER"
 
 if [ ! -f /usr/bin/node ];then
     print "installing node"
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash
+    ( curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash ) &> /dev/null
 
-    . .nvm/nvm.sh || source .nvm/nvm.sh
+    ( . .nvm/nvm.sh || source .nvm/nvm.sh ) &> /dev/null
 
-    echo "installing node 0.10.35" &&  nvm install 0.10.35 && npm --version
+    ( echo "installing node 0.10.35" &&  nvm install 0.10.35 && npm --version ) &> /dev/null
 
     ## make node available from sudo
     n=$(which node);n=${n%/bin/node}; chmod -R 755 $n/bin/*; sudo cp -r $n/{bin,lib,share} /usr/local
