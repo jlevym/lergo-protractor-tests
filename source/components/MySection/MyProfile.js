@@ -21,9 +21,7 @@ exports.clickQuestionsCreated = function(){
 };
 
 exports.isStatsDisplayed = function(){
-    return $('.profile-stats').getText().then(function( text ){
-        return text.trim() !== '';
-    });
+    return $('.profile-stats').isDisplayed();
 };
 
 exports.getPopoverText = function(){
