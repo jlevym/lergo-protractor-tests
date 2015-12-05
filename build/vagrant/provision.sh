@@ -11,13 +11,19 @@ PROVISION_LOG_FILE="/dev/null"
 
 print "working.."
 
-if [ ! -f /vagrant/dev/me.json ]; then
-    print "need to have a me.json file under synced_folder/dev/me.json"
-else
-    print "found me.json. thank!"
-    export LERGO_ME_CONF="/vagrant/dev/me.json"
-    echo "export LERGO_ME_CONF=/vagrant/dev/me.json" >> ~/.profile
-fi
+
+
+export LERGO_ME_CONF="/vagrant/config.json"
+#if [ ! -f /vagrant/config.json ]; then
+#    print "need to have a me.json file under synced_folder/dev/me.json"
+#else
+#    print "found me.json. thank!"
+#    export LERGO_ME_CONF="/vagrant/dev/me.json"
+#    echo "export LERGO_ME_CONF=/vagrant/dev/me.json" >> ~/.profile
+#fi
+
+
+
 
 DEV_ENVIRONMENT="/vagrant/dev/environment.sh"
 if [ -f ${DEV_ENVIRONMENT} ];then
