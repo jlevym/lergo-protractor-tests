@@ -177,4 +177,4 @@ terminate(){
     nohup node remove_all_instances &> /dev/null &
 }
 
-( grunt test && terminate )  || terminate
+grunt test

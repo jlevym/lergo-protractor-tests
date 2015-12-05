@@ -128,7 +128,8 @@ module.exports = function (grunt) {
 
         console.log(grunt.template.process('<%= suite %>'));
 
-        grunt.task.run(['runBrowserstackLocal','protractor_webdriver', 'protractor:sanity']);
+        grunt.task.run(['protractor_webdriver', 'protractor:sanity']);
+        //grunt.task.run(['runBrowserstackLocal','protractor_webdriver', 'protractor:sanity']);
     });
 
     grunt.registerTask('test', [
