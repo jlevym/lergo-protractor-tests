@@ -20,12 +20,21 @@ else
 fi
 
 DEV_ENVIRONMENT="/vagrant/dev/environment.sh"
-if [ -f ];then
+if [ -f ${DEV_ENVIRONMENT} ];then
     print "loading environment variables from dev/environment.sh"
     . ${DEV_ENVIRONMENT}
 else
     print "$DEV_ENVIRONMENT is not there. skipping... "
 fi
+
+VAGRANT_ENVIRONMENT="/vagrant/environment.sh"
+if [ -f ${VAGRANT_ENVIRONMENT} ];then
+    print "loading environment variables from /vagrant/environment.sh"
+    . ${VAGRANT_ENVIRONMENT}
+else
+    print "$VAGRANT_ENVIRONMENT is not there. skipping... "
+fi
+
 
 if [ -f /vagrant/build_id ]; then
     print "got build_id file"
