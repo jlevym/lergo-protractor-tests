@@ -174,9 +174,4 @@ terminate(){
     nohup node remove_all_instances &> /dev/null &
 }
 
-promote(){
-    echo "promoting build"
-    node source/tasks/copy_s3_artifacts
-    node send_success_email
-}
-( grunt test && promote && terminate )  || terminate
+( grunt test && terminate )  || terminate
