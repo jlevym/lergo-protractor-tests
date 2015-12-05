@@ -148,8 +148,8 @@ sudo sed -i s/__USER__/${USER}/g /etc/nginx/sites-enabled/lergo.conf
 sudo service nginx restart
 
 sudo apt-get install unzip -y
-wget -O localdriver.zip https://www.browserstack.com/browserstack-local/BrowserStackLocal-linux-x64.zip
-unzip localdriver.zip
+wget -O localdriver.zip https://www.browserstack.com/browserstack-local/BrowserStackLocal-linux-x64.zip &> /dev/null
+unzip localdriver.zip &> /dev/null
 export BROWSERSTACK_LOCAL="`pwd`/BrowserStackLocal"
 
 # get public ip for instance
