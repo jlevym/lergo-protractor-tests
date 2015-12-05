@@ -18,10 +18,12 @@ describe('profile page', function(){
 
     function login(){
         components.loginPage.load().login( components.conf.profilePage.username, components.conf.profilePage.password );
+        browser.sleep(1000);
     }
 
     function logout(){
         components.layout.logout();
+        browser.sleep(1000);
     }
 
     it('should username in original casing', function( done ){
@@ -29,14 +31,18 @@ describe('profile page', function(){
         profile.route(usernameWithCase);
         expect($('.profile-username').getText()).toBe(usernameWithCase);
 
-        logger.info('starting testing preview lesson');
+        logger.info('starting profile test');
         login();
 
 
+
         profile.route(usernameWithCase);
+
         expect(profile.getUsername()).toBe(usernameWithCase);
 
+
         profile.route();
+
         expect(profile.getUsername()).toBe(usernameWithCase);
 
         logout();
@@ -47,6 +53,7 @@ describe('profile page', function(){
     it('should show different number whether for questions/lessons whether I am logged in or not', function(){
         var publicStats = null;
         login();
+
         profile.route(usernameWithCase);
         profile.getProfileStats().then(function(stats){
             logger.info('got profile stats ' +  JSON.stringify(stats) );
@@ -60,6 +67,7 @@ describe('profile page', function(){
         //now lets login as someone else and see different numbers
 
         components.loginPage.load().login( components.conf.profilePage.otherUsername, components.conf.profilePage.otherPassword );
+        browser.sleep(1000);
         profile.route(usernameWithCase);
         profile.getProfileStats().then(function(stats){
             expect(stats.lessonsCount).not.toBe(publicStats.lessonsCount,'lessons should be different');
@@ -72,6 +80,7 @@ describe('profile page', function(){
 
     it('should be able to edit data', function(){
         login();
+
         profile.route(usernameWithCase);
         var details = {
             'externalLink' : 'http://localhost.com',
@@ -97,7 +106,7 @@ describe('profile page', function(){
         profile.clickQuestionsCreated();
         expect(profile.getPopoverText()).toContain('see profile questions');
 
-        expect(profile.isStatsDisplayed()).toBeFalsy('stats should be displayed for anonymous mode');
+        expect(profile.isStatsDisplayed()).toBeFalsy('stats should not be displayed for anonymous mode');
         browser.sleep(1000);
     });
 

@@ -40,6 +40,7 @@ describe('update lesson', function () {
         components.lesson.editor.clickDone();
         expect(browser.getCurrentUrl()).toContain('/admin/homepage', 'for admin should redirect to admin section');
 
+        components.layout.logout();
         browser.sleep(1000);
     });
 });
