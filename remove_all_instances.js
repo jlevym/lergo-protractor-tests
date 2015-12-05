@@ -5,6 +5,8 @@ var AWS = require('aws-sdk');
 var _ = require('lodash');
 AWS.config.region = process.env.VAGRANT_REGION;
 AWS.config.update({accessKeyId: process.env.VAGRANT_AWS_KEY, secretAccessKey: process.env.VAGRANT_AWS_ACCESS_KEY });
+var jenkinsapi = require('jenkins-api');
+var jenkins = jenkinsapi.init('https://guymograbi.ci.cloudbees.com/');
 
 var logger = require('log4js').getLogger('remove_all_instances');
 
@@ -47,6 +49,18 @@ function removeInstances() {
 
 }
 
+function removeInstancesIfNotRunning(){
+    jenkins.last_build_info('lergo-system-tests', function(err, data){
+        if ( data && data.building ){
+            logger.info('build is running.. waiting for build to finish');
+            setTimeout( removeInstancesIfNotRunning, 60*1000 ); // wait a minute and try again
+        }else{
+            logger.info('build is finished. removing machines');
+            removeInstances();
+        }
+    });
+}
+
 var sleepTime = parseInt(process.env.VAGRANT_TERMINATE_TIMEOUT || '1',10);
 logger.info('sleepTime is', sleepTime );
-setTimeout( removeInstances, sleepTime );
+setTimeout( removeInstancesIfNotRunning, sleepTime );
