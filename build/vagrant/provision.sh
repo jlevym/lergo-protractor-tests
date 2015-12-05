@@ -52,7 +52,7 @@ if [ ! -f /usr/bin/node ];then
     . .nvm/nvm.sh &> /dev/null || source .nvm/nvm.sh &> /dev/null
 
     print "installing node"
-    ( echo "installing node 0.10.35" &&  nvm install 0.10.35 && npm --version ) &> /dev/null
+    echo "installing node 0.10.35" &&  nvm install 0.10.35  &> /dev/null && npm --version &> /dev/null
 
     print "making node available with sudo"
     ## make node available from sudo
