@@ -36,6 +36,59 @@ db.users.insert([{
 
 db.lessons.insert([
     {
+        "_id" : ObjectId("566bf859a2cadd571dc8a685"),
+        "age" : 8,
+        "createdAt" : "2015-12-12T10:35:05.844Z",
+        "language" : "english",
+        "lastUpdate" : 1449917968621,
+        "name" : "my_practice",
+        "public" : 1449916586259,
+        "steps" : [
+            {
+                "testMode" : "False",
+                "type" : "quiz",
+                "quizItems" : [
+                    "5585a617dd163ea327bbfe69",
+                    "5585a63add163ea327bbfe6a",
+                    "5585a648dd163ea327bbfe6b",
+                    "5585a653dd163ea327bbfe6c",
+                    "5585a65edd163ea327bbfe6d"
+                ],
+                "title" : "my_quiz"
+            }
+        ],
+        "subject" : "english",
+        "tags" : [ ],
+        "userId" : ObjectId("54ba1391f59d198d09bfe58b"),
+        "views" : 8
+    },
+    {
+        "_id" : ObjectId("566bdf33a2cadd571dc8a67a"),
+        "age" : 8,
+        "createdAt" : "2015-12-12T08:47:47.892Z",
+        "language" : "english",
+        "lastUpdate" : 1449910096418,
+        "name" : "my_test",
+        "steps" : [
+            {
+                "testMode" : "True",
+                "type" : "quiz",
+                "quizItems" : [
+                    "5585a617dd163ea327bbfe69",
+                    "5585a63add163ea327bbfe6a",
+                    "5585a648dd163ea327bbfe6b",
+                    "5585a653dd163ea327bbfe6c",
+                    "5585a65edd163ea327bbfe6d"
+                ]
+            }
+        ],
+        "subject" : "english",
+        "tags" : [ ],
+        "userId" : ObjectId("54ba1391f59d198d09bfe58b"),
+        "views" : 8,
+        "public" : 1449914373747
+    },
+    {
         "_id": ObjectId("56619172084ff53a28efb649"),
         "age": 8,
         "createdAt": "2015-12-04T13:13:22.662Z",
