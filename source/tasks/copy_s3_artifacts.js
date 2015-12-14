@@ -50,7 +50,7 @@ if ( promoteType === PROMOTE_TYPES.PRODUCTION ){
         s3.copyObject({
             Bucket: awsDetails.bucket,
             CopySource: 'lergo-backups/artifacts/build-lergo-' + promoteBuild + '/jobs/build-lergo/' + promoteBuild + '/' + f,
-            Key: 'lergo-backups/builds/production/' + promoteBuild + '/' + f,
+            Key: 'builds/production/' + promoteBuild + '/' + f,
             ACL: 'public-read'
 
         }, function (err, data) {
@@ -66,7 +66,7 @@ if ( promoteType === PROMOTE_TYPES.PRODUCTION ){
         s3.copyObject({
             Bucket: awsDetails.bucket,
             CopySource: 'lergo-backups/artifacts/build-lergo-' + promoteBuild + '/jobs/build-lergo/' + promoteBuild + '/' + f,
-            Key: 'lergo-backups/builds/production/latest/' +  f,
+            Key: 'builds/production/latest/' +  f,
             ACL: 'public-read'
 
         }, function (err, data) {
