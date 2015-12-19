@@ -3,6 +3,11 @@
 var layout = require('./Layout');
 var logger = require('log4js').getLogger('Homepage');
 
+exports.route = function(){
+    browser.get('#!/public/homepage');
+    return browser.sleep(1000); // protractor acts better if you sleep after 'get'
+};
+
 function goToLessonByName(name) {
     logger.info('loading lesson',name);
     layout.searchLesson(name);

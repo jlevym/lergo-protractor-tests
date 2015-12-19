@@ -141,3 +141,4 @@ exports.questions=require('./questions');
 exports.manage=require('./manage');
 exports.about = require('./about');
 exports.createLesson = require('./CreateLesson');
+exports.filter = require('./LergoFilter');

@@ -14,7 +14,7 @@ spec = ['spec/normalize.js'].concat(spec);
 
 
 var browserName = process.env.BROWSER_NAME || process.env.BROWSER_TYPE || 'chrome';
-
+var restartBrowser = true;
 var capabilities = { browserName : browserName };
 
 if ( browserName === 'chrome'){
@@ -28,6 +28,7 @@ if ( browserName === 'phantomjs'){
 
 if ( browserName === 'browserstack-chrome' || browserName === 'browserstack_chrome'){
 
+    restartBrowser = false;
     if ( !process.env.BROWSERSTACK_USERNAME || !process.env.BROWSERSTACK_KEY ){
         logger.error('browserstack credentials are missing');
         process.exit(1);
@@ -58,6 +59,7 @@ exports.config = {
     // Spec patterns are relative to the location of this config.
     capabilities: capabilities,
 
+    //restartBrowserBetweenTests: restartBrowser,
 
     suites: {
         footer: ['spec/normalize.js', 'spec/sanity/footer/**/*.spec.js'],
