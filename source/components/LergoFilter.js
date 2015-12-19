@@ -65,6 +65,7 @@ exports.setLanguage = function( value ){
     setSelectValue(value, exports.filterFields.language);
 };
 
-exports.reset = function(){
-    $('[lergo-filter] [lergo-reset-filter]').click();
-};
+exports.reset =  $('[lergo-filter] [lergo-reset-filter]');
+
+
+

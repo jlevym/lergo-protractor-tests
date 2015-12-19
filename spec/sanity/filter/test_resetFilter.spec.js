@@ -27,7 +27,7 @@ describe('filter reset', function(){
         expect(components.filter.filterFields.age.max.getAttribute('value')).toBe('20');
         expect(components.filter.filterFields.language.$('option:checked').getText()).toBe(language);
 
-        components.filter.reset();
+        components.filter.reset.click();
         expect(components.filter.filterFields.age.min.getAttribute('value')).toBe('');
         expect(components.filter.filterFields.age.max.getAttribute('value')).toBe('');
         expect(components.filter.filterFields.language.$('option:checked').getText()).toBe(language);
@@ -41,8 +41,10 @@ describe('filter reset', function(){
         components.homepage.getLessons().count().then(function(c){ // lets keep the value just in case I was wrong
             lessonsCount = c;
         });
-        components.filter.reset();
+        components.filter.reset.click();
         expect(components.homepage.getLessons().count()).not.toBe(lessonsCount); // it should be different..
+
+        expect(components.filter.reset.isDisplayed()).toBeFalsy(); // check filter is hidden when not active
 
 
         browser.sleep(1000).then(done);
