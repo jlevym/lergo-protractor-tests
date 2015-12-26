@@ -70,6 +70,7 @@ exports.config = {
         roles: ['spec/normalize.js', 'spec/sanity/roles/**/*.spec.js'],
         users: ['spec/normalize.js', 'spec/sanity/users/**/*.spec.js'],
         sanity: [ 'spec/normalize.js', 'spec/sanity/lessons/**/*.spec.js' ],
+        filter: [ 'spec/normalize.js', 'spec/sanity/filter/**/*.spec.js' ],
         custom: [ 'spec/normalize.js', process.env.LERGO_SPEC ]
     },
 

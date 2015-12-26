@@ -31,3 +31,6 @@ exports.goToLesson = function(opts){
         })
     }).first().click();*/
 };
+
+
+exports.filterIsActiveNotification = require('../common').filterIsActiveNotification;

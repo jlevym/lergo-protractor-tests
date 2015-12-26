@@ -35,6 +35,10 @@
         "username" : "lergotestadmin",
         "password" : "lergotestadmin"
     },
+    "resetFilterNotification": {
+        "username" : "lergotest",
+        "password" : "lergotest"
+    },
     "roles": {
         "adminUser": "lergotestadmin",
         "adminPassword": "lergotestadmin",

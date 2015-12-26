@@ -138,6 +138,7 @@ module.exports = function (grunt) {
         'protract:profile',
         'protract:questions',
         'protract:reports',
+        'protract:filter',
         'protract:roles',
         'protract:users'
     ]);

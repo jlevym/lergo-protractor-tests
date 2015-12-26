@@ -10,7 +10,8 @@ exports.filterFields = {
         min :  $m('ageFilter.min'),
         max: $m('ageFilter.max')
     },
-    language: $m('filterLanguage')
+    language: $m('filterLanguage'),
+    text: $m('model.searchText')
 };
 
 function setFieldValue( value , field ){
@@ -59,6 +60,10 @@ function setMinMaxValues( value, field ){
  */
 exports.setAge = function( value ){
      setMinMaxValues( value, exports.filterFields.age  );
+};
+
+exports.setText = function(value){
+    setFieldValue( value, exports.filterFields.text);
 };
 
 exports.setLanguage = function( value ){
