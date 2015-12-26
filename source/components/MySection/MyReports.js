@@ -45,3 +45,6 @@ exports.seeLessonsDoneByMe = function(){
 exports.seeLessonsDoneByStudents = function(){
     selectOptionByText($m('reportsPage.reportType'),LESSON_TYPE.byStudents);
 };
+
+
+exports.filterIsActiveNotification = require('../common').filterIsActiveNotification;

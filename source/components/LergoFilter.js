@@ -1,8 +1,21 @@
 'use strict';
 
+
+/**
+ *
+ * @typedef {string} FILTER_LANGUAGE
+ */
 exports.FILTER_LANGUAGES = {
     ENGLISH: 'English',
     RUSSIAN: 'Russian'
+};
+
+/**
+ *
+ * @typedef {string} FILTER_SUBJECTS
+ */
+exports.FILTER_SUBJECTS = {
+    MATH: 'Math'
 };
 
 exports.filterFields = {
@@ -11,6 +24,7 @@ exports.filterFields = {
         max: $m('ageFilter.max')
     },
     language: $m('filterLanguage'),
+    subject: $m('model.subject'),
     text: $m('model.searchText')
 };
 
@@ -60,6 +74,14 @@ function setMinMaxValues( value, field ){
  */
 exports.setAge = function( value ){
      setMinMaxValues( value, exports.filterFields.age  );
+};
+
+/**
+ *
+ * @param {FILTER_SUBJECTS} value
+ */
+exports.setSubject = function( value ){
+    setSelectValue( value, exports.filterFields.subject );
 };
 
 exports.setText = function(value){

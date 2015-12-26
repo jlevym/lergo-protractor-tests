@@ -4,9 +4,9 @@
 exports.rootElement=$('[filter-is-active]');
 
 exports.hideNotification = function(){
-    $('[ng-click="hideNotification()"]').click();
+    exports.rootElement.$('.close').click();
 };
 
 exports.resetFilter = function(){
-    $('[lergo-reset-filter]').click();
+    exports.rootElement.$('[lergo-reset-filter]').click();
 };

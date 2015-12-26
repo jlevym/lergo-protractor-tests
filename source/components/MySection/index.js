@@ -4,6 +4,7 @@ exports.reports = require('./MyReports');
 exports.lessons = require('./MyLessons');
 exports.questions = require('./MyQuestions');
 exports.profile = require('./MyProfile');
+exports.invites = require('./MyInvites');
 
 exports.getSectionByName = function(sectionName){
     return element(by.cssContainingText('ul.nav a',sectionName));
