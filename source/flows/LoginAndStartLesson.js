@@ -16,7 +16,7 @@ var components = require('../components');
  * @param {LessonSearchDetails} opts.lesson
  */
 
-module.exports = function( opts ){
+module.exports = function loginAndStartLesson( opts ){
     browser.get('/');
     components.loginPage.load().login( opts.username, opts.password  );
     components.layout.goToUserSection();

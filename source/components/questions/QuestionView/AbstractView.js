@@ -39,5 +39,9 @@ Viewer.prototype.answer = function(){
     throw new Error('function not implemented for this type');
 };
 
+Viewer.prototype.explanation = function(){
+    return $('.quiz-item-explanation');
+};
+
 
 module.exports = Viewer;

@@ -36,6 +36,95 @@ db.users.insert([{
 
 db.lessons.insert([
     {
+        "_id" : ObjectId("5686aefb740b13ca11c55caf"),
+        "age" : 8,
+        "createdAt" : "2016-01-01T16:53:15.395Z",
+        "language" : "english",
+        "lastUpdate" : 1451667202355,
+        "name" : "explanation_media_display_openQuestionQuizMode",
+        "public" : 1451667221955,
+        "steps" : [
+            {
+                "testMode" : "False",
+                "type" : "quiz",
+                "title" : "my_quiz",
+                "quizItems" : [
+                    "5686ade8740b13ca11c55ca8"
+                ]
+            }
+        ],
+        "tags" : [ ],
+        "userId" : ObjectId("54ba1391f59d198d09bfe58b"),
+        "views" : 3
+    },
+    {
+        "_id" : ObjectId("5686addf740b13ca11c55ca7"),
+        "age" : 8,
+        "createdAt" : "2016-01-01T16:48:31.168Z",
+        "language" : "english",
+        "lastUpdate" : 1451667209445,
+        "name" : "explanation_media_display_openQuestionTestMode",
+        "steps" : [
+            {
+                "testMode" : "True",
+                "type" : "quiz",
+                "title" : "my_quiz",
+                "quizItems" : [
+                    "5686ade8740b13ca11c55ca8"
+                ]
+            }
+        ],
+        "tags" : [ ],
+        "userId" : ObjectId("54ba1391f59d198d09bfe58b"),
+        "views" : 5,
+        "public" : 1451667221954
+    },
+    {
+        "_id" : ObjectId("5686ac11740b13ca11c55c97"),
+        "age" : 8,
+        "createdAt" : "2016-01-01T16:40:49.545Z",
+        "language" : "english",
+        "lastUpdate" : 1451666465915,
+        "name" : "explanation_media_display_showIffWrong",
+        "public" : 1451666474151,
+        "steps" : [
+            {
+                "testMode" : "False",
+                "type" : "quiz",
+                "quizItems" : [
+                    "5686ab32740b13ca11c55c8c"
+                ],
+                "title" : "my_quiz"
+            }
+        ],
+        "tags" : [ ],
+        "userId" : ObjectId("54ba1391f59d198d09bfe58b"),
+        "views" : 9
+    },
+    {
+        "_id": ObjectId("5686aa8e740b13ca11c55c89"),
+        "age": 8,
+        "createdAt": "2016-01-01T16:34:22.466Z",
+        "language": "english",
+        "lastUpdate": 1451666344498,
+        "name": "explanation_media_display_testMode",
+        "public": 1451666120290,
+        "steps": [
+            {
+                "testMode": "True",
+                "type": "quiz",
+                "title": "my quiz",
+                "quizItems": [
+                    "5686ab32740b13ca11c55c8c"
+                ]
+            }
+        ],
+        "tags": [],
+        "userId": ObjectId("54ba1391f59d198d09bfe58b"),
+        "views": 7
+
+    },
+    {
         "_id" : ObjectId("566bf859a2cadd571dc8a685"),
         "age" : 8,
         "createdAt" : "2015-12-12T10:35:05.844Z",
@@ -258,6 +347,39 @@ db.lessons.insert([
 
 db.questions.insert([
     {
+        "_id" : ObjectId("5686ade8740b13ca11c55ca8"),
+        "age" : 8,
+        "explanationMedia" : {
+            "type" : "image",
+            "imageUrl" : "http://pngimg.com/upload/plane_PNG5253.png"
+        },
+        "language" : "english",
+        "lastUpdate" : 1451666953805,
+        "question" : "explanation_media_display_openQuestion",
+        "subType" : "long",
+        "tags" : [ ],
+        "type" : "openQuestion",
+        "userId" : ObjectId("54ba1391f59d198d09bfe58b"),
+        "views" : 6
+    },
+    {
+        "_id" : ObjectId("5686ab32740b13ca11c55c8c"),
+        "age" : 8,
+        "answer" : "True",
+        "language" : "english",
+        "lastUpdate" : 1451666324620,
+        "question" : "explanation_media_true_false_question",
+        "tags" : [ ],
+        "type" : "trueFalse",
+        "userId" : ObjectId("54ba1391f59d198d09bfe58b"),
+        "views" : 16,
+        "explanationMedia" : {
+            "type" : "image",
+            "imageUrl" : "http://pngimg.com/upload/plane_PNG5253.png"
+        },
+        "explanation" : "nope!"
+    },
+    {
         "subject": "english",
         "age": 8,
         "language": "english",
@@ -468,6 +590,7 @@ db.questions.insert([
     } ]);
 
 db.roles.insert([
+
     {
         "name" : "role_to_assign",
         "createdAt" : "2015-10-05T15:11:32.051Z",

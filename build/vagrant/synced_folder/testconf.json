@@ -45,5 +45,19 @@
         "username": "simple_user",
         "editorUser": "lergotesteditor",
         "editorPassword": "lergotesteditor"
+    },
+    "explanationMediaDisplay" : {
+        "testMode" : {
+            "name" : "explanation_media_display_testMode"
+        },
+        "showIffWrong" : {
+            "name" : "explanation_media_display_showIffWrong"
+        },
+        "showOpenQuestionTestMode" : {
+            "name" : "explanation_media_display_openQuestionTestMode"
+        },
+        "showOpenQuestionQuizMode" : {
+            "name" : "explanation_media_display_openQuestionQuizMode"
+        }
     }
 }
