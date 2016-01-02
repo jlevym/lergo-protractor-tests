@@ -21,6 +21,18 @@ module.exports = function (grunt) {
         protractor_webdriver: {
             start: {}
         },
+        concurrent: {
+            test: [
+                'protract:filter:true',
+                'protract:footer:true',
+                'protract:lessons:true',
+                'protract:profile:true',
+                'protract:questions:true',
+                'protract:reports:true',
+                'protract:roles:true',
+                'protract:users:true']
+
+        },
         jshint: {
             options: {
                 reporter: require('jshint-stylish')
@@ -121,24 +133,35 @@ module.exports = function (grunt) {
         });
     });
     grunt.registerTask('applitools', ['protractor_webdriver', 'protractor:applitools']);
-    grunt.registerTask('protract', function( suite ){
+    grunt.registerTask('protract', function( suite, skipWebdriver ){
+        skipWebdriver = skipWebdriver === 'true';
+
         suite = suite || 'sanity';
         console.log('suite is', suite);
         grunt.config.data.suite = suite;
 
         console.log(grunt.template.process('<%= suite %>'));
 
-        grunt.task.run(['protractor_webdriver', 'protractor:sanity']);
+        var tasks = [];
+
+        if ( !skipWebdriver ){
+            tasks.push('protractor_webdriver');
+        }
+
+        tasks.push('protractor:sanity');
+        grunt.task.run(tasks);
         //grunt.task.run(['runBrowserstackLocal','protractor_webdriver', 'protractor:sanity']);
     });
 
+    grunt.registerTask('concurrentTest', ['protractor_webdriver', 'concurrent:test']);
+
     grunt.registerTask('test', [
+        'protract:filter',
         'protract:footer',
         'protract:lessons',
         'protract:profile',
         'protract:questions',
         'protract:reports',
-        'protract:filter',
         'protract:roles',
         'protract:users'
     ]);

@@ -22,7 +22,6 @@ describe('delete reports', function(){
         //browser.sleep(1000);
         components.loginPage.load().login( components.conf.deleteReport.username, components.conf.deleteReport.password );
         components.homepage.startLesson({'name' : 'lesson_with_edit_summary'});
-        components.lesson.intro.startLesson();
         components.lesson.view.questions.trueFalse.answer({ answer : true });
         components.lesson.view.questions.trueFalse.answer({ answer : true });
         components.lesson.view.nextStep();

@@ -29,7 +29,6 @@ describe('explanation media display rules', function () {
     it('should not show if in test mode', function(){
 
         components.homepage.startLesson(conf.testMode);
-        components.lesson.intro.startLesson();
         // see it does not appear in test mode
         var q = components.questions.view.trueFalse;
         q.answer({answer:false});
@@ -40,7 +39,6 @@ describe('explanation media display rules', function () {
 
     it('should show iff answer is incorrect', function(){
         components.homepage.startLesson(conf.showIffWrong);
-        components.lesson.intro.startLesson();
         var q = components.questions.view.trueFalse;
         // see it does not appear if no answer
         expect(q.explanation().isDisplayed()).toBeFalsy();
@@ -50,7 +48,6 @@ describe('explanation media display rules', function () {
 
         // again..
         components.homepage.startLesson(conf.showIffWrong);
-        components.lesson.intro.startLesson();
         // see it does appear if wrong answer
         q.answer({answer:false});
         expect(q.explanation().isDisplayed()).toBeTruthy();
@@ -61,13 +58,11 @@ describe('explanation media display rules', function () {
     it('should always show in open question in quiz mode', function () {
         var q = components.questions.view.open;
         components.homepage.startLesson(conf.showOpenQuestionTestMode);
-        components.lesson.intro.startLesson();
         components.questions.view.open.answer('foo');
         components.questions.view.open.submit();
         expect(q.explanation().isDisplayed()).toBeFalsy();
 
         components.homepage.startLesson(conf.showOpenQuestionQuizMode);
-        components.lesson.intro.startLesson();
         components.questions.view.open.answer('foo');
         components.questions.view.open.submit();
         expect(q.explanation().isDisplayed()).toBeTruthy();

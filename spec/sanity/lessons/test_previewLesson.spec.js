@@ -3,26 +3,18 @@
 
 var logger = browser.getLogger('preview');
 var components = require('../../../source/components/index');
-//var _ = require('lodash');
 
 describe('preview lesson', function(){
 
     beforeEach(function(){ logger.info('running from ' + __filename); });
-    /**
-     * This test expects
-     *   1. a user named 'test' and password 'test' to exist which is not admin
-     *   2. user 'test' to own a lesson named 'test_continue_lesson'
-     *
-     *
-     * it checks if the user is able to edit a lesson
-     */
 
-    it('should be able to edit a lesson without errors', function( done ){
+
+    it('should show the lesson', function( done ){
         logger.info('starting testing preview lesson');
         browser.get('/');
         browser.sleep(1000);
         components.loginPage.load().login( components.conf.previewLesson.username, components.conf.previewLesson.password );
-        components.homepage.startLesson({'name' : 'test_continue_lesson'});
+        components.homepage.goToLessonIntro({'name' : 'test_continue_lesson'});
         components.lesson.intro.previewLesson();
         expect(element.all(by.css('.lesson-step-title')).count()).toBe(1);
 

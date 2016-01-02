@@ -36,6 +36,55 @@ db.users.insert([{
 
 db.lessons.insert([
     {
+        "_id" : ObjectId("56877718740b13ca11c55ce4"),
+        "age" : 8,
+        "createdAt" : "2016-01-02T07:07:04.746Z",
+        "language" : "english",
+        "lastUpdate" : 1451722332581,
+        "name" : "lesson_with_openQuestion_mediaExplanationOnly",
+        "public" : 1451718523451,
+        "steps" : [
+            {
+                "testMode" : "False",
+                "type" : "quiz",
+                "quizItems" : [
+                    "568762fd740b13ca11c55cc3",
+                    "5585a617dd163ea327bbfe69"
+                ]
+            }
+        ],
+        "tags" : [ ],
+        "userId" : ObjectId("54ba1391f59d198d09bfe58b"),
+        "views" : 27,
+        "description" : "jk",
+        "subject" : "english"
+    },
+    {
+        "_id" : ObjectId("56878694740b13ca11c55d2b"),
+        "age" : 8,
+        "createdAt" : "2016-01-02T08:13:08.546Z",
+        "language" : "english",
+        "lastUpdate" : 1451722418688,
+        "name" : "lesson_with_openQuestion_explanation_andRetry",
+        "public" : 1451722432318,
+        "steps" : [
+            {
+                "testMode" : "False",
+                "type" : "quiz",
+                "quizItems" : [
+                    "568762fd740b13ca11c55cc3",
+                    "5585a617dd163ea327bbfe69"
+                ],
+                "retryQuestion" : true,
+                "title" : "my_quiz"
+            }
+        ],
+        "subject" : "english",
+        "tags" : [ ],
+        "userId" : ObjectId("54ba1391f59d198d09bfe58b"),
+        "views" : 6
+    },
+    {
         "_id" : ObjectId("5686aefb740b13ca11c55caf"),
         "age" : 8,
         "createdAt" : "2016-01-01T16:53:15.395Z",
@@ -346,6 +395,23 @@ db.lessons.insert([
         }]);
 
 db.questions.insert([
+    {
+        "_id" : ObjectId("568762fd740b13ca11c55cc3"),
+        "age" : 8,
+        "explanation" : "",
+        "language" : "english",
+        "lastUpdate" : 1451718451046,
+        "question" : "open_with_media_explanation_only",
+        "subType" : "long",
+        "tags" : [ ],
+        "type" : "openQuestion",
+        "userId" : ObjectId("54ba1391f59d198d09bfe58b"),
+        "views" : 24,
+        "explanationMedia" : {
+            "type" : "image",
+            "imageUrl" : "http://icowebsolutions.com/wp-content/uploads/2015/11/Ninja-Shadow-2.png"
+        }
+    },
     {
         "_id" : ObjectId("5686ade8740b13ca11c55ca8"),
         "age" : 8,

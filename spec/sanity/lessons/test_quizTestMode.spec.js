@@ -15,8 +15,6 @@ describe('test mode vs. quiz mode', function(){
         browser.get('/');
         browser.sleep(1000);
         components.homepage.startLesson({'name' : 'my_test'});
-
-        components.lesson.intro.startLesson();
         expect(components.lesson.view.questions.trueFalse.getQuestion()).toBe('question_1');
         components.lesson.view.questions.trueFalse.answer({answer: false});
         expect(components.lesson.view.questions.trueFalse.getQuestion()).toBe('question_2');
@@ -27,7 +25,6 @@ describe('test mode vs. quiz mode', function(){
         browser.get('/');
         browser.sleep(1000);
         components.homepage.startLesson({'name' : 'my_practice'});
-        components.lesson.intro.startLesson();
         expect(components.lesson.view.questions.trueFalse.getQuestion()).toBe('question_1');
         components.lesson.view.questions.trueFalse.answer({answer: false});
         expect(components.lesson.view.questions.trueFalse.getQuestion()).toBe('question_1'); // should not go to next question

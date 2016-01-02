@@ -18,9 +18,11 @@ var components = require('../components');
 
 module.exports = function loginAndStartLesson( opts ){
     browser.get('/');
+    browser.sleep(1000);
     components.loginPage.load().login( opts.username, opts.password  );
     components.layout.goToUserSection();
     components.mySection.goToMyLessons();
     components.mySection.lessons.goToLesson( opts.lesson );
     components.lesson.intro.startLesson();
+
 };

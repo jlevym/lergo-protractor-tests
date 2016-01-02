@@ -23,6 +23,14 @@ Viewer.prototype.answer = function( opts ){
     this.getOption(opts).click();
 };
 
+Viewer.prototype.answerTrue = function(){
+    return this.answer({label:'true'});
+};
+
+Viewer.prototype.answerFalse = function(){
+    return this.answer({label:'false'});
+};
+
 /**
  *
  * @param opts

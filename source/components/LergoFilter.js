@@ -94,5 +94,13 @@ exports.setLanguage = function( value ){
 
 exports.reset =  $('[lergo-filter] [lergo-reset-filter]');
 
+exports.resetIfDisplayed = function(){
+    exports.reset.isDisplayed().then(function(displayed){
+        if ( displayed){
+            exports.reset.click();
+        }
+    });
+};
+
 
 

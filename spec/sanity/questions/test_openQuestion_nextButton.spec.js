@@ -16,10 +16,13 @@ describe('openQuestion with explanation', function () {
 
     beforeEach(function () { logger.info('running from ' + __filename); });
 
-    it('not go to next question until next is pressed but not for last question in lesson', function () {
+    beforeEach(function(){
         browser.get('/');
+        browser.sleep(1000);
+    });
+
+    it('should not go to next question until next is pressed but not for last question in lesson', function () {
         components.homepage.startLesson({name: 'lesson_with_openQuestion'});
-        components.lesson.intro.startLesson();
         components.questions.view.open.answer('this is my answer');
         components.questions.view.open.submit(); // send answer
         expect(components.questions.view.open.getExplanation()).toBe('this is explanation'); // verify explanation exists
@@ -35,5 +38,22 @@ describe('openQuestion with explanation', function () {
 
     });
 
+    it('should behave the same when has explanationMedia but not text explanation', function(){
+        components.homepage.startLesson({name: 'lesson_with_openQuestion_mediaExplanationOnly'});
+        components.questions.view.open.answer('this is my answer');
+        components.questions.view.open.submit();
+        components.questions.view.open.continue(); // test that continue is required
+        browser.sleep(1000);
+    });
 
+    describe('click on next in quiz with retry', function(){
+        it('should move to next question', function(){
+            components.homepage.startLesson({name: 'lesson_with_openQuestion_explanation_andRetry'});
+            components.questions.view.open.answer('this is my answer');
+            components.questions.view.open.submit();
+            components.questions.view.open.continue();
+            components.questions.view.trueFalse.answerTrue(); // test that moved to next question..
+            browser.sleep(1000);
+        });
+    });
 });

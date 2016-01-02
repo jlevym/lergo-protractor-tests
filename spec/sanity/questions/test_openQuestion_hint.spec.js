@@ -18,7 +18,6 @@ describe('openQuestion', function () {
     it('should display a hint', function () {
         browser.get('/');
         components.homepage.startLesson({name: 'lesson_with_openQuestion'});
-        components.lesson.intro.startLesson();
         components.questions.view.open.clickHint();
         expect(components.questions.view.open.getHintText()).toBe('this is hint');
     });

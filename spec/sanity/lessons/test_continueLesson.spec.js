@@ -37,8 +37,6 @@ describe('lergo continue lesson', function () {
         components.loginPage.load().login(components.conf.continueLesson.username, components.conf.continueLesson.password);
         // 2. search lesson on homepage
         components.homepage.startLesson({'name': 'test_continue_lesson'});
-
-        components.lesson.intro.startLesson();
         browser.sleep(1000);
 
         components.lesson.view.questions.trueFalse.answer({answer: true});

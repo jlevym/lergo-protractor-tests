@@ -22,7 +22,7 @@ describe('lesson intro', function () {
         browser.get('/');
         browser.sleep(1000);
 
-        components.homepage.startLesson({'name': 'lesson_with_edit_summary'});
+        components.homepage.goToLessonIntro({'name': 'lesson_with_edit_summary'});
 
         components.lesson.intro.descriptionReadMore(true);
         components.lesson.intro.getEditSummaryText().then(function(text){
@@ -33,7 +33,7 @@ describe('lesson intro', function () {
 
 
 
-        components.homepage.startLesson({'name' : 'Copy of : lesson_to_copy_1'});
+        components.homepage.goToLessonIntro({'name' : 'Copy of : lesson_to_copy_1'});
         components.lesson.intro.descriptionReadMore(true);
         components.lesson.intro.getEditSummaryText().then(function(text){
             expect(new RegExp('Lesson was originally copied from lesson lesson_to_copy_1 by lergotestadmin').test(text)).toBe(true,'original lesson should have credit');
