@@ -4,6 +4,7 @@ var logger = require('log4js').getLogger('LoginPage');
 
 exports.load = function(){
     browser.get('#!/public/session/login');
+    browser.sleep(1000);
     return this;
 };
 

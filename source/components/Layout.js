@@ -60,6 +60,9 @@ exports.goToUserSection = function( section ){
 };
 
 exports.NAV_ITEMS = {
+
+    LESSONS: 'lessons',
+
     MANAGE_ROLES: 'manage roles',
     MANAGE_USERS: 'manage users',
     MANAGE_LESSONS: 'manage lessons',
@@ -67,22 +70,24 @@ exports.NAV_ITEMS = {
 };
 
 
-
+exports.goToLessons = function(){
+    return exports.goToUserSection( exports.NAV_ITEMS.LESSONS );
+};
 
 exports.goToManageRoles = function(){
-    exports.goToUserSection( exports.NAV_ITEMS.MANAGE_ROLES );
+    return exports.goToUserSection( exports.NAV_ITEMS.MANAGE_ROLES );
 };
 
 exports.goToManageUsers = function(){
-    exports.goToUserSection( exports.NAV_ITEMS.MANAGE_USERS );
+    return exports.goToUserSection( exports.NAV_ITEMS.MANAGE_USERS );
 };
 
 exports.goToManageLessons = function(){
-    exports.goToUserSection( exports.NAV_ITEMS.MANAGE_LESSONS );
+    return exports.goToUserSection( exports.NAV_ITEMS.MANAGE_LESSONS );
 };
 
 exports.goToManageAbuseReports = function(){
-    exports.goToUserSection( exports.NAV_ITEMS.MANAGE_ABUSE_REPORTS );
+    return exports.goToUserSection( exports.NAV_ITEMS.MANAGE_ABUSE_REPORTS );
 };
 
 exports.footer = {

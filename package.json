@@ -1,5 +1,5 @@
 {
-  "name": "protractor-tests",
+  "name": "lergo-protractor-tests",
   "version": "0.0.1",
   "devDependencies": {
     "eyes.protractor": "0.0.38",

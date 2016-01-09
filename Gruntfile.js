@@ -1,5 +1,6 @@
 'use strict';
 
+var request = require('request');
 
 module.exports = function (grunt) {
     require('load-grunt-tasks')(grunt);
@@ -19,7 +20,12 @@ module.exports = function (grunt) {
             }
         },
         protractor_webdriver: {
-            start: {}
+            start: {},
+            keepAlive: {
+                options:{
+                    keepAlive:true
+                }
+            }
         },
         concurrent: {
             test: [
@@ -132,7 +138,7 @@ module.exports = function (grunt) {
             });
         });
     });
-    grunt.registerTask('applitools', ['protractor_webdriver', 'protractor:applitools']);
+    grunt.registerTask('applitools', ['protractor_webdriver:start', 'protractor:applitools']);
     grunt.registerTask('protract', function( suite, skipWebdriver ){
         skipWebdriver = skipWebdriver === 'true';
 
@@ -145,7 +151,7 @@ module.exports = function (grunt) {
         var tasks = [];
 
         if ( !skipWebdriver ){
-            tasks.push('protractor_webdriver');
+            tasks.push('protractor_webdriver:start');
         }
 
         tasks.push('protractor:sanity');
@@ -153,17 +159,28 @@ module.exports = function (grunt) {
         //grunt.task.run(['runBrowserstackLocal','protractor_webdriver', 'protractor:sanity']);
     });
 
-    grunt.registerTask('concurrentTest', ['protractor_webdriver', 'concurrent:test']);
+    grunt.registerTask('stop_webdriver', function(){
+        var done = this.async();
+        request({ url: 'http://localhost:4444/selenium-server/driver/?cmd=shutDownSeleniumServer' }, function( err, data){
+            console.log(err);
+            console.log(data);
+            done();
+        });
+    });
+
+    grunt.registerTask('concurrentTest', ['protractor_webdriver:keepAlive', 'concurrent:test','stop_webdriver']);
 
     grunt.registerTask('test', [
-        'protract:filter',
-        'protract:footer',
-        'protract:lessons',
-        'protract:profile',
-        'protract:questions',
-        'protract:reports',
-        'protract:roles',
-        'protract:users'
+        'protractor_webdriver:keepAlive',
+        'protract:filter:true',
+        'protract:footer:true',
+        'protract:lessons:true',
+        'protract:profile:true',
+        'protract:questions:true',
+        'protract:reports:true',
+        'protract:roles:true',
+        'protract:users:true',
+        'stop_webdriver'
     ]);
 
     grunt.registerTask('default', ['jshint', 'testMongoScript']); // just check code

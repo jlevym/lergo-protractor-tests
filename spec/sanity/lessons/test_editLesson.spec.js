@@ -25,7 +25,7 @@ describe('edit lesson', function(){
         components.mySection.lessons.createNewLesson();
         var editor = components.lesson.editor;
         editor.setDetails({'name' : 'test name', 'description' : 'test description', 'subject' : 'English','language':'Hebrew', 'age' : 10,'tags' : 'testTag'});
-        editor.clickDone();
+        editor.clickDoneAndGotIt();
         components.layout.logout();
         browser.sleep(5000).then(function(){ done(); });
     });

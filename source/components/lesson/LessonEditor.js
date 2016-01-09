@@ -1,6 +1,7 @@
 'use strict';
 
 var _ = require('lodash');
+exports.lessonIsSavedDialog = require('./LessonIsSavedDialog');
 
 exports.setDetails = function( details ){
     _.each(details, function(value,key){
@@ -43,6 +44,11 @@ exports.setTags = function( tag ){
 
 exports.clickDone = function(){
     return $click('done()').click();
+};
+
+exports.clickDoneAndGotIt = function(){
+    exports.clickDone();
+    return exports.lessonIsSavedDialog.clickOkGotIt();
 };
 
 exports.getQuizItemId = function(){
