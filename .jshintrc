@@ -34,6 +34,7 @@
         "beforeEach" : false,
         "afterEach" : false,
         "$label": false,
+        "filterByText" : false,
         "$label_gen": false,
         "$$": false,
         "$click": false,

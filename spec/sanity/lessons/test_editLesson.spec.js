@@ -2,7 +2,7 @@
 
 
 var logger = browser.getLogger('editLesson');
-var components = require('../../../source/components/index');
+var components = require('components');
 //var _ = require('lodash');
 
 describe('edit lesson', function(){

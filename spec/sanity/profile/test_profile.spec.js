@@ -2,7 +2,7 @@
 
 
 var logger = browser.getLogger('test_profile.spec');
-var components = require('../../../source/components');
+var components = require('components');
 //var _ = require('lodash');
 
 describe('profile page', function(){

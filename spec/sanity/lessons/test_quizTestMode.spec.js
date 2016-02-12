@@ -2,7 +2,7 @@
 
 
 var logger = browser.getLogger('quizTestMode');
-var components = require('../../../source/components/index');
+var components = require('components');
 //var _ = require('lodash');
 
 describe('test mode vs. quiz mode', function(){

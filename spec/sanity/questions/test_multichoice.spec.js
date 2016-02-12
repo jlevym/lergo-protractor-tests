@@ -1,7 +1,7 @@
 'use strict';
 
-var components = require('../../../source/components');
-var flows = require('../../../source/flows');
+var components = require('components');
+var flows = require('flows');
 var logger = browser.getLogger('test_multichoice.spec');
 
 describe('multichoice', function(){

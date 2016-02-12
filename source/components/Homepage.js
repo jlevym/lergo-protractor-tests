@@ -62,7 +62,7 @@ exports.startLesson = function(opts, skipIntro){
     });
 
     if ( skipIntro !== false ){
-        result = require('./lesson/LessonIntro').startLesson();
+        result = require('./lesson/intro').startLesson();
     }
 
 

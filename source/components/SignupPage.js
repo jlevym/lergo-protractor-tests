@@ -19,6 +19,7 @@ property_gen('fullName','signupForm.fullName');
 property_gen('name','signupForm.fullName');
 property_gen('password','signupForm.password');
 property_gen('confirmPassword','signupForm.passwordConfirm');
+property_gen('confirmEmail', 'signupForm.emailConfirm');
 
 Object.defineProperty(module.exports,'errorMessage', {
     get: function(){
@@ -43,9 +44,10 @@ Object.defineProperty(module.exports,'details', {
    set: function(opts){
         this.username = opts.username;
         this.password = opts.password;
+        this.confirmEmail = opts.confirmEmail;
         this.email = opts.email;
-        this.fullName = opts.fullName;
         this.confirmPassword = opts.confirmPassword;
+        this.fullName = opts.fullName;
    }
 });
 

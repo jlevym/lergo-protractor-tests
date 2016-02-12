@@ -2,7 +2,7 @@
 
 
 var logger = browser.getLogger('preview');
-var components = require('../../../source/components/index');
+var components = require('components');
 
 describe('preview lesson', function(){
 

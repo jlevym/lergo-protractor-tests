@@ -2,7 +2,7 @@
 
 
 var logger = browser.getLogger('delete_report');
-var components = require('../../../source/components');
+var components = require('components');
 var _ = require('lodash');
 
 describe('delete reports', function(){

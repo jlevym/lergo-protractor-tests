@@ -1,7 +1,7 @@
 'use strict';
 
-var logger = browser.getLogger('example_spec');
-var components = require('../../../source/components/index');
+var logger = browser.getLogger('continueLesson.spec');
+var components = require('components');
 var _ = require('lodash');
 //
 describe('lergo continue lesson', function () {

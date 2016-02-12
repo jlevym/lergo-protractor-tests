@@ -1,7 +1,7 @@
 'use strict';
 
 var logger = browser.getLogger('preview');
-var components = require('../../../source/components');
+var components = require('components');
 
 describe('lesson intro', function () {
 

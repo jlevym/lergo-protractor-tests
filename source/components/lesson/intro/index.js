@@ -39,5 +39,8 @@ exports.descriptionReadMore = function(desired){
             $('.read-more').click();
         }
     });
-
 };
+
+
+exports.invite = require('./LessonIntroInvite');
+exports.classInvite = require('./ClassInvite');

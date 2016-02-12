@@ -1,6 +1,6 @@
 'use strict';
 
-var components = require('../../../source/components');
+var components = require('components');
 var logger = browser.getLogger('test_roles.spec');
 
 describe('roles', function(){

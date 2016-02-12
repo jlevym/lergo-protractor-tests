@@ -15,6 +15,7 @@ describe('user signup', function(){
             password: 'lergotest',
             confirmPassword: 'lergotest',
             email : 'lergotest123456@yopmail.com',
+            confirmEmail: 'lergotest123456@yopmail.com',
             fullName: 'lergotest'
         };
 
@@ -22,6 +23,6 @@ describe('user signup', function(){
 
         expect(components.signupPage.errorMessage).toContain('already exists'.toUpperCase());
 
-        browser.sleep(1000).then(done);
+        browser.sleep(4000).then(done);
     });
 });

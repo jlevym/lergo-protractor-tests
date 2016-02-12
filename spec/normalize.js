@@ -1,16 +1,15 @@
 'use strict';
 
 process.env.NODE_PATH = 'source';
-
 require('module').Module._initPaths();
 
+require('./my_reporter');
 
 //var logger = require('log4js').getLogger('normalize');
 var chalk = require('chalk');
 chalk.enabled = true;
 
 beforeEach(function(){
-    console.log( chalk.bold.blue('currently running :: ' +   jasmine.getEnv().currentSpec.getFullName()));
 
     browser.driver.manage().window().maximize(); // we will test smaller resolutions in the future
 

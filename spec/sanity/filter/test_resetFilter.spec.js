@@ -1,6 +1,6 @@
 'use strict';
 
-var components = require('../../../source/components');
+var components = require('components');
 var logger = browser.getLogger('filter#test_resetFilter');
 
 describe('filter reset', function(){

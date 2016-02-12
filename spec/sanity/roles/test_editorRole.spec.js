@@ -23,7 +23,7 @@
 * @type {exports}
 */
 
-var components = require('../../../source/components');
+var components = require('components');
 var logger = browser.getLogger('test_roles.spec');
 //var logger = require('log4js').getLogger('test_roles.spec');
 

@@ -9,7 +9,7 @@
 
 
 var logger = browser.getLogger('test_openQuestion_nextButton.spec.js');
-var components = require('../../../source/components');
+var components = require('components');
 
 
 describe('explanation media display rules', function () {

@@ -9,7 +9,7 @@
 
 
 var logger = browser.getLogger('test_doneRedirect.spec.js');
-var components = require('../../../source/components');
+var components = require('components');
 
 
 describe('update lesson', function () {

@@ -8,7 +8,7 @@
 
 
 var logger = browser.getLogger('test_openQuestion_hint.spec.js');
-var components = require('../../../source/components');
+var components = require('components');
 
 
 describe('openQuestion', function () {

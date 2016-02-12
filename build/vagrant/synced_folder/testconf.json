@@ -59,5 +59,10 @@
         "showOpenQuestionQuizMode" : {
             "name" : "explanation_media_display_openQuestionQuizMode"
         }
+    },
+    "classInvite" : {
+        "username" : "lergotest",
+        "password" : "lergotest",
+        "lesson" : "my_practice"
     }
 }
