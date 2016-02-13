@@ -58,7 +58,8 @@ if [ ! -f /usr/bin/node ];then
     . .nvm/nvm.sh &> /dev/null || source .nvm/nvm.sh &> /dev/null
 
     print "installing node"
-    echo "installing node 0.10.35" &&  nvm install 0.10.35  &> /dev/null && npm --version &> /dev/null
+    # todo: take the version from nvmrc
+    echo "installing node 4.2.1" &&  nvm install 4.2.1  &> /dev/null && npm --version &> /dev/null
 
     print "making node available with sudo"
     ## make node available from sudo
