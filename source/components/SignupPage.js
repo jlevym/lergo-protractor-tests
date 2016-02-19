@@ -13,13 +13,13 @@ var property_gen = function( name , model ){
     });
 };
 
-property_gen('username','signupForm.username');
-property_gen('email','signupForm.email');
-property_gen('fullName','signupForm.fullName');
-property_gen('name','signupForm.fullName');
-property_gen('password','signupForm.password');
-property_gen('confirmPassword','signupForm.passwordConfirm');
-property_gen('confirmEmail', 'signupForm.emailConfirm');
+property_gen('username','username');
+property_gen('email','email');
+property_gen('fullName','fullName');
+property_gen('name','fullName');
+property_gen('password','password');
+property_gen('confirmPassword','passwordConfirm');
+property_gen('confirmEmail', 'emailConfirm');
 
 Object.defineProperty(module.exports,'errorMessage', {
     get: function(){
