@@ -23,7 +23,7 @@ export LERGO_ME_CONF="/vagrant/config.json"
 #fi
 
 print "apt-get update finished"
-sudo apt-get -qq update
+sudo apt-get -qq update -y # moved it here after 'apt-get install git failed..'
 
 
 DEV_ENVIRONMENT="/vagrant/dev/environment.sh"
@@ -131,6 +131,8 @@ fi
 
 print "installing chrome" && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - && sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
 
+
+sudo apt-get -qq update -y # another update
 
 print "running apt-get install on $APT_GET_INSTALL"
 sudo apt-get -qq install --fix-missing  -y g++ libgconf2-4 libnss3-1d libxss1 mongodb openjdk-7-jre-headless nginx google-chrome-stable xvfb x11-xkb-utils xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic
