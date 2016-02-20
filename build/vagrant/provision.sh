@@ -22,7 +22,8 @@ export LERGO_ME_CONF="/vagrant/config.json"
 #    echo "export LERGO_ME_CONF=/vagrant/dev/me.json" >> ~/.profile
 #fi
 
-
+print "apt-get update finished"
+sudo apt-get -qq update
 
 
 DEV_ENVIRONMENT="/vagrant/dev/environment.sh"
@@ -132,7 +133,7 @@ print "installing chrome" && wget -q -O - https://dl-ssl.google.com/linux/linux_
 
 
 print "running apt-get install on $APT_GET_INSTALL"
-( sudo apt-get -qq update && print "apt-get update finished" &&  sudo apt-get -qq install --fix-missing  -y g++ libgconf2-4 libnss3-1d libxss1 mongodb openjdk-7-jre-headless nginx google-chrome-stable xvfb x11-xkb-utils xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic && print "apt get install finished" ) &
+( sudo apt-get -qq install --fix-missing  -y g++ libgconf2-4 libnss3-1d libxss1 mongodb openjdk-7-jre-headless nginx google-chrome-stable xvfb x11-xkb-utils xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic && print "apt get install finished" ) &
 print "running npm installs"
 ( sudo npm -s install -g grunt-cli phantomjs  && print "grunt-cli installed" && sudo npm -s cache clean && print "npm cache is clean" && npm -s install && print "npm install finished" ) &
 
