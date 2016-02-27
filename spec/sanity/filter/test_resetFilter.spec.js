@@ -16,10 +16,11 @@ describe('filter reset', function(){
         browser.sleep(1000).then(done);
     });
 
-    it('it remove all values except for language and refresh page', function( done ){
+    it('it remove all values and refresh page', function( done ){
         components.homepage.route();
 
         var language = components.filter.FILTER_LANGUAGES.RUSSIAN;
+        var defaultLanguage = components.filter.FILTER_LANGUAGES.ENGLISH;
         components.filter.setLanguage( language );
 
         components.filter.setAge({ min : 6, max : 20 } );
@@ -30,12 +31,12 @@ describe('filter reset', function(){
         components.filter.reset.click();
         expect(components.filter.filterFields.age.min.getAttribute('value')).toBe('');
         expect(components.filter.filterFields.age.max.getAttribute('value')).toBe('');
-        expect(components.filter.filterFields.language.$('option:checked').getText()).toBe(language);
+        expect(components.filter.filterFields.language.$('option:checked').getText()).toBe(defaultLanguage);
 
 
         // now lets see it refreshes the page by counting the lessons
         components.filter.setAge({ min : 90, max : 100 } ); // no lesson should be in this age.
-        components.filter.setLanguage( components.filter.FILTER_LANGUAGES.ENGLISH );
+        //components.filter.setLanguage(  );
 
         var lessonsCount = 0; // some initialization
         components.homepage.getLessons().count().then(function(c){ // lets keep the value just in case I was wrong
