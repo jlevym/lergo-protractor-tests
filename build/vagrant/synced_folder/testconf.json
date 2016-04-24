@@ -60,6 +60,11 @@
             "name" : "explanation_media_display_openQuestionQuizMode"
         }
     },
+    "previewQuestion" : {
+        "username" : "lergotest",
+        "password" : "lergotest",
+        "question" : "question_5"
+    },
     "classInvite" : {
         "username" : "lergotest",
         "password" : "lergotest",

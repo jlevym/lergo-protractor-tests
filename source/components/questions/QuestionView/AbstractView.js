@@ -3,6 +3,11 @@
 function Viewer(){}
 
 
+// available in preview question
+Viewer.prototype.getUserLink = function(){
+    return $('[tooltip="by"] a');
+};
+
 Viewer.prototype.getQuestion = function(){
     return element(by.css('.question')).getText();
 };
