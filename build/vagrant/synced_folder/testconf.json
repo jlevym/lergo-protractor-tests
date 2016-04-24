@@ -44,7 +44,9 @@
         "adminPassword": "lergotestadmin",
         "username": "simple_user",
         "editorUser": "lergotesteditor",
-        "editorPassword": "lergotesteditor"
+        "editorPassword": "lergotesteditor",
+        "kitchenSinkUser" : "lergotestkitchensink",
+        "kitchenSinkPassword" : "lergotestkitchensink"
     },
     "explanationMediaDisplay" : {
         "testMode" : {

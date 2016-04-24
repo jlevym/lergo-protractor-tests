@@ -1,6 +1,7 @@
 'use strict';
 
 var request = require('request');
+var util = require('util');
 
 module.exports = function (grunt) {
     require('load-grunt-tasks')(grunt);
@@ -89,6 +90,46 @@ module.exports = function (grunt) {
             done();
         }
 
+    });
+
+    function copyDatabase( copyFrom, copyTo ){
+        var execSync = require('child_process').execSync;
+        var command = util.format('mongo --eval \'db.copyDatabase("%s","%s","localhost");\'',copyFrom, copyTo);
+        execSync(command);
+
+    }
+
+    function removeDatabase( db ){
+        var execSync = require('child_process').execSync;
+        var command = util.format('mongo %s --eval \'db.dropDatabase();\'', db );
+        execSync(command);
+    }
+
+    function createNewDatabase( db ){
+        var command = util.format('mongo  %s  < %s ', db, require('path').join(__dirname, 'build/vagrant/synced_folder/test_data.js') );
+        var execSync = require('child_process').execSync;
+        execSync(command);
+    }
+
+    // will move 'test-lergo-data' to 'backup-test-lergo-data' and create a new db with test-lergo-data
+    //http://stackoverflow.com/a/11661591/1068746 ==> how to rename in mongo
+    grunt.registerTask('resetMongoData', function(){
+        var oldDbName = 'test-lergo-data';
+        var newDbName = 'backup-test-lergo-data';
+
+        copyDatabase(oldDbName, newDbName);
+        removeDatabase(oldDbName);
+        createNewDatabase(oldDbName);
+    });
+
+    // will look for 'backup-test-lergo-data' and rename it to be 'test-lergo-data'
+    grunt.registerTask('recoverBackup', function(){
+        var oldDbName = 'test-lergo-data';
+        var newDbName = 'backup-test-lergo-data';
+
+        removeDatabase(oldDbName);
+        copyDatabase(newDbName, oldDbName);
+        removeDatabase(newDbName);
     });
 
     grunt.registerTask('testMongoScript', function () {

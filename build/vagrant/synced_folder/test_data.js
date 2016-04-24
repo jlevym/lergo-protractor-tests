@@ -31,6 +31,15 @@ db.users.insert([{
     "validated": true,
     "roles" : ["56129324428b4bc12c76198a"],
     "isAdmin": false
+}, {
+    "_id": ObjectId("54ba1391f59d198d09bfe58f"),
+    "username": "lergotestkitchensink",
+    "email": "lergotestkitchensink@yopmail.com",
+    "password": "ad23f4aaddb75b8a9c046a6c777a8aba0c054415",
+    "fullName": "lergotestkitchensink",
+    "validated": true,
+    "roles" : ["56129324428b4bc12c76198b"],
+    "isAdmin": false
 }]);
 
 
@@ -688,5 +697,15 @@ db.roles.insert([
             "faqs.userCanEdit"
         ],
         "lastUpdate" : 1444057912947
-    }]);
+    },
+    {
+        "name" : "kitchen_sink_role",
+        "createdAt" : "2015-10-05T15:11:32.051Z",
+        "_id" : ObjectId("56129324428b4bc12c76198b"),
+        "permissions" : [
+            "misc.userCanSeeKitchenSink",
+        ],
+        "lastUpdate" : 1444057912947
+    }
+]);
 

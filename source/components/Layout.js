@@ -92,7 +92,8 @@ exports.goToManageAbuseReports = function(){
 
 exports.footer = {
     FOOTER_LINKS: {
-        ABOUT_LERGO: 'about lergo'
+        ABOUT_LERGO: 'about lergo',
+        KITCHEN_SINK: 'kitchen sink'
     },
     links : {
         /**
