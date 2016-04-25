@@ -23,7 +23,7 @@ describe('kitchen sink role', function(){
 
 
         it('should see kitchen sink link', function (done) {
-            components.layout.footer.goTo( components.layout.footer.FOOTER_LINKS.KITCHEN_SINK ); // no need to assert anything.
+            components.layout.footer.links.goTo( components.layout.footer.FOOTER_LINKS.KITCHEN_SINK ); // no need to assert anything.
             browser.sleep(100).then(done);
 
         });

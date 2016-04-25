@@ -30,7 +30,14 @@ beforeEach(function(){
 
     };
 
-    this.addMatchers(toBePresent);
+    // guy - it seems that there is something weird between running protractor from grunt and from cli.
+    // supporting both scenarios fixes it.
+    if ( typeof(jasmine.addMatchers) === 'function' ){
+        jasmine.addMatchers(toBePresent);
+    }else if ( typeof( this.addMatchers) === 'function' ){
+        this.addMatchers(toBePresent);
+    }
+
 
 });
 

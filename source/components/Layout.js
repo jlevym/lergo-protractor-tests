@@ -101,7 +101,7 @@ exports.footer = {
          * @param name
          */
         goTo: function( name ){
-            logger.debug('footer links clicking on [', name , ']');
+            logger.debug('footer links clicking on [' +  name  +  ']');
             return element.all(by.css('.footer-links li a')).filter(function(elem){
                 return  elem.getText().then(function( text ){
                     return text.toLowerCase().trim() === name.trim();
