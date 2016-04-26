@@ -10,6 +10,10 @@ exports.find = function( opts ){
     }
 };
 
+exports.countUsers = function(){
+    return $$('tr[ng-repeat^="user in users"]').count();
+};
+
 exports.goToUser = function(opts){
     exports.find(opts).then(function(users){
         expect(users.length).toBe(1,'user ' + opts.name + ' must exist only one');

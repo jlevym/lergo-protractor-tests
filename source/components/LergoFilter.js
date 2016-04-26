@@ -23,6 +23,7 @@ exports.filterFields = {
         min :  $m('ageFilter.min'),
         max: $m('ageFilter.max')
     },
+    role: $m('role'),
     language: $m('filterLanguage'),
     subject: $m('model.subject'),
     text: $m('model.searchText')
@@ -33,6 +34,12 @@ function setFieldValue( value , field ){
     if ( value ){
         field.sendKeys( value );
     }
+}
+
+function setTypeaheadValue( value, field ){
+    setFieldValue(value, field);
+    browser.actions().sendKeys(protractor.Key.ENTER).perform();
+
 }
 
 function setSelectValue( value, field ){
@@ -90,6 +97,10 @@ exports.setText = function(value){
 
 exports.setLanguage = function( value ){
     setSelectValue(value, exports.filterFields.language);
+};
+
+exports.setRole = function(value){
+    setTypeaheadValue(value, exports.filterFields.role);
 };
 
 exports.reset =  $('[lergo-filter] [lergo-reset-filter]');
