@@ -11,12 +11,12 @@ chalk.enabled = true;
 
 
 // todo: consider using clear for local storage and session storage for all tests..
-beforeEach(function(){
-   browser.executeScript(function(){
-       localStorage.clear();
-       sessionStorage.clear();
-   });
-});
+//beforeEach(function(){
+//   browser.executeScript(function(){
+//       localStorage.clear();
+//       sessionStorage.clear();
+//   });
+//});
 
 beforeEach(function(){
 
