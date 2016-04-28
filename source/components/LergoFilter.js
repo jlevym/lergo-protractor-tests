@@ -20,12 +20,12 @@ exports.FILTER_SUBJECTS = {
 
 exports.filterFields = {
     age: {
-        min :  $m('ageFilter.min'),
-        max: $m('ageFilter.max')
+        min :  $('[min="1"][ng-model="ageFilter.min"]'),
+        max: $('[min="1"][ng-model="ageFilter.max"]')
     },
     role: $m('role'),
-    language: $m('filterLanguage'),
-    subject: $m('model.subject'),
+    language: $('[ng-options$="languages"][ng-model="filterLanguage"]'),
+    subject: $('[ng-options$="subjects"][ng-model="model.subject"]'),
     text: $m('model.searchText')
 };
 
