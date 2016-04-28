@@ -28,6 +28,7 @@ describe('manage users', function(){
             components.layout.goToManageUsers();
             components.filter.setRole('kitchen_sink_role');
             expect(components.manage.users.index.countUsers()).toEqual(1);
+            components.filter.resetIfDisplayed();
             browser.sleep(1000).then(done);
         });
 

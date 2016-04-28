@@ -9,6 +9,15 @@ require('./my_reporter');
 var chalk = require('chalk');
 chalk.enabled = true;
 
+
+// todo: consider using clear for local storage and session storage for all tests..
+beforeEach(function(){
+   browser.executeScript(function(){
+       localStorage.clear();
+       sessionStorage.clear();
+   });
+});
+
 beforeEach(function(){
 
     browser.driver.manage().window().maximize(); // we will test smaller resolutions in the future
