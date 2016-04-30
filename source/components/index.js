@@ -13,6 +13,11 @@ global.selectOptionByText = function(selectElement, optionText) {
     return selectElement.element(by.cssContainingText('option',optionText)).click();
 };
 
+global.selectOptionByValue = function(selectElement, valueText){
+    selectElement.click();
+    return selectElement.$('[value="' + valueText + '"]').click();
+};
+
 /**
  *
  * @param inputs the return value of element.all to get all checkbox inputs
@@ -25,14 +30,27 @@ global.checkboxesByLabel = function( inputs, values ){
             var label = text.toLowerCase().trim();
             if ( values.hasOwnProperty(label) ){
                 var checked = values[label];
-                item.element(by.css('input')).isSelected().then(function( selected ){
-                    if ( selected !== checked ){
-                        item.element(by.css('input')).click();
-                    }
-                });
+                setCheckboxValue( item.$('input'), checked );
             }
         });
     });
+};
+
+global.setCheckboxValue = function( checkbox, value ){
+    checkbox.isSelected().then( function(selected) {
+            if ( selected !== value ){
+                checkbox.click();
+            }
+    } );
+};
+
+//http://stackoverflow.com/a/25508541/1068746
+global.countSelectOptions = function(selectElement){
+    return selectElement.$$('option').count();
+};
+
+global.getSelectValue = function(selectElement){
+    return selectElement.$('option:checked').getAttribute('value');
 };
 
 logger.info('adding locator text');

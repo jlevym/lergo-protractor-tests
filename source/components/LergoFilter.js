@@ -1,13 +1,14 @@
 'use strict';
 
+var logger = browser.getLogger('LergoFilter.js');
 
 /**
  *
  * @typedef {string} FILTER_LANGUAGE
  */
 exports.FILTER_LANGUAGES = {
-    ENGLISH: 'English',
-    RUSSIAN: 'Russian'
+    ENGLISH: 'english',
+    RUSSIAN: 'russian'
 };
 
 /**
@@ -15,18 +16,24 @@ exports.FILTER_LANGUAGES = {
  * @typedef {string} FILTER_SUBJECTS
  */
 exports.FILTER_SUBJECTS = {
-    MATH: 'Math'
+    MATH: 'math'
 };
 
 exports.filterFields = {
     age: {
-        min :  $('[min="1"][ng-model="ageFilter.min"]'),
-        max: $('[min="1"][ng-model="ageFilter.max"]')
+        min :  $('[lergo-filter] [min="1"][ng-model="ageFilter.min"]'),
+        max: $('[lergo-filter] [min="1"][ng-model="ageFilter.max"]')
     },
-    role: $m('role'),
-    language: $('[ng-options$="languages"][ng-model="filterLanguage"]'),
-    subject: $('[ng-options$="subjects"][ng-model="model.subject"]'),
-    text: $m('model.searchText')
+    limitedAge:{
+        min: $('[lergo-filter] .limited-age [ng-model="ageFilter.min"]'),
+        max: $('[lergo-filter] .limited-age [ng-model="ageFilter.max"]')
+    },
+    role: $('[lergo-filter] [ng-model="role"]'),
+    language: $('[lergo-filter] [ng-options*="languages track by"][ng-model="filterLanguage"]'),
+    subject: $('[lergo-filter] [ng-options*="subjects track by"][ng-model="model.subject"]'),
+    text: $('[lergo-filter] [ng-model="model.searchText"]'),
+    limitedSubject: $('[lergo-filter] [ng-options*="limitedSubjects"]'),
+    limitedLanguage: $('[lergo-filter] [ng-options*="limitedLanguages"]')
 };
 
 function setFieldValue( value , field ){
@@ -43,8 +50,14 @@ function setTypeaheadValue( value, field ){
 }
 
 function setSelectValue( value, field ){
-    field.element(by.cssContainingText('option', value )).click();
+    selectOptionByValue(field, value);
 }
+
+
+function getFieldValue( field ){
+    return field.getAttribute('value');
+}
+
 
 /**
  * @typedef {object} WebElement
@@ -73,6 +86,19 @@ function setMinMaxValues( value, field ){
     setFieldValue( value.max, field.max );
 
 }
+
+function getMinMaxValues( field ){
+    var result = {};
+    logger.info('getting min max values', field);
+    return getFieldValue(field.min).then(function(value){
+        result.min = value;
+        return getFieldValue(field.max).then(function(value){
+            result.max = value;
+            return result;
+        });
+    });
+}
+
 /**
  *
  * @param {object} value
@@ -83,12 +109,28 @@ exports.setAge = function( value ){
      setMinMaxValues( value, exports.filterFields.age  );
 };
 
+exports.getAge = function(){
+    return getMinMaxValues( exports.filterFields.age );
+};
+
+exports.setLimitedAge = function(value){
+    setMinMaxValues(value, exports.filterFields.limitedAge);
+};
+
+exports.getLimitedAge = function(){
+    return getMinMaxValues(exports.filterFields.limitedAge);
+};
+
 /**
  *
  * @param {FILTER_SUBJECTS} value
  */
 exports.setSubject = function( value ){
     setSelectValue( value, exports.filterFields.subject );
+};
+
+exports.getSubject = function(){
+    return getSelectValue(exports.filterFields.subject);
 };
 
 exports.setText = function(value){
@@ -98,6 +140,11 @@ exports.setText = function(value){
 exports.setLanguage = function( value ){
     setSelectValue(value, exports.filterFields.language);
 };
+
+exports.getLanguage = function(){
+    return getSelectValue(exports.filterFields.language);
+};
+
 
 exports.setRole = function(value){
     setTypeaheadValue(value, exports.filterFields.role);

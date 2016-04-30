@@ -1,4 +1,18 @@
 {
+    "availableUsers" : {
+        "editor" : {
+            "username" : "lergotesteditor",
+            "password" : "lergotesteditor"
+        },
+        "admin" : {
+            "username" : "lergotestadmin",
+            "password" : "lergotestadmin"
+        },
+        "limitedEditor" : {
+            "username" : "lergotesteditorlimited",
+            "password" : "lergotesteditorlimited"
+        }
+    },
     "continueLesson": {
         "username": "lergotest",
         "password": "lergotest"

@@ -13,8 +13,17 @@ exports.Modes = {
 
 class InvitePanel{
 
+    constructor( mode ){
+        this.mode = mode;
+    }
+
     setName( name ){
-        return $('.invite .active [ng-model="invite.invitee.name"]').clear().sendKeys(name);
+        if ( this.mode === exports.Modes.CLASS ){
+            return $('.invite .active [ng-model="invitationName"]').clear().sendKeys(name);
+        }else{ // student
+            return $('.invite .active [ng-model="invite.invitee.name"]').clear().sendKeys(name);
+
+        }
     }
 
     submit(){
@@ -60,5 +69,5 @@ exports.open = () => {
     });
 };
 
-exports.class = new InvitePanel();
-exports.student = new InvitePanel();
+exports.class = new InvitePanel(exports.Modes.CLASS);
+exports.student = new InvitePanel(exports.Modes.STUDENT);

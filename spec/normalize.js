@@ -20,31 +20,56 @@ chalk.enabled = true;
 
 beforeEach(function(){
 
+    if (jasmine.version) { //the case for version 2.0.0
+        console.log('jasmine-version:' + jasmine.version);
+    }
+    else { //the case for version 1.3
+        console.log('jasmine-version:' + jasmine.getEnv().versionString());
+    }
+
     browser.driver.manage().window().maximize(); // we will test smaller resolutions in the future
 
     // define new matchers
 
-    var toBePresent = {
+    var customMatchers = {
         toBePresent: function (msg) {
             var me  = this;
+            console.log(this);
             return this.actual.isPresent().then(function () {
-                return true;
+                if ( me.isNot ){
+                    throw new Error('element is present');
+                }else{
+                    return true;
+                }
             }, function (e) {
-                me.message = function(){
-                    return msg || ( 'element not present. error is :: ' + e.toString() );
-                };
-                return false;
+                if ( me.isNot ){
+                    return false;
+                }else {
+                    throw new Error(msg || ( 'element not present. error is :: ' + e.toString() ));
+                }
+
+            });
+        },
+
+        toBeDisplayed: function(msg){
+            return this.actual.isDisplayed().then(function(){
+                return true;
+            }, function(e){
+                throw new Error(msg || ('element not displayed. error is :: ' + e.toString() ));
             });
         }
-
     };
+
+    function addMatchers( jas ){
+        jas.addMatchers(customMatchers);
+    }
 
     // guy - it seems that there is something weird between running protractor from grunt and from cli.
     // supporting both scenarios fixes it.
     if ( typeof(jasmine.addMatchers) === 'function' ){
-        jasmine.addMatchers(toBePresent);
+        addMatchers(jasmine);
     }else if ( typeof( this.addMatchers) === 'function' ){
-        this.addMatchers(toBePresent);
+        addMatchers(this);
     }
 
 

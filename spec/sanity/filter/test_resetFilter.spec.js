@@ -26,12 +26,12 @@ describe('filter reset', function(){
         components.filter.setAge({ min : 6, max : 20 } );
         expect(components.filter.filterFields.age.min.getAttribute('value')).toBe('6');
         expect(components.filter.filterFields.age.max.getAttribute('value')).toBe('20');
-        expect(components.filter.filterFields.language.$('option:checked').getText()).toBe(language);
+        expect(components.filter.filterFields.language.$('option:checked').getAttribute('value')).toBe(language);
 
         components.filter.reset.click();
         expect(components.filter.filterFields.age.min.getAttribute('value')).toBe('');
         expect(components.filter.filterFields.age.max.getAttribute('value')).toBe('');
-        expect(components.filter.filterFields.language.$('option:checked').getText()).toBe(defaultLanguage);
+        expect(components.filter.filterFields.language.$('option:checked').getAttribute('value')).toBe(defaultLanguage);
 
 
         // now lets see it refreshes the page by counting the lessons

@@ -21,13 +21,13 @@ describe('delete reports', function(){
         browser.get('/');
         //browser.sleep(1000);
         components.loginPage.load().login( components.conf.deleteReport.username, components.conf.deleteReport.password );
-        components.homepage.startLesson({'name' : 'lesson_with_edit_summary'});
-        components.lesson.view.questions.trueFalse.answer({ answer : true });
-        components.lesson.view.questions.trueFalse.answer({ answer : true });
-        components.lesson.view.nextStep();
-
-        components.lesson.view.showReport(); // just make sure we have a report..
-
+        //components.homepage.startLesson({'name' : 'lesson_with_edit_summary'});
+        //components.lesson.view.questions.trueFalse.answer({ answer : true });
+        //components.lesson.view.questions.trueFalse.answer({ answer : true });
+        //components.lesson.view.nextStep();
+        //
+        //components.lesson.view.showReport(); // just make sure we have a report..
+        //
         components.layout.goToMySection();
         components.mySection.goToMyReports();
 
@@ -41,7 +41,7 @@ describe('delete reports', function(){
 
         components.mySection.reports.selectFirstReport();
         browser.sleep(3000);
-
+        //
         components.mySection.reports.getTableAction( components.mySection.reports.TABLE_ACTIONS.DELETE_REPORT).click();
         browser.switchTo().alert().accept();
         browser.sleep(3000);

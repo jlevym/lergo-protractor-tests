@@ -17,7 +17,7 @@ describe('lesson intro', function () {
      * it displayed that edit summary in intro contains the correct info
      */
 
-    it('should give creadit to original lesson and question', function (done) {
+    it('should give credit to original lesson and question', function (done) {
         logger.info('starting testing preview lesson');
         browser.get('/');
         browser.sleep(1000);
@@ -43,6 +43,15 @@ describe('lesson intro', function () {
         browser.sleep(1000).then(done);
 
 
+    });
+
+    describe('limited editor', function(){
+        it('should not be able to edit lesson if public', function(){
+            components.loginPage.load().login(components.conf.availableUsers.limitedEditor);
+            components.homepage.goToLessonIntro({name:'test_continue_lesson'});
+            expect(components.lesson.intro.getEditButton().isDisplayed()).toBeFalsy('limited editor should NOT be able to edit public lesson');
+            components.layout.logout();
+        });
     });
 
 

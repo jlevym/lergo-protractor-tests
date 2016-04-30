@@ -47,6 +47,7 @@ exports.goToLesson = function (opts) {
     if ( !!opts.name ){
         return goToLessonByName( opts.name );
     }
+
 };
 
 /**

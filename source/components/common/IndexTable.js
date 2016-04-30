@@ -1,18 +1,17 @@
 'use strict';
 
-var logger = require('log4js').getLogger('IndexTable');
+var logger = browser.getLogger('IndexTable');
 var _ = require('lodash');
 
 exports.getTableAction = function( action, required ){
     logger.info('getting table action');
-    var root = $('#content .tab-content table thead tr:first-child  td:first-child');
-    var caret = root.$('.caret' );
-    var list = root.$('ul' );
-    var listItems = root.$$('ul li' );
+    var caret = exports.getCaretElement();
+    var list = exports.getRootElement().$('ul' );
+    var listItems = exports.getRootElement().$$('ul li' );
 
     list.isDisplayed().then(
         function(result){
-            logger.info('is table actions present', result);
+            logger.info('is table actions present' +  result);
             if ( !result ){
                 logger.info('clicking table actions menu to open it');
                 caret.click();
@@ -22,8 +21,17 @@ exports.getTableAction = function( action, required ){
 
         });
     return $label(listItems, action, required);
+};
+
+// alias - better code with "indexPage.table.getAction"..
+exports.getAction = exports.getTableAction;
 
 
+exports.getRootElement = function(){ return $('#content .tab-content table thead tr:first-child  td:first-child');};
+
+exports.getCaretElement = function(){
+    logger.info('getting caret element of table');
+    return exports.getRootElement().$('.caret');
 };
 
 // generates a function to be used in a component

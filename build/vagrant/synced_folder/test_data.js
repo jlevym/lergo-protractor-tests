@@ -32,6 +32,15 @@ db.users.insert([{
     "roles" : ["56129324428b4bc12c76198a"],
     "isAdmin": false
 }, {
+    "_id": ObjectId("54ba1391f59d198d09bfe59a"),
+    "username": "lergotesteditorlimited",
+    "email": "lergotesteditorlimited@yopmail.com",
+    "password": "558b7c028bedae9ceeadf41a4a03b5d332ef6d93",
+    "fullName": "lergotesteditorlimited",
+    "validated": true,
+    "roles" : ["56129324428b4bc12c76198c"],
+    "isAdmin": false
+}, {
     "_id": ObjectId("54ba1391f59d198d09bfe58f"),
     "username": "lergotestkitchensink",
     "email": "lergotestkitchensink@yopmail.com",
@@ -665,6 +674,33 @@ db.questions.insert([
     } ]);
 
 db.roles.insert([
+    {
+        "_id" : ObjectId("56129324428b4bc12c76198c"),
+        "name" : "limited_editor_role",
+        "createdAt" : "2015-10-05T15:11:32.051Z",
+        "permissions" : [
+            "lessons.userCanEdit",
+            "lessons.userCanCopy",
+            "lessons.userCanSeePrivateLessons",
+            "lessons.userCanPreview",
+            "questions.userCanEdit",
+            "questions.userCanCopy",
+            "abuseReports.userCanRead",
+            "faqs.userCanCreate",
+            "faqs.userCanEdit"
+        ],
+        "lastUpdate" : 1461874285695,
+        "limitations" : {
+            "manageSubject" : [ 'english' ],
+            "manageLanguages" : [ 'english' ],
+
+            "manageAge" : {
+                "min" : 5,
+                "max" : 10
+            },
+            "editOnlyUnpublishedContent" : true
+        }
+    },
 
     {
         "name" : "role_to_assign",
@@ -688,6 +724,7 @@ db.roles.insert([
             "lessons.userCanEdit",
             "lessons.userCanCopy",
             "lessons.userCanPublish",
+            "lessons.userCanUnpublish",
             "lessons.userCanSeePrivateLessons",
             "lessons.userCanPreview",
             "questions.userCanEdit",

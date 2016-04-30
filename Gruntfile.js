@@ -111,15 +111,18 @@ module.exports = function (grunt) {
         execSync(command);
     }
 
+    grunt.registerTask('backupDatabase', function(){
+        var oldName = 'test-lergo-data';
+        var newName = 'backup-test-lergo-data';
+        copyDatabase(oldName, newName);
+        removeDatabase(oldName);
+    });
     // will move 'test-lergo-data' to 'backup-test-lergo-data' and create a new db with test-lergo-data
     //http://stackoverflow.com/a/11661591/1068746 ==> how to rename in mongo
     grunt.registerTask('resetMongoData', function(){
-        var oldDbName = 'test-lergo-data';
-        var newDbName = 'backup-test-lergo-data';
-
-        copyDatabase(oldDbName, newDbName);
-        removeDatabase(oldDbName);
-        createNewDatabase(oldDbName);
+        var dbName = 'test-lergo-data';
+        removeDatabase(dbName);
+        createNewDatabase(dbName);
     });
 
     // will look for 'backup-test-lergo-data' and rename it to be 'test-lergo-data'
@@ -215,6 +218,7 @@ module.exports = function (grunt) {
         'protractor_webdriver:keepAlive',
         'protract:filter:true',
         'protract:footer:true',
+        'protract:invites:true',
         'protract:lessons:true',
         'protract:profile:true',
         'protract:questions:true',

@@ -42,6 +42,10 @@
         "checkboxesByLabel": false,
         "enter": false,
         "selectOptionByIndex": false,
-        "LERGO_QUESTION_TYPE": false
+        "LERGO_QUESTION_TYPE": false,
+        "setCheckboxValue": false,
+        "getSelectValue": false,
+        "selectOptionByValue": false,
+        "countSelectOptions": false
     }
 }

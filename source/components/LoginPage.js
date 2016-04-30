@@ -8,7 +8,17 @@ exports.load = function(){
     return this;
 };
 
+/**
+ *
+ * @param  {object|string} username - if object then (username:username, password:password)
+ * @param password
+ * @returns {*|webdriver.promise.Promise}
+ */
 exports.login = function( username, password ){
+    if ( typeof(username) === 'object'){
+        password = username.password;
+        username = username.username;
+    }
     browser.sleep(1000); // after browser.get, protractor is more stable with some sleep time
     logger.info('logging in as ', username, password );
     element(by.model('form.username')).sendKeys(username);

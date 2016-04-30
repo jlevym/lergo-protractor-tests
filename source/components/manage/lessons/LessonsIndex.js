@@ -9,6 +9,11 @@ exports.TABLE_ACTIONS = {
 };
 
 exports.getTableAction = require('../../common/IndexTable').getTableAction;
+exports.table = require('../../common/IndexTable');
+
+exports.countLessons = function(){
+    return $$('[ng-repeater="l in lessons"]').count();
+};
 
 
 exports.filterLessons = function(opts){

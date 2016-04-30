@@ -4,7 +4,28 @@
 
 
 exports.selectPermissions = function( permissions ){
-    checkboxesByLabel( element.all(by.css('.permissions>div')), permissions );
+    checkboxesByLabel( element.all(by.css('[ng-repeat="permission in permissions"]')), permissions );
+};
+
+exports.selectLanguageLimitations = function( languages ){
+    checkboxesByLabel( element.all(by.css('[ng-repeat="language in options.limitEditLanguage"')), languages);
+};
+
+exports.selectSubjectLimitations = function( subjects ){
+    checkboxesByLabel( element.all(by.css('[ng-repeat="subject in options.limitEditSubject"')), subjects);
+};
+
+exports.setAgeLimitation = function(min, max ){
+    $m('role.limitations.manageAge.min').sendKeys(min);
+    $m('role.limitations.manageAge.max').sendKeys(max);
+};
+
+/**
+ *
+ * @param {boolean} value
+ */
+exports.restrictToUnpublishedContent = function( value ){
+    setCheckboxValue($m('role.limitations.editOnlyUnpublishedContent'), value);
 };
 
 /**

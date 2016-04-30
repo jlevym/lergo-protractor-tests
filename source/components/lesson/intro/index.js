@@ -14,6 +14,10 @@ exports.editLesson = function(){
     return $('[tooltip="Edit Lesson"]').click();
 };
 
+exports.getEditButton = function(){
+    return $('[tooltip="Edit Lesson"]');
+};
+
 exports.startLesson = function(){
     return element(by.css('.start-lesson')).click();
 };
