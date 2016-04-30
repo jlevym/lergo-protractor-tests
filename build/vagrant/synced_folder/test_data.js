@@ -54,6 +54,19 @@ db.users.insert([{
 
 db.lessons.insert([
     {
+        "_id" : ObjectId("55877718740b13ca11c55ce4"),
+        "age" : 8,
+        "createdAt" : "2016-01-02T07:07:04.746Z",
+        "language" : "english",
+        "lastUpdate" : 1451722332581,
+        "name" : "limited_editor_should_edit",
+        "tags" : [ ],
+        "userId" : ObjectId("54ba1391f59d198d09bfe58b"),
+        "views" : 27,
+        "description" : "this is a lesson for limited editor to edit",
+        "subject" : "english"
+    },
+    {
         "_id" : ObjectId("56877718740b13ca11c55ce4"),
         "age" : 8,
         "createdAt" : "2016-01-02T07:07:04.746Z",
@@ -740,7 +753,7 @@ db.roles.insert([
         "createdAt" : "2015-10-05T15:11:32.051Z",
         "_id" : ObjectId("56129324428b4bc12c76198b"),
         "permissions" : [
-            "misc.userCanSeeKitchenSink",
+            "misc.userCanSeeKitchenSink"
         ],
         "lastUpdate" : 1444057912947
     }

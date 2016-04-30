@@ -17,8 +17,8 @@ exports.countLessons = function(){
 
 
 exports.filterLessons = function(opts){
-    if ( opts.searchText ){
-        $m('model.searchText').sendKeys(opts.searchText);
+    if ( opts.searchText || opts.name){
+        $m('model.searchText').sendKeys(opts.searchText || opts.name);
     }
 };
 /**
@@ -31,5 +31,10 @@ exports.goToLesson = function(opts){
     if ( typeof(opts.index) === 'number' ){
         logger.info('getting lesson by index', opts);
         $$('[ng-repeat*="l in lessons"] td.name a').get(opts.index).click();
+    }
+
+    if ( typeof(opts.name) === 'string' ){
+        exports.filterLessons(opts);
+        $$('[ng-repeat*="l in lessons"] td.name a').get(0).click();
     }
 };

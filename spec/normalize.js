@@ -52,8 +52,22 @@ beforeEach(function(){
         },
 
         toBeDisplayed: function(msg){
-            return this.actual.isDisplayed().then(function(){
-                return true;
+            var me = this;
+            return this.actual.isDisplayed().then(function(isDisplayed){
+                if ( !isDisplayed ){
+                    if ( me.isNot ){
+                        return false;
+                    }else{
+                        throw new Error('element is not displayed but should be :: ' + msg);
+                    }
+                } else {
+                    if ( me.isNot ){
+                        throw new Error('element is displayed but should not :: ' + msg);
+                    }else{
+                        return true;
+                    }
+                }
+
             }, function(e){
                 throw new Error(msg || ('element not displayed. error is :: ' + e.toString() ));
             });
