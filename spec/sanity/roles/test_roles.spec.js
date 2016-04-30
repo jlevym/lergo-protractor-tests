@@ -5,10 +5,12 @@ var logger = browser.getLogger('test_roles.spec');
 
 describe('roles', function(){
     beforeEach(function(){ logger.info('running from ' + __filename); });
+
     describe('management', function(){
         var newRoleName = 'new-role-' + new Date().getTime();
         it('can create new role', function(){
             browser.get('/');
+            components.filter.resetIfDisplayed();
             components.loginPage.load().login( components.conf.roles.adminUser, components.conf.roles.adminPassword );
             browser.sleep(2000);
             components.layout.goToManageRoles();
@@ -42,6 +44,7 @@ describe('roles', function(){
 
         it('can assign role to user', function(){
             browser.get('/');
+            components.filter.resetIfDisplayed();
             components.loginPage.load().login( components.conf.roles.adminUser, components.conf.roles.adminPassword );
 
             components.layout.goToManageUsers();
@@ -69,7 +72,11 @@ describe('roles', function(){
          */
         it('gives user new abilities', function(){
             browser.get('/');
+            components.filter.resetIfDisplayed();
             components.loginPage.load().login( components.conf.roles.editorUser, components.conf.roles.editorPassword );
+
+
+
             components.layout.goToManageLessons();
 
             components.layout.logout();
