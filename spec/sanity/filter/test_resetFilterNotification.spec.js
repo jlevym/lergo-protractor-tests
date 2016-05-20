@@ -21,17 +21,17 @@ describe('filter reset notifications', function(){
 
         components.layout.goToUserSection();
         components.mySection.goToMyLessons();
-        expect(components.mySection.lessons.filterIsActiveNotification.rootElement.isDisplayed()).toBeFalsy();
+        expect(components.mySection.lessons.filterIsActiveNotification.displayElement.isDisplayed()).toBeFalsy('should not display on first load');
         components.filter.setText('foo');
-        expect(components.mySection.lessons.filterIsActiveNotification.rootElement.isDisplayed()).toBeTruthy();
+        expect(components.mySection.lessons.filterIsActiveNotification.displayElement.isDisplayed()).toBeTruthy('should display due to text');
         components.mySection.lessons.filterIsActiveNotification.resetFilter();
-        expect(components.mySection.lessons.filterIsActiveNotification.rootElement.isDisplayed()).toBeFalsy();
+        expect(components.mySection.lessons.filterIsActiveNotification.displayElement.isDisplayed()).toBeFalsy('should not display after reset');
         components.filter.setText('foo');
-        expect(components.mySection.lessons.filterIsActiveNotification.rootElement.isDisplayed()).toBeTruthy();
+        expect(components.mySection.lessons.filterIsActiveNotification.displayElement.isDisplayed()).toBeTruthy('should display again due to text 2');
         components.mySection.lessons.filterIsActiveNotification.hideNotification();
-        expect(components.mySection.lessons.filterIsActiveNotification.rootElement.isDisplayed()).toBeFalsy();
+        expect(components.mySection.lessons.filterIsActiveNotification.displayElement.isDisplayed()).toBeFalsy('should not display due to hide click');
         browser.refresh();
-        expect(components.mySection.lessons.filterIsActiveNotification.rootElement.isDisplayed()).toBeTruthy();
+        expect(components.mySection.lessons.filterIsActiveNotification.displayElement.isDisplayed()).toBeTruthy('should display after refresh');
         browser.sleep(1000).then(done);
     });
 
