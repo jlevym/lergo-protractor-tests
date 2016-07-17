@@ -12,6 +12,7 @@ describe('roles', function(){
             browser.get('/');
             components.filter.resetIfDisplayed();
             components.loginPage.load().login( components.conf.roles.adminUser, components.conf.roles.adminPassword );
+            logger.info('sleep for 2 sec');
             browser.sleep(2000);
             components.layout.goToManageRoles();
             components.manage.roles.index.createNewRole();
@@ -24,6 +25,8 @@ describe('roles', function(){
                 }
             });
             components.manage.roles.edit.save();
+            logger.info('sleep for 2 sec');
+            browser.sleep(2000);
 
             expect(components.manage.roles.index.find( { name : newRoleName }).count()).toBe(1);
 
@@ -56,6 +59,8 @@ describe('roles', function(){
                 'role_to_assign' : true
             });
             components.manage.users.edit.editRolesDialog.submit();
+             logger.info('sleep for 2 sec');
+            browser.sleep(2000);
             expect(components.manage.users.edit.getRoles().count()).toBe(1);
 
             components.layout.logout();
@@ -73,12 +78,16 @@ describe('roles', function(){
         it('gives user new abilities', function(){
             browser.get('/');
             components.filter.resetIfDisplayed();
+            logger.info('sleep for 2 sec');
+            browser.sleep(2000);
             components.loginPage.load().login( components.conf.roles.editorUser, components.conf.roles.editorPassword );
 
 
-
+            logger.info('sleep for 2 sec');
+            browser.sleep(2000);
             components.layout.goToManageLessons();
-
+            logger.info('e-sleep for 2 sec');
+            browser.sleep(2000);
             components.layout.logout();
         });
     });
