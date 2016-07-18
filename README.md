@@ -8,7 +8,20 @@ npm install
 
 # How to run the tests
 
+## Setup For Running On Localhost
 
+ - run lergo on your machine
+ - setup mongo data `grunt resetMongoData`
+ - set the mongo URL in your configuration to point to `test-lergo-data`
+ - declare on the endpoint `export PROTRACTOR_ENDPOINT="http://localhost:9000"`
+ - run `grunt protract:XXX` - where XXX is the suite you want to run. (read more about it below) 
+
+# Availebl Suites
+
+ - See list of all suites at [protractor conf file](https://github.com/lergo/lergo-protractor-tests/blob/master/protractor.sanity.conf.js)
+ - `custom` - is a special suite that allows you to focus on a specific file. just declare `export LERGO_SPEC=path/to/file` and only that file will be executed. 
+
+NOTE: you can also use [ddesrcibe and iit - OR - fdescribe and fit - DEPENDS ON JASMINE VERSION](http://stackoverflow.com/a/23793631/1068746) to focus on specific test
 
 ## Sanity tests
 
