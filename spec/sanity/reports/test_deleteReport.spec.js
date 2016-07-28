@@ -55,6 +55,7 @@ describe('delete reports', function(){
         
         
         components.mySection.reports.getTableAction( components.mySection.reports.TABLE_ACTIONS.DELETE_REPORT).click();
+        browser.sleep(1000);
         browser.switchTo().alert().accept();
         browser.sleep(3000);
        
@@ -64,7 +65,7 @@ describe('delete reports', function(){
             expect(_.first(result)[takenAt]).not.toBe(firstReport[takenAt],' should have deleted first report ');
         });
 
-        // delete the second report to keep everything tidy!
+        // realstaging; delete the second report to keep everything tidy!
 
         components.mySection.reports.selectFirstReport();
         browser.sleep(3000);
