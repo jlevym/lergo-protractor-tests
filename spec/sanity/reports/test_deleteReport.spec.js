@@ -54,7 +54,7 @@ describe('delete reports', function(){
 
         
         
-        components.mySection.reports.getTableAction( components.mySection.reports.TABLE_ACTIONS.DELETE_REPORT).click();
+        /*components.mySection.reports.getTableAction( components.mySection.reports.TABLE_ACTIONS.DELETE_REPORT).click();
         browser.sleep(3000);
         browser.switchTo().alert().accept();
         browser.sleep(3000);
@@ -73,7 +73,7 @@ describe('delete reports', function(){
         components.mySection.reports.getTableAction( components.mySection.reports.TABLE_ACTIONS.DELETE_REPORT).click();
         browser.sleep(3000);
         browser.switchTo().alert().accept();
-        browser.sleep(3000);
+        browser.sleep(3000);*/
 
 
         components.layout.logout().then(done);
