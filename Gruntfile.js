@@ -35,7 +35,7 @@ module.exports = function (grunt) {
                 'protract:lessons:true',
                 'protract:profile:true',
                 'protract:questions:true',
-                'protract:reports:true',
+                'protract:reports:false',
                 'protract:roles:true',
                 'protract:users:true']
 
