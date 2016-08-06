@@ -194,4 +194,5 @@ terminate(){
     nohup node remove_all_instances &> /dev/null &
 }
 
+mkdir -p test/results
 grunt test
