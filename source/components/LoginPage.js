@@ -23,9 +23,10 @@ exports.login = function( username, password ){
     logger.info('logging in as ', username, password );
     element(by.model('form.username')).sendKeys(username);
     element(by.model('form.password')).sendKeys(password);
-    return element(by.css('[type="submit"]')).click().then(function(){
+    element(by.css('[type="submit"]')).click().then(function(){
         logger.info('submitted');
     });
+    return browser.sleep(2000);
 
 
 };

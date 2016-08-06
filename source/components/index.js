@@ -107,7 +107,7 @@ global.$label = function(css, label, required ){
 global.$label_gen = function (elements) {
     return function (label, required) {
 
-        logger.info('finding element by label', label, required );
+        // logger.info('finding element by label', label, required );
         if ( typeof(elements)==='string' ){ // support css selector as well
             elements = $$(elements);
         }

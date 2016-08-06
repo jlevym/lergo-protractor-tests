@@ -146,7 +146,8 @@ module.exports = function (grunt) {
         var exec = require('child_process').exec;
 
         function puts(error, stdout, stderr) {
-            var stdoutErr = stdout.toLowerCase().indexOf('error');
+            stdout = stdout.toLowerCase().replace(/writeErrors/ig,'').replace(/writeConcernErrors/ig,'');
+            var stdoutErr = stdout.indexOf('error');
             if (!!error || !!stderr || stdoutErr >= 0) {
                 if (!!error) {
                     grunt.log.error(error);

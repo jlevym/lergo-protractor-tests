@@ -33,6 +33,7 @@ describe('editor role', function(){
 
     beforeEach(function(){
         browser.get('/');
+        browser.sleep(2000);
         components.loginPage.load().login( components.conf.roles.editorUser, components.conf.roles.editorPassword );
         browser.sleep(2000);
     });

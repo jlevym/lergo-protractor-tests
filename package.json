@@ -10,19 +10,20 @@
     "grunt-protractor-webdriver": "~0.2.0",
     "jshint-stylish": "~1.0.1",
     "load-grunt-tasks": "~3.1.0",
-    "protractor": "3.0.0"
+    "protractor": "^3.3.0"
   },
   "scripts": {
-    "install": "node ./node_modules/protractor/bin/webdriver-manager update"
+    "postinstall": "webdriver-manager update"
   },
   "dependencies": {
+    "aws-sdk": "~2.2.18",
     "chalk": "^1.1.1",
     "jasmine-reporters": "^2.0.7",
     "jenkins-api": "~0.2.7",
     "lodash": "~3.6.0",
     "log4js": "~0.6.22",
-    "request": "~2.55.0",
-    "aws-sdk": "~2.2.18",
-    "mandrill-api": "~1.0.45"
+    "mandrill-api": "~1.0.45",
+    "minimist": "^1.2.0",
+    "request": "~2.55.0"
   }
 }

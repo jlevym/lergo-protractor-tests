@@ -30,7 +30,9 @@ exports.searchLesson = function( name ){
 exports.logout = function(){
     hoverOnProfile();
     browser.sleep(2000);
-    return $click('logout()').click();
+    $click('logout()').click();
+    return browser.sleep(2000);
+
 };
 
 exports.getNavigationItem = function(section, required ){
@@ -39,7 +41,7 @@ exports.getNavigationItem = function(section, required ){
     var sections = $('.header-login .dropdown-menu').all(by.text(section,'li a'));
     logger.info('this is count', typeof(sections.count));
     if ( required ) {
-        expect(sections.count()).toBe(1, 'section should exit [' + section + ']');
+        expect(sections.count()).toBe(1, 'section should exist [' + section + ']');
     }
     return sections.first();
     /*.then(function(elems) {

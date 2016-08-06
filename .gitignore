@@ -2,3 +2,4 @@ dev
 .idea
 node_modules
 .vagrant
+test/results

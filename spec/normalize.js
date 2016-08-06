@@ -1,5 +1,6 @@
 'use strict';
 
+var argv = require('minimist')(process.argv.slice(2));
 process.env.NODE_PATH = 'source';
 require('module').Module._initPaths();
 
@@ -34,7 +35,7 @@ beforeEach(function(){
     var customMatchers = {
         toBePresent: function (msg) {
             var me  = this;
-            console.log(this);
+            // console.log(this);
             return this.actual.isPresent().then(function () {
                 if ( me.isNot ){
                     throw new Error('element is present');
@@ -120,5 +121,51 @@ browser.getLogger = function(name){
         trace : logMe('trace')
     };
 };
+
+var fs = require('fs');
+
+var Utils = {
+
+    /**
+     * @name screenShotDirectory
+     * @description The directory where screenshots will be created
+     * @type {String}
+     */
+    screenShotDirectory: 'test/results/',
+
+    /**
+     * @name writeScreenShot
+     * @description Write a screenshot string to file.
+     * @param {String} data The base64-encoded string to write to file
+     * @param {String} filename The name of the file to create (do not specify directory)
+     */
+    writeScreenShot: function (data, filename) {
+        var stream = fs.createWriteStream(this.screenShotDirectory + filename);
+
+        stream.write(new Buffer(data, 'base64'));
+        stream.end();
+    }
+
+};
+
+/**
+ * Automatically store a screenshot for each test.
+ */
+var counter = 0;
+afterEach(function () {
+    var currentSpec = jasmine.getEnv().currentSpec,
+        passed = currentSpec.results().passed();
+
+    browser.takeScreenshot().then(function (png) {
+        browser.getCapabilities().then(function (capabilities) {
+            var browserName = capabilities.caps_.browserName,
+                passFail = (passed) ? 'pass' : 'FAIL',
+                filename = argv.suite + '_' + counter + '_' + browserName + '_' + passFail + '-' + currentSpec.description.replace(/( |\/)/g,'_') + '.png';
+
+            Utils.writeScreenShot(png, filename);
+            counter++;
+        });
+    });
+});
 
 

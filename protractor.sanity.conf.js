@@ -56,6 +56,8 @@ exports.config = {
     // The address of a running selenium server.
     seleniumAddress: seleniumAddress,
 
+    'framework' : 'jasmine',
+
     // Spec patterns are relative to the location of this config.
     capabilities: capabilities,
 
@@ -84,6 +86,7 @@ exports.config = {
 
     jasmineNodeOpts: {
         onComplete: null,
+        realtimeFailure: true,
         isVerbose: true,
         showColors: true,
         includeStackTrace: true,
