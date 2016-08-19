@@ -1,8 +1,14 @@
+Prerequisite
+```
+Node: 4.4.x
+```
+
 
 # How to set up the project
 
 
 ```
+npm install -g grunt-cli phantomjs
 npm install
 ```
 
@@ -11,6 +17,7 @@ npm install
 ## Setup For Running On Localhost
 
  - run lergo on your machine
+ - create a dir test/results
  - setup mongo data `grunt resetMongoData`
  - set the mongo URL in your configuration to point to `test-lergo-data`
  - declare on the endpoint `export PROTRACTOR_ENDPOINT="http://localhost:9000"`
