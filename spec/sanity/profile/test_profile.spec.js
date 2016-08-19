@@ -104,7 +104,7 @@ describe('profile page', function(){
     it('should show bubble to unregistered users and not show stats', function(){
         profile.route(usernameWithCase);
         profile.clickQuestionsCreated();
-        expect(profile.getPopoverText()).toContain('see profile questions');
+        expect(profile.getPopoverText()).toContain('Only registered users');
 
         expect(profile.isStatsDisplayed()).toBeFalsy('stats should not be displayed for anonymous mode');
         browser.sleep(1000);
