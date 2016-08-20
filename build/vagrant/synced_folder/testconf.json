@@ -85,5 +85,16 @@
         "username" : "lergotest",
         "password" : "lergotest",
         "lesson" : "my_practice"
+    },
+    "editLessonCopyAndOverrideQuestion" : {
+        "owner" : {
+            "username": "simple_user",
+            "password": "simple_user"
+        },
+        "editor" : {
+            "username": "lergotesteditorlimited",
+            "password": "lergotesteditorlimited"
+        }
+
     }
 }
