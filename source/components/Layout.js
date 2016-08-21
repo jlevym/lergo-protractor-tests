@@ -68,7 +68,7 @@ exports.NAV_ITEMS = {
     MANAGE_ROLES: 'manage roles',
     MANAGE_USERS: 'manage users',
     MANAGE_LESSONS: 'manage lessons',
-    MANAGE_ABUSE_REPORTS: 'manage abuse reports'
+    MANAGE_ABUSE_REPORTS: 'manage abuse report'
 };
 
 
