@@ -25,7 +25,7 @@ describe('delete reports', function(){
         components.lesson.view.questions.trueFalse.answer({ answer : true });
         components.lesson.view.questions.trueFalse.answer({ answer : true });
         components.lesson.view.nextStep();
-        
+
         components.lesson.view.showReport(); // just make sure we have a report..
 
         // run the lesson again to get a second one for comparison - jeff
@@ -34,10 +34,10 @@ describe('delete reports', function(){
         components.lesson.view.questions.trueFalse.answer({ answer : true });
         components.lesson.view.questions.trueFalse.answer({ answer : true });
         components.lesson.view.nextStep();
-        
+
         components.lesson.view.showReport(); // just make sure we have 2 reports..
 
-       
+
         components.layout.goToMySection();
         components.mySection.goToMyReports();
 
@@ -52,13 +52,13 @@ describe('delete reports', function(){
         components.mySection.reports.selectFirstReport();
         browser.sleep(3000);
 
-        
-        
-        /*components.mySection.reports.getTableAction( components.mySection.reports.TABLE_ACTIONS.DELETE_REPORT).click();
+
+
+        components.mySection.reports.getTableAction( components.mySection.reports.TABLE_ACTIONS.DELETE_REPORT).click();
         browser.sleep(3000);
         browser.switchTo().alert().accept();
         browser.sleep(3000);
-       
+
         components.mySection.reports.tableToJson().then(function(result){
             var takenAt = components.mySection.reports.TABLE_COLUMN.TAKEN_AT;
             console.log('this is first report',_.first(result)[takenAt],firstReport[takenAt]);
@@ -73,7 +73,7 @@ describe('delete reports', function(){
         components.mySection.reports.getTableAction( components.mySection.reports.TABLE_ACTIONS.DELETE_REPORT).click();
         browser.sleep(3000);
         browser.switchTo().alert().accept();
-        browser.sleep(3000);*/
+        browser.sleep(3000);
 
 
         components.layout.logout().then(done);
