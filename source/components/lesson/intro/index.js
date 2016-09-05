@@ -23,7 +23,7 @@ exports.startLesson = function(){
 };
 
 exports.previewLesson = function(){
-    return element(by.css('[ng-click="preview()"]')).click();
+    return element(by.css('[ng-click="previewLesson()"]')).click();
 };
 
 

@@ -16,8 +16,9 @@ describe('preview lesson', function(){
         components.loginPage.load().login( components.conf.previewLesson.username, components.conf.previewLesson.password );
         components.homepage.goToLessonIntro({'name' : 'test_continue_lesson'});
         components.lesson.intro.previewLesson();
-        expect(element.all(by.css('.lesson-step-title')).count()).toBe(1);
 
+        expect(element.all(by.css('.lesson-preview')).count()).toBe(1);
+        element(by.css('.btn-close-preview')).click()
         components.layout.logout().then(done);
         browser.sleep(1000);
     });
