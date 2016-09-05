@@ -18,6 +18,7 @@ exports.countLessons = function(){
 
 exports.filterLessons = function(opts){
     if ( opts.searchText || opts.name){
+        $m('model.searchText').clear();
         $m('model.searchText').sendKeys(opts.searchText || opts.name);
     }
 };

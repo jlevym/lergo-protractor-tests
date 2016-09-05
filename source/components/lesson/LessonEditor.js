@@ -51,10 +51,18 @@ exports.clickDoneAndGotIt = function(){
     return exports.lessonIsSavedDialog.clickOkGotIt();
 };
 
-exports.getQuizItemId = function(){
-    var deferred = protractor.promise.defer();
-    browser.getCurrentUrl().then(function(url){
-        deferred.fulfill(url.match(new RegExp('user/questions/(.+)/update'))[1]);
-    });
-    return deferred.promise;
+/**
+ *
+ * @param {object} opts
+ * @param {string} opts.name - the name of the question
+ */
+exports.clickQuestionInStep = function(opts){
+    if ( opts && opts.name ){
+        $$('[ng-repeat="item in step.quizItems"] a[ng-click="openUpdateQuestion(step,item)"]').filter(function(item){
+            return item.getText().then(function(text){
+                return text.toLowerCase() === opts.name.toLowerCase();
+            });
+        }).first().click();
+    }
+    return browser.sleep(3000); // dialog is opening
 };
