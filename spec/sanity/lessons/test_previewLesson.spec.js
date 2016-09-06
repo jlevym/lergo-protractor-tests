@@ -18,7 +18,7 @@ describe('preview lesson', function(){
         components.lesson.intro.previewLesson();
 
         expect(element.all(by.css('.lesson-preview')).count()).toBe(1);
-        element(by.css('.btn-close-preview')).click()
+        element(by.css('.btn-close-preview')).click();
         components.layout.logout().then(done);
         browser.sleep(1000);
     });
