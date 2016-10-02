@@ -19,6 +19,7 @@ exports.goToQuestion = function(opts){
     var lergoFilter = require('../LergoFilter');
     lergoFilter.resetIfDisplayed();
     lergoFilter.setText(opts.question);
+    browser.actions().sendKeys(protractor.Key.ENTER).perform();
 
     if ( opts.question ) {
         element.all(by.text(opts.question, 'td.question a span')).first().click();

@@ -19,6 +19,7 @@ exports.goToLesson = function(opts){
     var lergoFilter = require('../LergoFilter');
     lergoFilter.resetIfDisplayed();
     lergoFilter.setText(opts.name);
+    browser.actions().sendKeys(protractor.Key.ENTER).perform();
 
     if ( opts.name ) {
         element.all(by.text(opts.name, '[ng-repeat*="les in lessons"] td.name a')).first().click();

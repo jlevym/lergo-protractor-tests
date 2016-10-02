@@ -23,10 +23,12 @@ describe('filter reset notifications', function(){
         components.mySection.goToMyLessons();
         expect(components.mySection.lessons.filterIsActiveNotification.displayElement.isDisplayed()).toBeFalsy('should not display on first load');
         components.filter.setText('foo');
+        browser.actions().sendKeys(protractor.Key.ENTER).perform();
         expect(components.mySection.lessons.filterIsActiveNotification.displayElement.isDisplayed()).toBeTruthy('should display due to text');
         components.mySection.lessons.filterIsActiveNotification.resetFilter();
         expect(components.mySection.lessons.filterIsActiveNotification.displayElement.isDisplayed()).toBeFalsy('should not display after reset');
         components.filter.setText('foo');
+        browser.actions().sendKeys(protractor.Key.ENTER).perform();
         expect(components.mySection.lessons.filterIsActiveNotification.displayElement.isDisplayed()).toBeTruthy('should display again due to text 2');
         components.mySection.lessons.filterIsActiveNotification.hideNotification();
         expect(components.mySection.lessons.filterIsActiveNotification.displayElement.isDisplayed()).toBeFalsy('should not display due to hide click');

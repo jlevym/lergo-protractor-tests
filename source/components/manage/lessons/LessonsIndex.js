@@ -20,6 +20,7 @@ exports.filterLessons = function(opts){
     if ( opts.searchText || opts.name){
         $m('model.searchText').clear();
         $m('model.searchText').sendKeys(opts.searchText || opts.name);
+        browser.actions().sendKeys(protractor.Key.ENTER).perform();
     }
 };
 /**
@@ -36,6 +37,7 @@ exports.goToLesson = function(opts){
 
     if ( typeof(opts.name) === 'string' ){
         exports.filterLessons(opts);
+        logger.info('getting lesson by name', opts);
         $$('[ng-repeat*="l in lessons"] td.name a').get(0).click();
     }
 };

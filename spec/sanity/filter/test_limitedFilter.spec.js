@@ -75,9 +75,11 @@ describe('filter reset', function(){
         it('should not show published lessons', function(done){
             components.layout.goToManageLessons();
             components.filter.setText('test_continue_lesson');
+            browser.actions().sendKeys(protractor.Key.ENTER).perform();
             browser.sleep(1000);
             expect(components.manage.lessons.index.countLessons()).toBe(0);
             components.filter.setText('');
+            browser.actions().sendKeys(protractor.Key.ENTER).perform();
             browser.sleep(1000).then(done);
         });
 
