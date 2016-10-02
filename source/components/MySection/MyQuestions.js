@@ -4,7 +4,7 @@ var logger = browser.getLogger('MyQuestions.js');
 
 
 exports.createNewQuestion = function(){
-    $click('createNewQuestion()').click();
+    $click('createQuestionBtnDisable || createNewQuestion()').click();
 };
 
 /**
