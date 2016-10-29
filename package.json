@@ -13,7 +13,8 @@
     "protractor": "*"
   },
   "scripts": {
-    "postinstall": "webdriver-manager update"
+    "postinstall": "webdriver-manager update",
+    "protract:development": "PROTRACTOR_ENDPOINT='http://localhost:9000' grunt protract"
   },
   "dependencies": {
     "aws-sdk": "~2.2.18",
