@@ -33,7 +33,7 @@ class InvitePanel{
     }
 
     getLink(){
-        return  $('.invite .active [select-all-text-on-click]').getAttribute('value');
+        return  $('.invite .active .link').getAttribute('value');
     }
 
     newInvite(){
