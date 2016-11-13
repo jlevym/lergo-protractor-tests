@@ -21,7 +21,7 @@ describe('user signup', function(){
 
         components.signupPage.submit();
 
-        expect(components.signupPage.errorMessage).toContain('already exists'.toUpperCase());
+        expect(components.signupPage.errorMessage).toContain('already taken'.toUpperCase());
 
         browser.sleep(4000).then(done);
     });
