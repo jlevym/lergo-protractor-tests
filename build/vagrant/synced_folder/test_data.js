@@ -780,3 +780,11 @@ db.roles.insert([
     }
 ]);
 
+db.pins.insert([
+    {pin: 123456},
+    {pin: 123457},
+    {pin: 123467},
+    {pin: 123477},
+    {pin: 123487}
+]);
+
