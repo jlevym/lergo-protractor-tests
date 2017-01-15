@@ -60,7 +60,7 @@ if [ ! -f /usr/bin/node ];then
 
     print "installing node"
     # todo: take the version from nvmrc
-    echo "installing node 4.5.0" &&  nvm install 4.5.0  &> /dev/null && npm --version &> /dev/null
+    echo "installing node 6.9.1" &&  nvm install 6.9.1  &> /dev/null && npm --version &> /dev/null
 
     print "making node available with sudo"
     ## make node available from sudo
