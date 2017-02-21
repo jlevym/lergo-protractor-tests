@@ -53,7 +53,9 @@ echo "user is $USER"
 
 if [ ! -f /usr/bin/node ];then
     print "installing nvm"
-    ( curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash )
+    # ( curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash )
+    ( curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash || echo )
+
 
     print "activating nvm"
     . .nvm/nvm.sh &> /dev/null || source .nvm/nvm.sh &> /dev/null
@@ -61,6 +63,9 @@ if [ ! -f /usr/bin/node ];then
     print "installing node"
     # todo: take the version from nvmrc
     echo "installing node 6.9.1" &&  nvm install 6.9.1  &> /dev/null && npm --version &> /dev/null
+
+    NODE_VERSION=`node --version`
+    print "node version is $NODE_VERSION"
 
     print "making node available with sudo"
     ## make node available from sudo
@@ -137,6 +142,9 @@ sudo apt-get -qq update -y # another update
 print "running apt-get install on $APT_GET_INSTALL"
 sudo apt-get -qq install --fix-missing  -y g++ libgconf2-4 libnss3-1d libxss1 mongodb openjdk-7-jre-headless nginx google-chrome-stable xvfb x11-xkb-utils xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic
 print "apt get install finished"
+
+MONGODB_VERSION=`mongodb --version`
+print "mongodb version is $MONGODB_VERSION"
 
 print "running npm installs"
 sudo npm -s install -g grunt-cli phantomjs
