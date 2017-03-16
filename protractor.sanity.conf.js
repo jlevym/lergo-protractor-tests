@@ -82,7 +82,7 @@ exports.config = {
     // with relative paths will be prepended with this.
     baseUrl: process.env.PROTRACTOR_ENDPOINT || process.env.LERGO_ENDPOINT || 'http://localhost:1616',
     //baseUrl: 'http://realstaging.lergodev.info',
-    //baseUrl: PROTRACTOR_ENDPOINT="http://localhost:9000",
+
 
 
     jasmineNodeOpts: {

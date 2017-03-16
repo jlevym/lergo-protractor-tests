@@ -62,7 +62,7 @@ if [ ! -f /usr/bin/node ];then
 
     print "installing node"
     # todo: take the version from nvmrc
-    echo "installing node 6.9.1" &&  nvm install 6.9.1  &> /dev/null && npm --version &> /dev/null
+    echo "installing node 4.2.1" &&  nvm install 4.2.1  &> /dev/null && npm --version &> /dev/null
 
     NODE_VERSION=`node --version`
     print "node version is $NODE_VERSION"
