@@ -143,7 +143,7 @@ print "running apt-get install on $APT_GET_INSTALL"
 sudo apt-get -qq install --fix-missing  -y g++ libgconf2-4 libnss3-1d libxss1 mongodb openjdk-7-jre-headless nginx google-chrome-stable xvfb x11-xkb-utils xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic
 print "apt get install finished"
 
-MONGODB_VERSION=`mongodb --version`
+MONGODB_VERSION=`mongod --version`
 print "mongodb version is $MONGODB_VERSION"
 
 print "running npm installs"
