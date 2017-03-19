@@ -44,6 +44,10 @@ else
     print "$VAGRANT_ENVIRONMENT is not there. skipping... "
 fi
 
+echo "giving this run a build_number"
+BUILD_NUMBER="1527"
+echo " the build number is $BUILD_NUMBER"
+
 
 if [ -f /vagrant/build_id ]; then
     print "got build_id file"
