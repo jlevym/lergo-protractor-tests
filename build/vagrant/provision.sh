@@ -1,3 +1,5 @@
+
+
 #set -vex
 set -e
 
@@ -62,7 +64,8 @@ if [ ! -f /usr/bin/node ];then
 
     print "installing node"
     # todo: take the version from nvmrc
-    echo "installing node 6.9.1" &&  nvm install 6.9.1  &> /dev/null && npm --version &> /dev/null
+    # echo "installing node 6.9.1" &&  nvm install 6.9.1  &> /dev/null && npm --version &> /dev/null
+    echo "installing node 4.4.4" && nvm install 4.4.4 &> /dev/null && npm --version &> /dev/null
 
     NODE_VERSION=`node --version`
     print "node version is $NODE_VERSION"
@@ -140,7 +143,7 @@ print "installing chrome" && wget -q -O - https://dl-ssl.google.com/linux/linux_
 sudo apt-get -qq update -y # another update
 
 print "running apt-get install on $APT_GET_INSTALL"
-sudo apt-get -qq install --fix-missing  -y g++ libgconf2-4 libnss3-1d libxss1 mongodb openjdk-7-jre-headless nginx google-chrome-stable xvfb x11-xkb-utils xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic
+sudo apt-get -qq install --fix-missing  -y g++ libgconf2-4 libnss3-1d libxss1 mongodb openjdk-8-jre-headless nginx google-chrome-stable xvfb x11-xkb-utils xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic
 print "apt get install finished"
 
 MONGODB_VERSION=`mongod --version`
@@ -150,12 +153,13 @@ print "running npm installs"
 sudo npm -s install -g grunt-cli phantomjs
 print "grunt-cli installed"
 sudo npm -s cache clean
+echo "installing node 6.9.1" && nvm install 6.9.1 &> /dev/null && npm --version &> /dev/null
 print "npm cache is clean"
 npm -s install
 print "npm install finished"
-
 print "waiting for installation to finish"
 wait
+
 print "everything finished.. starting tests"
 print "sleeping for 10 seconds" && sleep 10 # wait for mongo to start. random value.
 print "inserting mongo data"
@@ -180,7 +184,7 @@ wget -O localdriver.zip https://www.browserstack.com/browserstack-local/BrowserS
 unzip localdriver.zip &> /dev/null
 export BROWSERSTACK_LOCAL="`pwd`/BrowserStackLocal"
 
-# get public ip for instance
+echo "get public ip for instance"
 export PUBLIC_IP=`curl http://169.254.169.254/latest/meta-data/public-ipv4`
 
 pushd ~
@@ -195,6 +199,9 @@ pushd ~
     echo "source vars" >>  .bashrc
     source vars || . vars
 popd
+./node_modules/protractor/bin/webdriver-manager update
+
+echo "webdriver-manager update done successfully"
 
 print "TEST_CONF file is [$LERGO_PROT_TEST_CONF]"
 
@@ -202,5 +209,6 @@ terminate(){
     nohup node remove_all_instances &> /dev/null &
 }
 
+echo " makdir test/results and start grunt test"
 mkdir -p test/results
-grunt test
+grunt test -v

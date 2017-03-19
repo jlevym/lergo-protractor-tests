@@ -10,7 +10,7 @@
     "grunt-protractor-webdriver": "~0.2.0",
     "jshint-stylish": "~1.0.1",
     "load-grunt-tasks": "~3.1.0",
-    "protractor": "*"
+    "protractor": "4.0.14"
   },
   "scripts": {
     "postinstall": "webdriver-manager update",
