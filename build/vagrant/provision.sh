@@ -68,8 +68,8 @@ if [ ! -f /usr/bin/node ];then
 
     print "installing node"
     # todo: take the version from nvmrc
-    # echo "installing node 6.9.1" &&  nvm install 6.9.1  &> /dev/null && npm --version &> /dev/null
-    echo "installing node 4.4.4" && nvm install 4.4.4 &> /dev/null && npm --version &> /dev/null
+    echo "installing node 6.9.1" &&  nvm install 6.9.1  &> /dev/null && npm --version &> /dev/null
+    # echo "installing node 4.4.4" && nvm install 4.4.4 &> /dev/null && npm --version &> /dev/null
 
     NODE_VERSION=`node --version`
     print "node version is $NODE_VERSION"
@@ -157,7 +157,7 @@ print "running npm installs"
 sudo npm -s install -g grunt-cli phantomjs
 print "grunt-cli installed"
 sudo npm -s cache clean
-echo "installing node 6.9.1" && nvm install 6.9.1 &> /dev/null && npm --version &> /dev/null
+# echo "installing node 6.9.1" && nvm install 6.9.1 &> /dev/null && npm --version &> /dev/null
 print "npm cache is clean"
 npm -s install
 print "npm install finished"
@@ -215,4 +215,4 @@ terminate(){
 
 echo " makdir test/results and start grunt test"
 mkdir -p test/results
-grunt test -v
+grunt test
