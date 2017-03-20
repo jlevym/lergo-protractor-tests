@@ -2,7 +2,8 @@ var logger = require('log4js').getLogger('protractor.sanity.conf');
 var spec = [  'spec/sanity/**/*.spec.js'];
 
 var _ = require('lodash');
-
+//try to increase timeout
+getPageTimeout:50000;
 
 if (!!process.env.LERGO_SPEC){
     spec = process.env.LERGO_SPEC.split(',');
