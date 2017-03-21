@@ -3,6 +3,8 @@
 var logger = require('log4js').getLogger('LoginPage');
 
 exports.load = function(){
+
+    browser.ignoreSynchronization = true;
     browser.get('#!/public/session/login');
     browser.sleep(1000);
     return this;
