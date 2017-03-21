@@ -159,6 +159,10 @@ print "npm install finished"
 print "waiting for installation to finish"
 wait
 
+print "npm install ~1.3.0 jasmine "
+sudo npm install jasmine@~1.3.0
+echo 'jasmine-version:' + jasmine.getEnv().versionString()
+
 print "everything finished.. starting tests"
 print "sleeping for 10 seconds" && sleep 10 # wait for mongo to start. random value.
 print "inserting mongo data"
@@ -207,7 +211,7 @@ print "TEST_CONF file is [$LERGO_PROT_TEST_CONF]"
 terminate(){
     nohup node remove_all_instances &> /dev/null &
 }
-
+npm install
 echo " makdir test/results and start grunt test"
 mkdir -p test/results
 grunt protract:footer
