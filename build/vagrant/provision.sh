@@ -160,7 +160,7 @@ print "waiting for installation to finish"
 wait
 
 print "npm install ~1.3.0 jasmine "
-sudo npm install jasmine@~1.3.0
+sudo npm install jasmine-node@1.3.1
 echo 'jasmine-version:' + jasmine.getEnv().versionString()
 
 print "everything finished.. starting tests"
