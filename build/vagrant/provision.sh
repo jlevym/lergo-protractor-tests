@@ -210,4 +210,4 @@ terminate(){
 
 echo " makdir test/results and start grunt test"
 mkdir -p test/results
-grunt test
+grunt protract:footer
