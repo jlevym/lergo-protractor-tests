@@ -2,8 +2,11 @@ var logger = require('log4js').getLogger('protractor.sanity.conf');
 var spec = [  'spec/sanity/**/*.spec.js'];
 
 var _ = require('lodash');
-//try to increase timeout
-getPageTimeout:50000;
+
+ // Jeff: try to increase timeout
+getPageTimeout: 500000;
+ // Jeff: Asynchronous Script Timeout
+allScriptsTimeout: 500000;
 
 if (!!process.env.LERGO_SPEC){
     spec = process.env.LERGO_SPEC.split(',');
@@ -92,6 +95,6 @@ exports.config = {
         isVerbose: true,
         showColors: true,
         includeStackTrace: true,
-        defaultTimeoutInterval: 360000 // using browserstack tests will be slow.. give them 6 minutes timeout
+        defaultTimeoutInterval: 500000 // using browserstack tests will be slow.. give them 6 minutes timeout
     }
 };
