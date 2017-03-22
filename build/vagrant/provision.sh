@@ -206,4 +206,4 @@ terminate(){
 }
 
 mkdir -p test/results
-grunt protract:footer
+grunt test
