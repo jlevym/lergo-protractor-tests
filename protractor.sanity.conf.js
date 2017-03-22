@@ -3,10 +3,6 @@ var spec = [  'spec/sanity/**/*.spec.js'];
 
 var _ = require('lodash');
 
- // Jeff: try to increase timeout
-getPageTimeout: 500000;
- // Jeff: Asynchronous Script Timeout
-allScriptsTimeout: 500000;
 
 if (!!process.env.LERGO_SPEC){
     spec = process.env.LERGO_SPEC.split(',');
@@ -95,6 +91,6 @@ exports.config = {
         isVerbose: true,
         showColors: true,
         includeStackTrace: true,
-        defaultTimeoutInterval: 500000 // using browserstack tests will be slow.. give them 6 minutes timeout
+        defaultTimeoutInterval: 360000 // using browserstack tests will be slow.. give them 6 minutes timeout
     }
 };
