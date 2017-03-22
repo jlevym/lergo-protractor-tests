@@ -196,6 +196,9 @@ pushd ~
     source vars || . vars
 popd
 
+./node_modules/protractor/bin/webdriver-manager update
+echo "webdriver-manager update done successfully"
+
 print "TEST_CONF file is [$LERGO_PROT_TEST_CONF]"
 
 terminate(){
