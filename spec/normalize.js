@@ -151,7 +151,7 @@ var Utils = {
 /**
  * Automatically store a screenshot for each test.
  */
-var counter = 0;
+/*var counter = 0;
 afterEach(function () {
     var currentSpec = jasmine.getEnv().currentSpec,
         passed = currentSpec.results().passed();
@@ -166,6 +166,6 @@ afterEach(function () {
             counter++;
         });
     });
-});
+});*/
 
 
