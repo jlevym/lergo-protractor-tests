@@ -25,12 +25,12 @@ describe('multichoice', function(){
                 { value: 'option 2' },
                 { value: 'option 3' },
                 { value: 'option 4' }
-            ],
-            disableShuffle: true
+            ]
         };
-
+        // using disableShuffle: true failed in the jasmine 2.0 upgrade and jeff
+        // could not find a solution so implemented the element(by.model) method below
         editor.setDetails( quizItemDetails );
-
+        element(by.model('quizItem.shuffleDisabled')).click();
 
         editor.clickPreview();
         browser.sleep(100);
