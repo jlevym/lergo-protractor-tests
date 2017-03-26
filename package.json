@@ -2,14 +2,14 @@
   "name": "lergo-protractor-tests",
   "version": "0.0.1",
   "devDependencies": {
-    "eyes.protractor": "0.0.38",
-    "grunt": "~0.4.5",
+    "eyes.protractor": "0.0.57",
+    "grunt": "1.0.1",
     "grunt-concurrent": "^2.1.0",
-    "grunt-contrib-jshint": "~0.11.1",
-    "grunt-protractor-runner": "~2.0.0",
+    "grunt-contrib-jshint": "~1.1.0",
+    "grunt-protractor-runner": "~5.0.0",
     "grunt-protractor-webdriver": "~0.2.0",
-    "jshint-stylish": "~1.0.1",
-    "load-grunt-tasks": "~3.1.0",
+    "jshint-stylish": "~2.2.1",
+    "load-grunt-tasks": "~3.5.2",
     "protractor": "*"
   },
   "scripts": {
@@ -21,8 +21,8 @@
     "chalk": "^1.1.1",
     "jasmine-reporters": "^2.0.7",
     "jenkins-api": "~0.2.7",
-    "lodash": "~3.6.0",
-    "log4js": "~0.6.22",
+    "lodash": "~4.17.4",
+    "log4js": "~1.1.1",
     "mandrill-api": "~1.0.45",
     "minimist": "^1.2.0",
     "request": "~2.55.0"

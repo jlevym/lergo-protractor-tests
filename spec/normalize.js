@@ -1,6 +1,6 @@
 'use strict';
 
-var argv = require('minimist')(process.argv.slice(2));
+//var argv = require('minimist')(process.argv.slice(2));
 process.env.NODE_PATH = 'source';
 require('module').Module._initPaths();
 
@@ -33,46 +33,35 @@ beforeEach(function(){
     // define new matchers
 
     var customMatchers = {
-        toBePresent: function (msg) {
-            var me  = this;
-            // console.log(this);
-            return this.actual.isPresent().then(function () {
-                if ( me.isNot ){
-                    throw new Error('element is present');
-                }else{
-                    return true;
-                }
-            }, function (e) {
-                if ( me.isNot ){
-                    return false;
-                }else {
-                    throw new Error(msg || ( 'element not present. error is :: ' + e.toString() ));
-                }
+        toBePresent: function() {
+            return {
+              compare: function(element) {
+                var ret = {
+                  pass: element.isPresent().then(function(isPresent) {
+                    var pass = !!isPresent;
+                    ret.message = 'Expected' + (pass ? ' NOT ' : '') + ' to be present';
+                    return pass;
+                  })
+                };
+                return ret;
+              }
+            };
+          },
 
-            });
-        },
-
-        toBeDisplayed: function(msg){
-            var me = this;
-            return this.actual.isDisplayed().then(function(isDisplayed){
-                if ( !isDisplayed ){
-                    if ( me.isNot ){
-                        return false;
-                    }else{
-                        throw new Error('element is not displayed but should be :: ' + msg);
-                    }
-                } else {
-                    if ( me.isNot ){
-                        throw new Error('element is displayed but should not :: ' + msg);
-                    }else{
-                        return true;
-                    }
-                }
-
-            }, function(e){
-                throw new Error(msg || ('element not displayed. error is :: ' + e.toString() ));
-            });
-        }
+          toBeDisplayed: function() {
+            return {
+              compare: function(element) {
+                var ret = {
+                  pass: element.isDisplayed().then(function(isDisplayed) {
+                    var pass = !!isDisplayed;
+                    ret.message = 'Expected' + (pass ? ' NOT ' : '') + ' to be displayed';
+                    return pass;
+                  })
+                };
+                return ret;
+              }
+            };
+          },
     };
 
     function addMatchers( jas ){
@@ -122,16 +111,29 @@ browser.getLogger = function(name){
     };
 };
 
-var fs = require('fs');
+    /**
+     *@name screenShotDirectory for jasmine2
+     *@reason previous screenShotDirectory was good for 1.3x
+     *@were to find it: https://www.npmjs.com/package/protractor-jasmine2-screenshot-reporter
+     *@still needs to be implemented **/
 
-var Utils = {
+
+
+
+//var fs = require('fs');
+
+// protractor-jasmine2-screenshot-reporter
+//https://www.npmjs.com/package/protractor-jasmine2-screenshot-reporter
+
+
+//var Utils = {
 
     /**
      * @name screenShotDirectory
      * @description The directory where screenshots will be created
      * @type {String}
      */
-    screenShotDirectory: 'test/results/',
+//    screenShotDirectory: 'test/results/',
 
     /**
      * @name writeScreenShot
@@ -139,19 +141,21 @@ var Utils = {
      * @param {String} data The base64-encoded string to write to file
      * @param {String} filename The name of the file to create (do not specify directory)
      */
-    writeScreenShot: function (data, filename) {
+  /*  writeScreenShot: function (data, filename) {
         var stream = fs.createWriteStream(this.screenShotDirectory + filename);
 
         stream.write(new Buffer(data, 'base64'));
         stream.end();
     }
 
-};
+};*/
 
-/**
- * Automatically store a screenshot for each test.
+
+
+
+ /* Automatically store a screenshot for each test.
  */
-var counter = 0;
+/*var counter = 0;
 afterEach(function () {
     var currentSpec = jasmine.getEnv().currentSpec,
         passed = currentSpec.results().passed();
@@ -166,6 +170,6 @@ afterEach(function () {
             counter++;
         });
     });
-});
+});*/
 
 

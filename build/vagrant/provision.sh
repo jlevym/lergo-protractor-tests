@@ -140,7 +140,7 @@ print "installing chrome" && wget -q -O - https://dl-ssl.google.com/linux/linux_
 sudo apt-get -qq update -y # another update
 
 print "running apt-get install on $APT_GET_INSTALL"
-sudo apt-get -qq install --fix-missing  -y g++ libgconf2-4 libnss3-1d libxss1 mongodb openjdk-7-jre-headless nginx google-chrome-stable xvfb x11-xkb-utils xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic
+sudo apt-get -qq install --fix-missing  -y g++ libgconf2-4 libnss3-1d libxss1 mongodb openjdk-8-jre-headless nginx google-chrome-stable xvfb x11-xkb-utils xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic
 print "apt get install finished"
 
 MONGODB_VERSION=`mongod --version`
@@ -195,6 +195,9 @@ pushd ~
     echo "source vars" >>  .bashrc
     source vars || . vars
 popd
+
+./node_modules/protractor/bin/webdriver-manager update
+echo "webdriver-manager update done successfully"
 
 print "TEST_CONF file is [$LERGO_PROT_TEST_CONF]"
 

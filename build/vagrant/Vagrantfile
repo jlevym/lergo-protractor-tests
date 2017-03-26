@@ -40,7 +40,7 @@ Vagrant.configure(2) do |all|
     end
 
      all.vm.define "virtualbox" do |config|
-        config.vm.box = "ubuntu/trusty64"
+        config.vm.box = "ubuntu/xenial64"
 
         config.vm.network "forwarded_port", guest: 1616, host: 1616
 

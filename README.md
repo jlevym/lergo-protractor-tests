@@ -1,8 +1,8 @@
 Prerequisite
 ```
-Node: 4.4.x
+Node: 6.9.1
 
-Java JDK
+Java JDK 8
 ```
 
 
@@ -25,7 +25,7 @@ npm install
  - declare on the endpoint `export PROTRACTOR_ENDPOINT="http://localhost:9000"`
  - run `grunt protract:XXX` - where XXX is the suite you want to run. (read more about it below) 
 
-# Availebl Suites
+# Available Suites
 
  - See list of all suites at [protractor conf file](https://github.com/lergo/lergo-protractor-tests/blob/master/protractor.sanity.conf.js)
  - `custom` - is a special suite that allows you to focus on a specific file. just declare `export LERGO_SPEC=path/to/file` and only that file will be executed. 
