@@ -12,6 +12,8 @@ Java JDK 8
 ```
 npm install -g grunt-cli phantomjs
 npm install
+./node_modules/protractor/bin/webdriver-manager update
+
 ```
 
 # How to run the tests
@@ -24,7 +26,10 @@ npm install
  - set the mongo URL in your configuration to point to `test-lergo-data`
  - declare on the endpoint `export PROTRACTOR_ENDPOINT="http://localhost:9000"`
  - run `grunt protract:XXX` - where XXX is the suite you want to run. (read more about it below) 
-
+ - or, run 'grunt test' - this cycles through all the tests
+ - if port 4444 is not released at the end of the testing,  run
+ - - 'netstat -nlp | grep 4444' - to get the PID
+ - - 'kill <pid>' - to free up the port 4444
 # Available Suites
 
  - See list of all suites at [protractor conf file](https://github.com/lergo/lergo-protractor-tests/blob/master/protractor.sanity.conf.js)
