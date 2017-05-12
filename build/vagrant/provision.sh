@@ -124,7 +124,7 @@ SYSTEM_TESTS_FOLDER=`pwd`/system-tests
 # rm -rf $SYSTEM_TESTS_FOLDER || print "folder does not exist"
 
 if [ ! -e "$SYSTEM_TESTS_FOLDER" ];then
-    git clone -b vagrant-localhost "https://github.com/lergo/lergo-protractor-tests.git" $SYSTEM_TESTS_FOLDER
+    git clone -b vagrant-directConnect-localhost "https://github.com/lergo/lergo-protractor-tests.git" $SYSTEM_TESTS_FOLDER
     cd $SYSTEM_TESTS_FOLDER
 
 else
