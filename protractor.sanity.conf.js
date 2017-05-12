@@ -54,7 +54,12 @@ seleniumAddress = browserName.indexOf('browserstack') >= 0 ? 'http://hub.browser
 
 exports.config = {
     // The address of a running selenium server.
-    seleniumAddress: seleniumAddress,
+    //seleniumAddress: seleniumAddress,
+    directConnect: true,
+
+    capabilities: {
+        'browserName': 'chrome'
+    },
 
     'framework' : 'jasmine',
 

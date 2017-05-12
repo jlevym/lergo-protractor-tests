@@ -216,7 +216,6 @@ module.exports = function (grunt) {
     grunt.registerTask('concurrentTest', ['protractor_webdriver:keepAlive', 'concurrent:test','stop_webdriver']);
 
     grunt.registerTask('test', [
-        'protractor_webdriver:keepAlive',
         'protract:filter:true',
         'protract:footer:true',
         'protract:invites:true',
@@ -225,8 +224,7 @@ module.exports = function (grunt) {
         'protract:questions:true',
         'protract:reports:true',
         'protract:roles:true',
-        'protract:users:true',
-        'stop_webdriver'
+        'protract:users:true'
     ]);
 
     grunt.registerTask('default', ['jshint', 'testMongoScript']); // just check code
