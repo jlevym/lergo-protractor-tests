@@ -206,28 +206,50 @@ module.exports = function (grunt) {
 
     grunt.registerTask('stop_webdriver', function(){
         var done = this.async();
-        request({ url: 'http://localhost:4444/selenium-server/driver/?cmd=shutDownSeleniumServer' }, function( err, data){
+        var execSync = require('child_process').execSync;
+        var command = 'kill -9 `jps | grep selenium | awk \'{print $1}\'`';
+        execSync(command);
+        request({url: 'http://localhost:4444/selenium-server/driver/?cmd=shutDownSeleniumServer'}, function (err, data) {
             console.log(err);
             console.log(data);
             done();
         });
     });
 
-    grunt.registerTask('concurrentTest', ['protractor_webdriver:keepAlive', 'concurrent:test','stop_webdriver']);
-
-    grunt.registerTask('test', [
-        'protractor_webdriver:keepAlive',
-        'protract:filter:true',
-        'protract:footer:true',
-        'protract:invites:true',
-        'protract:lessons:true',
-        'protract:profile:true',
-        'protract:questions:true',
-        'protract:reports:true',
-        'protract:roles:true',
-        'protract:users:true',
-        'stop_webdriver'
-    ]);
+    grunt.registerTask('concurrentTest', ['protractor_webdriver:keepAlive', 'concurrent:test', 'stop_webdriver']);
+    grunt.registerTask('test', function (skipWebdriver) {
+        var tasks = [
+            'protractor_webdriver:keepAlive',
+            'protract:filter:true',
+            'protract:footer:true',
+            'protract:invites:true',
+            'protract:lessons:true',
+            'protract:profile:true',
+            'protract:questions:true',
+            'protract:reports:true',
+            'protract:roles:true',
+            'protract:users:true',
+            'stop_webdriver'
+        ];
+        if (skipWebdriver === 'true') {
+            tasks.splice(0, 1);
+            tasks.splice(-1, 1);
+        }
+        grunt.task.run(tasks);
+    });
+    // grunt.registerTask('test', [
+    //     'protractor_webdriver:keepAlive',
+    //     'protract:filter:true',
+    //     'protract:footer:true',
+    //     'protract:invites:true',
+    //     'protract:lessons:true',
+    //     'protract:profile:true',
+    //     'protract:questions:true',
+    //     'protract:reports:true',
+    //     'protract:roles:true',
+    //     'protract:users:true',
+    //     'stop_webdriver'
+    // ]);
 
     grunt.registerTask('default', ['jshint', 'testMongoScript']); // just check code
 };

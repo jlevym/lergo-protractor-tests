@@ -37,7 +37,7 @@ Viewer.prototype.getHintText = function(){
 };
 
 Viewer.prototype.getExplanation = function(){
-    return $('[ng-show="!!quizItem.explanation"] div').getText();
+    return $('[ng-show="shouldShowExplanationMessage()"] div').getText();
 };
 
 Viewer.prototype.answer = function(){
