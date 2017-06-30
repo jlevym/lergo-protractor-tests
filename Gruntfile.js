@@ -207,8 +207,8 @@ module.exports = function (grunt) {
     grunt.registerTask('stop_webdriver', function(){
         var done = this.async();
         var execSync = require('child_process').execSync;
-        var command = 'kill -9 `jps | grep selenium | awk \'{print $1}\'`';
-        execSync(command);
+       /* var command = 'kill -9 `jps | grep selenium | awk \'{print $1}\'`';
+        execSync(command);*/
         request({url: 'http://localhost:4444/selenium-server/driver/?cmd=shutDownSeleniumServer'}, function (err, data) {
             console.log(err);
             console.log(data);
