@@ -28,7 +28,8 @@ beforeEach(function(){
         console.log('jasmine-version:' + jasmine.getEnv().versionString());
     }
 
-    browser.driver.manage().window().maximize(); // we will test smaller resolutions in the future
+    //browser.driver.manage().window().maximize(); // we will test smaller resolutions in the future
+    console.log('vagrant-directConnect-localhost .maximize() is commented out');
 
     // define new matchers
 
