@@ -28,8 +28,8 @@ beforeEach(function(){
         console.log('jasmine-version:' + jasmine.getEnv().versionString());
     }
 
-    browser.driver.manage().window().maximize(); // we will test smaller resolutions in the future
-
+    //browser.driver.manage().window().maximize(); // we will test smaller resolutions in the future
+    console.log('maximize() commented out'); // bug introduced with version of chrome 60
     // define new matchers
 
     var customMatchers = {
