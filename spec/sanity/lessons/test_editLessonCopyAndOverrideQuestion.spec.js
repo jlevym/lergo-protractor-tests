@@ -13,7 +13,9 @@ var components = require('components');
 
 describe('edit lesson with copy and override question', function(){
 
-    beforeEach(function(){ logger.info('running from ' + __filename); });
+    beforeEach(function(){
+        logger.info('running from ' + __filename);
+        browser.ignoresynchronisation = true});
 
     it('should be offered to copy question and override', function( done ){
         logger.info('starting testing edit lesson with copy and override question');

@@ -3,7 +3,7 @@
 
 exports.getCreatedOn = function(){
     var deferred = protractor.promise.defer();
-    element(by.css('.properties [tooltip="created on"]')).getText().then(function( text ){
+    element(by.css('.properties [uib-tooltip="created on"]')).getText().then(function( text ){
         deferred.fulfill(text.trim());
     });
     //browser.controlFlow().execute( deferred.promise );
@@ -11,11 +11,11 @@ exports.getCreatedOn = function(){
 };
 
 exports.editLesson = function(){
-    return $('[tooltip="Edit Lesson"]').click();
+    return $('[uib-tooltip="Edit Lesson"]').click();
 };
 
 exports.getEditButton = function(){
-    return $('[tooltip="Edit Lesson"]');
+    return $('[uib-tooltip="Edit Lesson"]');
 };
 
 exports.startLesson = function(){

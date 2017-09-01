@@ -5,7 +5,7 @@ function Viewer(){}
 
 // available in preview question
 Viewer.prototype.getUserLink = function(){
-    return $('[tooltip="by"] a');
+    return $('[uib-tooltip="by"] a');
 };
 
 Viewer.prototype.getQuestion = function(){
