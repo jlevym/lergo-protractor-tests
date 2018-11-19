@@ -17,6 +17,9 @@ var browserName = process.env.BROWSER_NAME || process.env.BROWSER_TYPE || 'chrom
 var restartBrowser = true;
 var capabilities = { browserName : browserName };
 
+if (browserName = 'headlessChrome') {
+    _.merge(capabilities, { browserName: 'chrome', 'chromeOptions': {'args': [ '--headless', '--disable-gpu', '--no-sandbox', '--window-size=1920x1200' ]} });
+}
 if ( browserName === 'chrome'){
     _.merge(capabilities, { 'chromeOptions': {'args': ['--disable-extensions']} });
 }
@@ -55,7 +58,7 @@ seleniumAddress = browserName.indexOf('browserstack') >= 0 ? 'http://hub.browser
 exports.config = {
     // The address of a running selenium server.
     seleniumAddress: seleniumAddress,
-
+    directConnect: process.env.DIRECT_CONNECT || false,
     'framework' : 'jasmine',
 
     // Spec patterns are relative to the location of this config.

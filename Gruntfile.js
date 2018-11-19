@@ -217,6 +217,17 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('concurrentTest', ['protractor_webdriver:keepAlive', 'concurrent:test', 'stop_webdriver']);
+    grunt.registerTask('directTest', [
+        'protract:filter:true',
+        'protract:footer:true',
+        'protract:invites:true',
+        'protract:lessons:true',
+        'protract:profile:true',
+        'protract:questions:true',
+        'protract:reports:true',
+        'protract:roles:true',
+        'protract:users:true',
+    ]);
     grunt.registerTask('test', function (skipWebdriver) {
         var tasks = [
             'protractor_webdriver:keepAlive',
